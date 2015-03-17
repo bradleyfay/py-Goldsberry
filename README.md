@@ -1,6 +1,7 @@
 # py-Goldsberry
 Python Package for facilitating analysis of NBA Data
 
+[package building guide](http://www.scotttorborg.com/python-packaging/minimal.html)
 
 ###Status
 
