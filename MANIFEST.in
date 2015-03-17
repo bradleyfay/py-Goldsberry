@@ -1,1 +1,3 @@
 include README.rst
+include docs/*.txt
+include goldsberry/sampledata.json
