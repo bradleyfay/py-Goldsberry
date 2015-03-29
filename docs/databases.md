@@ -4,7 +4,7 @@ NBA Stats Databases and Descriptions
 Table Title | Description | Raw Data Link
 ----------- | ----------- | -------------
 [Transaction History](http://stats.nba.com/transactions/) | Transactions for all teams | [Raw](http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js)
-Draft Combine - [Anthropromorphic](http://stats.nba.com/draftcombine/#!/anthro/) | | [Raw](http://stats.nba.com/stats/draftcombineplayeranthro?LeagueID=00&SeasonYear=2014-15)
+Draft Combine - [Anthropometric](http://stats.nba.com/draftcombine/#!/anthro/) | | [Raw](http://stats.nba.com/stats/draftcombineplayeranthro?LeagueID=00&SeasonYear=2014-15)
 Draft Combine - [Speed and Agility](http://stats.nba.com/draftcombine/#!/agility/) | | [Raw](http://stats.nba.com/stats/draftcombinedrillresults?LeagueID=00&SeasonYear=2014-15)
 Draft Combine - [Non Stationary Shooting](http://stats.nba.com/draftcombine/#!/nonstationary/) | | [Raw](http://stats.nba.com/stats/draftcombinenonstationaryshooting?LeagueID=00&SeasonYear=2014-15)
 Draft Combine - [Spot Shooting](http://stats.nba.com/draftcombine/#!/spotup/) | | [Raw](http://stats.nba.com/stats/draftcombinespotshooting?LeagueID=00&SeasonYear=2014-15)
