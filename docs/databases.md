@@ -1,7 +1,7 @@
 NBA Stats Databases and Descriptions
 ===
 
-Added? | Module | Table Title | Description | Raw Data Link
+Added| | Module | Table Title | Description | Raw Data Link
 --- |-| ----------- | ----------- | -------------
 - [ ] | |[Transaction History](http://stats.nba.com/transactions/) | Transactions for all teams | [Raw](http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js)
 yes| `draft.py`|Draft Combine - [Anthropometric](http://stats.nba.com/draftcombine/#!/anthro/)~ | | [Raw](http://stats.nba.com/stats/draftcombineplayeranthro?LeagueID=00&SeasonYear=2014-15)
