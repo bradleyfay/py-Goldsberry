@@ -3,8 +3,6 @@ NBA Stats Databases and Descriptions
 
 Added | Module | Table Title | Description | Raw Data Link  
 ----- | ------ | ----------- | ----------- | -------------  
-no | | [Franchise History](http://stats.nba.com/history/) | | [Raw](http://stats.nba.com/stats/franchisehistory?LeagueID=00)
-no | | [Playoff Picture](http://stats.nba.com/playoffpicture/) | | [Raw](http://stats.nba.com/stats/playoffpicture?LeagueID=00&SeasonID=22014)
 no | `playtype.py` | Play Type - [Transition](http://stats.nba.com/playtype/#!/transition/?dir=1) | When the possession-ending event comes before the defense sets following a possession change and a transition from one end of the court to the other | [Raw](http://stats.nba.com/js/data/playtype/player_Transition.js)
 no | `playtype.py` |Play Type - [Isolation](http://stats.nba.com/playtype/#!/isolation/?dir=1) | When the possession-ending event is created during a “one-on-one” matchup. The defender needs to be set and have all of his defensive options at the initiation of the play. | [Raw](http://stats.nba.com/js/data/playtype/player_Isolation.js)
 no | `playtype.py` |Play Type - [Pick & Roll: Ball Handler](http://stats.nba.com/playtype/#!/ball-handler/?dir=1) | A screen is set on the ball handler’s defender out on the perimeter. The offensive player can use the screen or go away from it and as long as the play yields a possession-ending event, it is tagged as a pick and roll. | [Raw](http://stats.nba.com/js/data/playtype/player_PRBallHandler.js)
@@ -92,6 +90,8 @@ yes | `BoxScore.py` | Box Score - [Player Tracking](http://stats.nba.com/game/#!
 yes | `miscellaneous.py` | [Daily Standings](http://stats.nba.com/standings/#!/03/26/2015) | | [Raw](http://stats.nba.com/stats/scoreboard?DayOffset=0&LeagueID=00&gameDate=03%2F26%2F2015)
 yes | `miscellaneous.py` | [Player Database - All Time](http://stats.nba.com/players/) | Change `IsOnlyCurrentSeason` = `1` to return players who are/were on a roster during a specific season| [Raw](http://stats.nba.com/stats/commonallplayers?IsOnlyCurrentSeason=0&LeagueID=00&Season=2014-15)
 yes | `miscellaneous.py` |[Transaction History](http://stats.nba.com/transactions/) | Transactions for all teams | [Raw](http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js)
+yes | `miscellaneous.py` | [Franchise History](http://stats.nba.com/history/) | | [Raw](http://stats.nba.com/stats/franchisehistory?LeagueID=00)
+yes | `miscellaneous.py` | [Playoff Picture](http://stats.nba.com/playoffpicture/) | | [Raw](http://stats.nba.com/stats/playoffpicture?LeagueID=00&SeasonID=22014)
 yes| `draft.py`|Draft Combine - [Anthropometric](http://stats.nba.com/draftcombine/#!/anthro/)~ | | [Raw](http://stats.nba.com/stats/draftcombineplayeranthro?LeagueID=00&SeasonYear=2014-15)
 yes | `draft.py`|Draft Combine - [Speed and Agility](http://stats.nba.com/draftcombine/#!/agility/) | | [Raw](http://stats.nba.com/stats/draftcombinedrillresults?LeagueID=00&SeasonYear=2014-15)
 yes | `draft.py`| Draft Combine - [Non Stationary Shooting](http://stats.nba.com/draftcombine/#!/nonstationary/) | | [Raw](http://stats.nba.com/stats/draftcombinenonstationaryshooting?LeagueID=00&SeasonYear=2014-15)
