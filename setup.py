@@ -1,17 +1,19 @@
-from distutils.core import setup
+# Always prefer setuptools over distutils
+from setuptools import setup, find_packages
+# To use a consistent encoding
+from codecs import open
+from os import path
 
 setup(name='py-goldsberry',
       version='0.0',
       description='Easy collection of NBA Statistics',
-      long_description='Really, the funniest around.',
+      long_description='This is a big work-in-progress, but should be useful in the future.',
       url='http://github.com/bradleyfay/py-goldsberry',
       author='Bradley Fay',
       author_email='bradley.fay@gmail.com',
       license='MIT',
       keywords='funniest joke comedy flying circus',
       packages=['goldsberry'],
-      install_requires=[
-          'requests',
-      ],
+      install_requires=['requests>=2.2.1'],
       include_package_data=True,
       zip_safe=False)

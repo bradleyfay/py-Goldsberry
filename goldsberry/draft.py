@@ -1,3 +1,5 @@
+import requests
+
 class Anthro:
     """Retrieves anthropometric data collected during draft combine
 

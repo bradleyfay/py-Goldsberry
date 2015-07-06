@@ -4,13 +4,17 @@ Python Package for facilitating analysis of NBA Data
 [package building guide](http://www.scotttorborg.com/python-packaging/minimal.html)
 
 ###Status
+**5-6-15**
+* Updated Shotchart.py
+* Added Miscellaneous.py
+* Fixed error in database table
+
 **3-16-15**
 * Posted old packages to Github
 * Need To update `__init__.py` to import each separate file when the package is loaded
 * Need to finish identifying all of the data tables
 * Need to organize possible data tables into unifying framework
 * Create a branch for each sub-module and assign each for completion
-
 
 **3-15-15**
 
