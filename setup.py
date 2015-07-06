@@ -5,8 +5,8 @@ from codecs import open
 from os import path
 
 setup(name='py-goldsberry',
-      version='0.0',
-      description='Easy collection of NBA Statistics',
+      version='0.1',
+      description='A Python Package for easily acquiring NBA Data for analysis',
       long_description='This is a big work-in-progress, but should be useful in the future.',
       url='http://github.com/bradleyfay/py-goldsberry',
       author='Bradley Fay',

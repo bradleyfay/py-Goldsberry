@@ -20,5 +20,13 @@ Once you have the package installed, you can load it into a Python session with 
 
 ```python
 import goldsberry
+import pandas as pd
 ```
 
+The package is designed to work with [pandas](http://pandas.pydata.org/) in that the output of each API call to the NBA website it returned in a format that is easily converted into a pandas dataframe.
+
+```python
+
+ll = pd.DataFrame(goldsberry.miscellaneous.LeagueLeaders().Leaders())
+ll.head()
+```
