@@ -112,3 +112,21 @@ class PlayoffPicture:
         _headers = self._pull.json()['resultSets'][5]['headers']
         _values = self._pull.json()['resultSets'][5]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
+
+class LeagueLeaders:
+    def __init__(self, LeagueID='00', permode='PerGame', scope='S', season='All Time',
+        seasontype='Regular Season', statcategory='PTS'):
+        self._url = "http://stats.nba.com/stats/leagueleaders?"
+        self._api_param = {'LeagueID':LeagueID,
+                           'Scope':scope,
+                           'PerMode':permode,
+                           'Season':season,
+                           'SeasonType':seasontype,
+                           'StatCategory':statcategory
+                           }
+        #Scope: (RS)|(S)|(Rookies) one of these options
+        self._pull = requests.get(self._url, params=self._api_param)
+    def Leaders(self):
+        _headers = self._pull.json()['resultSet']['headers']
+        _values = self._pull.json()['resultSet']['rowSet']
+        return [dict(zip(_headers, value)) for value in _values]
