@@ -1,4 +1,3 @@
-import requests
 from . import boxscore
 from . import draft
 from . import miscellaneous
