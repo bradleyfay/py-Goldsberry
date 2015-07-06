@@ -16,7 +16,6 @@ Python Package for facilitating analysis of NBA Data
 * Need to organize possible data tables into unifying framework
 * Create a branch for each sub-module and assign each for completion
 
-
 **3-15-15**
 
 * Copied and broke apart the existing code for `NBAStats`
