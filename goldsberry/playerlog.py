@@ -1,3 +1,5 @@
+# measuretype = "(Base)|(Advanced)|(Misc)|(Four Factors)|(Scoring)|(Opponent)|(Usage)"
+
 class GameLog:
     def __init__(self, playerid, season='2014-15',seasontype='Regular Season', leagueid='00'):
         self._url = "http://stats.nba.com/stats/playergamelog?"
@@ -68,9 +70,6 @@ class Splits:
         _headers = self._pull.json()['resultSets'][6]['headers']
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
-
-measuretype = "(Base)|(Advanced)|(Misc)|(Four Factors)|(Scoring)|(Opponent)|(Usage)"
 
 class Career:
     def __init__(self, playerid, leagueid='00',permode="PerGame"):
