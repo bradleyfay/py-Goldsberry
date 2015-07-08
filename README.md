@@ -10,7 +10,7 @@ I attended the 2015 Sloan Sports Analytics conference and had the fortunate oppo
 This package is a work in progress. As the NBA continues to make more data available, I will do my best to update `py-Goldsberry` to reflect these additions. Currently, there is almost a cumbersome amount of data available from the NBA so dealing with what is there is a bit of a challenge. 
 
 ## Getting started
-To get started with `py-Goldsberry`, you need to install and load the package. From your terminal window, run the following command:
+To get started with `py-Goldsberry`, you need to install and load the package. From your terminal, run the following command:
 
 ```
 pip install py-goldsberry
