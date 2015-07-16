@@ -133,45 +133,45 @@ class LeagueLeaders:
         _values = self._pull.json()['resultSet']['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class ClutchStats:
-    def __init__(self,aheadbehind = 'Ahead or Behind', 
+class PlayerClutchStats:
+    def __init__(self, aheadbehind='Ahead or Behind', 
       clutchtime = 'Last 5 Minutes', datefrom='', dateto='', 
       gamescope='', gamesegment='', lastngames = '0', leagueid = '00', 
       location='', measuretype = 'Base', month = '0', 
       opponentteamid = '0', outcome='', paceadjust = 'N', 
-      permode = 'PerGame', period = '0', playerexperience, 
-      playerposition, plusminus = 'N', pointdiff = '5', rank = 'N', 
-      season = '2014-15', seasonsegment, seasontype = 'Regular Season', 
+      permode = 'PerGame', period = '0', playerexperience='', 
+      playerposition='', plusminus = 'N', pointdiff = '5', rank = 'N', 
+      season = '2014-15', seasonsegment='', seasontype = 'Regular Season', 
       starterbench='', vsconference='', vsdivision=''):
         self._url = "http://stats.nba.com/stats/leaguedashplayerclutch?"
         self._api_param = {
-            'AheadBehind' : aheadbehind = 'Ahead or Behind',
-            'ClutchTime' : clutchtime = 'Last 5 Minutes',
+            'AheadBehind' : aheadbehind,
+            'ClutchTime' : clutchtime,
             'DateFrom' : datefrom,
             'DateTo' : dateto,
             'GameScope' : gamescope,
             'GameSegment' : gamesegment,
-            'LastNGames' : lastngames = '0',
-            'LeagueID' : leagueid = '00',
+            'LastNGames' : lastngames,
+            'LeagueID' : leagueid,
             'Location' : location,
-            'MeasureType' : measuretype = 'Base',
-            'Month' : month = '0',
-            'OpponentTeamID' : opponentteamid = '0',
+            'MeasureType' : measuretype,
+            'Month' : month,
+            'OpponentTeamID' : opponentteamid,
             'Outcome' : outcome,
-            'PaceAdjust' : paceadjust = 'N',
-            'PerMode' : permode = 'PerGame',
-            'Period' : period = '0',
+            'PaceAdjust' : paceadjust,
+            'PerMode' : permode,
+            'Period' : period,
             'PlayerExperience' : playerexperience,
             'PlayerPosition' : playerposition,
-            'PlusMinus' : plusminus = 'N',
-            'PointDiff' : pointdiff = '5',
-            'Rank' : rank = 'N',
-            'Season' : season = '2014-15',
+            'PlusMinus' : plusminus,
+            'PointDiff' : pointdiff,
+            'Rank' : rank,
+            'Season' : season,
             'SeasonSegment' : seasonsegment,
-            'SeasonType' : seasontype = 'Regular Season',
+            'SeasonType' : seasontype,
             'StarterBench' : starterbench,
             'VsConference' : vsconference,
-            'VsDivision' : vsdivision,
+            'VsDivision' : vsdivision
             }
         self._pull = requests.get(self._url, params=self._api_param)
     def PlayerClutch(self):
@@ -179,41 +179,41 @@ class ClutchStats:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class LeagueStats:
+class PlayerStats:
     def __init__(self,datefrom = '',dateto = '',gamescope = '',
-        gamesegment = '',lastngames = '0',leagueid = '00'location = '',
+        gamesegment = '',lastngames = '0',leagueid = '00',location = '',
         measuretype = 'Base',month = '0',opponentteamid = '0',
         outcome = '',paceadjust = 'N',permode = 'PerGame',period = '0',
         playerexperience = '',playerposition = '',plusminus = 'N',
         rank = 'N',season = '2014-15',seasonsegment = '',
         seasontype = 'Regular Season',starterbench = '',vsconference = '',
         vsdivision = ''):
-        self._url = "http://stats.nba.com/stats/leaguedashplayerclutch?"
+        self._url = "http://stats.nba.com/stats/leaguedashplayerstats?"
         self._api_param = {
-            'DateFrom' : datefrom = '',
-            'DateTo' : dateto = '',
-            'GameScope' : gamescope = '',
-            'GameSegment' : gamesegment = '',
-            'LastNGames' : lastngames = '0',
-            'LeagueID' : leagueid = '00'
-            'Location' : location = '',
-            'MeasureType' : measuretype = 'Base',
-            'Month' : month = '0',
-            'OpponentTeamID' : opponentteamid = '0',
-            'Outcome' : outcome = '',
-            'PaceAdjust' : paceadjust = 'N',
-            'PerMode' : permode = 'PerGame',
-            'Period' : period = '0',
-            'PlayerExperience' : playerexperience = '',
-            'PlayerPosition' : playerposition = '',
-            'PlusMinus' : plusminus = 'N',
-            'Rank' : rank = 'N',
-            'Season' : season = '2014-15',
-            'SeasonSegment' : seasonsegment = '',
-            'SeasonType' : seasontype = 'Regular Season',
-            'StarterBench' : starterbench = '',
-            'VsConference' : vsconference = '',
-            'VsDivision' : vsdivision = ''
+            'DateFrom' : datefrom,
+            'DateTo' : dateto,
+            'GameScope' : gamescope,
+            'GameSegment' : gamesegment,
+            'LastNGames' : lastngames,
+            'LeagueID' : leagueid,
+            'Location' : location,
+            'MeasureType' : measuretype,
+            'Month' : month,
+            'OpponentTeamID' : opponentteamid,
+            'Outcome' : outcome,
+            'PaceAdjust' : paceadjust,
+            'PerMode' : permode,
+            'Period' : period,
+            'PlayerExperience' : playerexperience,
+            'PlayerPosition' : playerposition,
+            'PlusMinus' : plusminus,
+            'Rank' : rank,
+            'Season' : season,
+            'SeasonSegment' : seasonsegment,
+            'SeasonType' : seasontype,
+            'StarterBench' : starterbench,
+            'VsConference' : vsconference,
+            'VsDivision' : vsdivision
             }
         self._pull = requests.get(self._url, params=self._api_param)
     def LeagueStats(self):

@@ -23,7 +23,6 @@ class PlayByPlay:
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-import requests
 
 class SummaryBox:
     """

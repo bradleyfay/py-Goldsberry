@@ -1,5 +1,5 @@
 # measuretype = "(Base)|(Advanced)|(Misc)|(Four Factors)|(Scoring)|(Opponent)|(Usage)"
-import requests
+import requests as _requests
 
 class GameLog:
     def __init__(self, playerid, season='2014-15',seasontype='Regular Season', leagueid='00'):
@@ -9,7 +9,7 @@ class GameLog:
                           'Season': season,
                           'LeagueID': leagueid
                           }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def Log(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -42,7 +42,7 @@ class Splits:
                          'SeasonSegment':seasonsegment,
                          'VsConference':vsconference,
                          'VsDivision':vsdivision}
-      self._pull = requests.get(self.url, params = self._api_param)
+      self._pull = _requests.get(self._url, params = self._api_param)
     def Overall(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -78,7 +78,7 @@ class Career:
       self._api_param = {'PlayerID':playerid,
                          'LeagueID':leagueid,
                          'PerMode':permode}
-      self._pull = requests.get(self.url, params = self._api_param)
+      self._pull = _requests.get(self._url, params = self._api_param)
     def SeasonTotalsRegularSeason(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -124,7 +124,7 @@ class Demo:
     def __init__(self, playerid):
       self._url = "http://stats.nba.com/stats/commonplayerinfo?"
       self._api_param = {'PlayerID':playerid}
-      self._pull = requests.get(self.url, params = self._api_param)
+      self._pull = _requests.get(self._url, params = self._api_param)
     def CommonPlayerInfo(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -167,7 +167,7 @@ class ShotChart:
              'EndRange':endrange,
              'RangeType':rangetype,
              }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def shotchart(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -201,7 +201,7 @@ class PlayerReboundLogSV:
             'Period' :  period,
             'LastNGames' : lastngames
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PtRebLog(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -231,7 +231,7 @@ class PlayerShotLogSV:
             'Period' :  period,
             'LastNGames' : lastngames
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PtShotLog(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -262,7 +262,7 @@ class PlayerShotDefSV:
             'LastNGames' : lastngames,
             'PerMode' : permode
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def DefendingShot(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -293,7 +293,7 @@ class PlayerPassingSV:
             'LastNGames' : lastngames,
             'PerMode' : permode
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PassesMade(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -328,7 +328,7 @@ class PlayerReboundSV:
             'LastNGames' : lastngames,
             'PerMode' : permode
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def Overall(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -375,7 +375,7 @@ class PlayerShotSV:
             'LastNGames' : lastngames,
             'PerMode' : permode
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def Overall(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
