@@ -29,6 +29,6 @@ One of the key variables necessary to fully utilize `py-Goldsberry` is `playerid
 
 ```python
 
-playersCurrent = pd.DataFrame(playersCurrent)
+playersCurrent = pd.DataFrame(goldsberry.PlayerList())
 playersCurrent.head()
 ```
