@@ -101,16 +101,25 @@ class PlayoffPicture:
         return [dict(zip(_headers, value)) for value in _values]
 
 class LeagueLeaders:
-    def __init__(self, LeagueID='00', permode='PerGame', scope='S', season='All Time',
-        seasontype='Regular Season', statcategory='PTS'):
+    def __init__(self, league='NBA', permode='PerGame', scope='S', season='2014',
+        seasontype='Regular Season', statcategory='PTS', AllTime = False):
         self._url = "http://stats.nba.com/stats/leagueleaders?"
-        self._api_param = {'LeagueID':LeagueID,
-                           'Scope':scope,
-                           'PerMode':permode,
-                           'Season':season,
-                           'SeasonType':seasontype,
-                           'StatCategory':statcategory
-                           }
+        if not AllTime:
+            self._api_param = {'LeagueID':_nbaLeague(league), 
+                                'Scope':scope,
+                                'PerMode':permode,
+                                'Season':_nbaSeason(season),
+                                'SeasonType':seasontype,
+                                'StatCategory':statcategory
+                                }
+        else: 
+            self._api_param = {'LeagueID':_nbaLeague(league), 
+                                'Scope':scope,
+                                'PerMode':permode,
+                                'Season':"All Time",
+                                'SeasonType':seasontype,
+                                'StatCategory':statcategory
+                                }
         #Scope: (RS)|(S)|(Rookies) one of these options
         self._pull = _requests.get(self._url, params=self._api_param)
     def Leaders(self):
@@ -121,12 +130,12 @@ class LeagueLeaders:
 class PlayerClutchStats:
     def __init__(self, aheadbehind='Ahead or Behind', 
       clutchtime = 'Last 5 Minutes', datefrom='', dateto='', 
-      gamescope='', gamesegment='', lastngames = '0', leagueid = '00', 
-      location='', measuretype = 'Base', month = '0', 
+      gamescope='', gamesegment='', lastngames = '0', league = 'NBA', 
+      location='', measuretype = 1, month = '0', 
       opponentteamid = '0', outcome='', paceadjust = 'N', 
       permode = 'PerGame', period = '0', playerexperience='', 
       playerposition='', plusminus = 'N', pointdiff = '5', rank = 'N', 
-      season = '2014-15', seasonsegment='', seasontype = 'Regular Season', 
+      season = '2014', seasonsegment='', seasontype = 'Regular Season', 
       starterbench='', vsconference='', vsdivision=''):
         self._url = "http://stats.nba.com/stats/leaguedashplayerclutch?"
         self._api_param = {
@@ -137,9 +146,9 @@ class PlayerClutchStats:
             'GameScope' : gamescope,
             'GameSegment' : gamesegment,
             'LastNGames' : lastngames,
-            'LeagueID' : leagueid,
+            'LeagueID' : _nbaLeague(league),
             'Location' : location,
-            'MeasureType' : measuretype,
+            'MeasureType' : _measureType(measuretype),
             'Month' : month,
             'OpponentTeamID' : opponentteamid,
             'Outcome' : outcome,
@@ -151,7 +160,7 @@ class PlayerClutchStats:
             'PlusMinus' : plusminus,
             'PointDiff' : pointdiff,
             'Rank' : rank,
-            'Season' : season,
+            'Season' : _nbaSeason(season),
             'SeasonSegment' : seasonsegment,
             'SeasonType' : seasontype,
             'StarterBench' : starterbench,
@@ -166,11 +175,11 @@ class PlayerClutchStats:
 
 class PlayerStats:
     def __init__(self,datefrom = '',dateto = '',gamescope = '',
-        gamesegment = '',lastngames = '0',leagueid = '00',location = '',
-        measuretype = 'Base',month = '0',opponentteamid = '0',
+        gamesegment = '',lastngames = '0',league = 'NBA',location = '',
+        measuretype = 1,month = '0',opponentteamid = '0',
         outcome = '',paceadjust = 'N',permode = 'PerGame',period = '0',
         playerexperience = '',playerposition = '',plusminus = 'N',
-        rank = 'N',season = '2014-15',seasonsegment = '',
+        rank = 'N',season = '2014',seasonsegment = '',
         seasontype = 'Regular Season',starterbench = '',vsconference = '',
         vsdivision = ''):
         self._url = "http://stats.nba.com/stats/leaguedashplayerstats?"
@@ -180,9 +189,9 @@ class PlayerStats:
             'GameScope' : gamescope,
             'GameSegment' : gamesegment,
             'LastNGames' : lastngames,
-            'LeagueID' : leagueid,
+            'LeagueID' : _nbaLeague(league),
             'Location' : location,
-            'MeasureType' : measuretype,
+            'MeasureType' : _measureType(measuretype),
             'Month' : month,
             'OpponentTeamID' : opponentteamid,
             'Outcome' : outcome,
@@ -193,7 +202,7 @@ class PlayerStats:
             'PlayerPosition' : playerposition,
             'PlusMinus' : plusminus,
             'Rank' : rank,
-            'Season' : season,
+            'Season' : _nbaSeason(season),
             'SeasonSegment' : seasonsegment,
             'SeasonType' : seasontype,
             'StarterBench' : starterbench,

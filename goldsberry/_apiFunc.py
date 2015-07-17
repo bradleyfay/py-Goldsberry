@@ -31,3 +31,7 @@ def _measureType(x):
         return measuretypes[x]
     except:
         raise Exception("Please enter a number from 1 to 7")
+
+#The field Scope must match the regular expression '^(RS)|(S)|(Rookies)$'
+
+#The field PerMode must match the regular expression '^(Totals)|(PerGame)|(Per48)$'.

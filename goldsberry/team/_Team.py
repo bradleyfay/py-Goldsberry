@@ -1,13 +1,14 @@
-import requests
+import _requests
+from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType
 
 class Roster:
-    def __init__(self, teamid, season='2014-15',leagueid='00'):
+    def __init__(self, teamid, season='2014',league='NBA'):
         self._url = "http://stats.nba.com/stats/commonteamroster?"
         self._api_param = {'TeamID':teamid,
-                          'Season': season,
-                          'LeagueID': leagueid
+                          'Season': _nbaSeason(season),
+                          'LeagueID': _nbaLeague(league)
                           }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def Players(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -20,7 +21,7 @@ class Roster:
 class History:
     def __init__(self, teamid):
         self._url = "".join(["http://stats.nba.com/feeds/teams/profile/",str(teamid),"_TeamProfile.js"])
-        self._pull = requests.get(self._url)
+        self._pull = _requests.get(self._url)
     def Details(self):
         return self._pull.json()['TeamDetails'][0]['Details']
     def History(self):
@@ -45,21 +46,21 @@ class History:
         return self._pull.json()['TeamDetails'][5]['RetiredMembers']
 
 class Splits:
-    def __init__(self, teamid, season='2014-15',leagueid='00', datefrom='',
-      dateto='', gamesegment='', lastngames='0', location='', measuretype='Base',
+    def __init__(self, teamid, season='2014',league='NBA', datefrom='',
+      dateto='', gamesegment='', lastngames='0', location='', measuretype=1,
       month='0', opponentteamid='0', outcome='', paceadjust='N', permode='PerGame',
       period='0', plusminus='N', seasonsegment='', seasontype='Regular Season',
       vsconference='', vsdivision='', rank='N'):
         self._url = "http://stats.nba.com/stats/teamdashboardbygeneralsplits?"
         self._api_param = {'TeamID':teamid,
-                          'Season': season,
-                          'LeagueID': leagueid,
+                          'Season': _nbaSeason(season),
+                          'LeagueID': _nbaLeague(league),
                           'DateFrom':datefrom,
                           'DateTo':dateto,
                           'GameSegment':gamesegment,
                           'LastNGames':lastngames,
                           'Location':location,
-                          'MeasureType':measuretype,
+                          'MeasureType': _measureType(measuretype),
                           'Month':month,
                           'OpponentTeamID':opponentteamid,
                           'Outcome':outcome,
@@ -73,7 +74,7 @@ class Splits:
                           'VsConference':vsconference,
                           'VsDivision':vsdivision
                           }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def Overall(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -100,21 +101,21 @@ class Splits:
         return [dict(zip(_headers, value)) for value in _values]
 
 class SeasonStats:
-    def __init__(self, teamid, season='2014-15',leagueid='00', datefrom='',
-      dateto='', gamesegment='', lastngames='0', location='', measuretype='Base',
+    def __init__(self, teamid, season='2014',league='NBA', datefrom='',
+      dateto='', gamesegment='', lastngames='0', location='', measuretype=1,
       month='0', opponentteamid='0', outcome='', paceadjust='N', permode='PerGame',
       period='0', plusminus='N', seasonsegment='', seasontype='Regular Season',
       vsconference='', vsdivision='', rank='N'):
         self._url = "http://stats.nba.com/stats/teamplayerdashboard?"
         self._api_param = {'TeamID':teamid,
-                          'Season': season,
-                          'LeagueID': leagueid,
+                          'Season': _nbaSeason(season),
+                          'LeagueID': _nbaLeague(league),
                           'DateFrom':datefrom,
                           'DateTo':dateto,
                           'GameSegment':gamesegment,
                           'LastNGames':lastngames,
                           'Location':location,
-                          'MeasureType':measuretype,
+                          'MeasureType': _measureType(measuretype),
                           'Month':month,
                           'OpponentTeamID':opponentteamid,
                           'Outcome':outcome,
@@ -128,7 +129,7 @@ class SeasonStats:
                           'VsConference':vsconference,
                           'VsDivision':vsdivision
                           }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def TeamOverall(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -139,21 +140,21 @@ class SeasonStats:
         return [dict(zip(_headers, value)) for value in _values]
 
 class OnOff:
-    def __init__(self, teamid, season='2014-15',leagueid='00', datefrom='',
-      dateto='', gamesegment='', lastngames='0', location='', measuretype='Base',
+    def __init__(self, teamid, season='2014',league='NBA', datefrom='',
+      dateto='', gamesegment='', lastngames='0', location='', measuretype=1,
       month='0', opponentteamid='0', outcome='', paceadjust='N', permode='PerGame',
       period='0', plusminus='N', seasonsegment='', seasontype='Regular Season',
       vsconference='', vsdivision='', rank='N'):
         self._url = "http://stats.nba.com/stats/teamplayeronoffdetails?"
         self._api_param = {'TeamID':teamid,
-                          'Season': season,
-                          'LeagueID': leagueid,
+                          'Season': _nbaSeason(season),
+                          'LeagueID': _nbaLeague(league),
                           'DateFrom':datefrom,
                           'DateTo':dateto,
                           'GameSegment':gamesegment,
                           'LastNGames':lastngames,
                           'Location':location,
-                          'MeasureType':measuretype,
+                          'MeasureType': _measureType(measuretype),
                           'Month':month,
                           'OpponentTeamID':opponentteamid,
                           'Outcome':outcome,
@@ -167,7 +168,7 @@ class OnOff:
                           'VsConference':vsconference,
                           'VsDivision':vsdivision
                           }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def Overall(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -182,42 +183,42 @@ class OnOff:
         return [dict(zip(_headers, value)) for value in _values]
 
 class YearlyStats:
-    def __init__(self, teamid, permode='Totals',leagueid='00', seasontype='Regular Season'):
+    def __init__(self, teamid, permode='Totals',league='NBA', seasontype='Regular Season'):
         self._url = "http://stats.nba.com/stats/teamyearbyyearstats?"
         self._api_param = {'TeamID':teamid,
                           'PerMode': permode,
-                          'LeagueID': leagueid,
+                          'LeagueID': _nbaLeague(league),
                           'SeasonType':seasontype
                           }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def TeamStats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
 class GameLogs:
-    def __init__(self, teamid, season='2014-15',leagueid='00', seasontype='Regular Season'):
+    def __init__(self, teamid, season='2014',league='NBA', seasontype='Regular Season'):
         self._url = "http://stats.nba.com/stats/teamgamelog?"
         self._api_param = {'TeamID':teamid,
-                          'LeagueID': leagueid,
+                          'LeagueID': _nbaLeague(league),
                           'SeasonType':seasontype,
-                          'Season':season
+                          'Season': _nbaSeason(season)
                           }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def TeamGameLog(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
 class Info:
-    def __init__(self, teamid, season='2014-15',leagueid='00', seasontype='Regular Season'):
+    def __init__(self, teamid, season='2014',league='NBA', seasontype='Regular Season'):
         self._url = "http://stats.nba.com/stats/teaminfocommon?"
         self._api_param = {'TeamID':teamid,
-                          'LeagueID': leagueid,
+                          'LeagueID': _nbaLeague(league),
                           'SeasonType':seasontype,
-                          'Season':season
+                          'Season': _nbaSeason(season)
                           }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def TeamInfo(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -228,14 +229,14 @@ class Info:
         return [dict(zip(_headers, value)) for value in _values]
 
 class TeamPassingSV:
-    def __init__(self,teamid,leagueid='00',season='2014-15', seasontype='Regular Season',outcome='',location='',
+    def __init__(self,teamid,league='NBA',season='2014', seasontype='Regular Season',outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',gamesegment='',period=0, 
               lastngames=0, permode="PerGame"):
         self._url = "http://stats.nba.com/stats/teamdashptpass?"
         self._api_param = {
             'TeamID' : teamid,
-            'LeagueID': leagueid,
-            'Season' :  season,
+            'LeagueID': _nbaLeague(league),
+            'Season' :  _nbaSeason(season),
             'SeasonType' : seasontype,
             'Outcome' : outcome,
             'Location' : location,
@@ -251,7 +252,7 @@ class TeamPassingSV:
             'LastNGames' : lastngames,
             'PerMode' : permode
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PassesMade(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -262,14 +263,14 @@ class TeamPassingSV:
         return [dict(zip(_headers, value)) for value in _values]
 
 class TeamReboundSV:
-    def __init__(self,teamid,leagueid='00',season='2014-15', seasontype='Regular Season',outcome='',location='',
+    def __init__(self,teamid,league='NBA',season='2014', seasontype='Regular Season',outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',gamesegment='',period=0, 
               lastngames=0, permode="PerGame"):
         self._url = "http://stats.nba.com/stats/teamdashptreb?"
         self._api_param = {
             'TeamID' : teamid,
-            'LeagueID': leagueid,
-            'Season' :  season,
+            'LeagueID': _nbaLeague(league),
+            'Season' :  _nbaSeason(season),
             'SeasonType' : seasontype,
             'Outcome' : outcome,
             'Location' : location,
@@ -285,7 +286,7 @@ class TeamReboundSV:
             'LastNGames' : lastngames,
             'PerMode' : permode
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def Overall(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -308,14 +309,14 @@ class TeamReboundSV:
         return [dict(zip(_headers, value)) for value in _values]
 
 class TeamShotSV:
-    def __init__(self,teamid,leagueid='00',season='2014-15', seasontype='Regular Season',outcome='',location='',
+    def __init__(self,teamid,league='NBA',season='2014', seasontype='Regular Season',outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',gamesegment='',period=0, 
               lastngames=0, permode="PerGame"):
         self._url = "http://stats.nba.com/stats/teamdashptshots?"
         self._api_param = {
             'TeamID' : teamid,
-            'LeagueID': leagueid,
-            'Season' :  season,
+            'LeagueID': _nbaLeague(league),
+            'Season' :  _nbaSeason(season),
             'SeasonType' : seasontype,
             'Outcome' : outcome,
             'Location' : location,
@@ -331,7 +332,7 @@ class TeamShotSV:
             'LastNGames' : lastngames,
             'PerMode' : permode
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def General(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
