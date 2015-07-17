@@ -312,6 +312,6 @@ class Lineups:
     
 
 
-__all__ = ['Transactions', 'DailyStandings', 'FranchiseHistory',
+__all__ = ['Transactions', 'ScoreBoard', 'FranchiseHistory',
             'PlayoffPicture', 'LeagueLeaders', 'ClutchStats',
             'ClassicStats', 'Lineups']
