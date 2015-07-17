@@ -1,5 +1,6 @@
 import requests as _requests
-from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType, _seasonID 
+from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType, _seasonID, _DistanceRange, _GameScope, _GameSegment, _Location, _Outcome, _PaceAdjust, _PerMode
+from goldsberry._apiFunc import _PlayerExperience, _PlayerPosition, _PlusMinus, _Rank, _SeasonSegment, _StarterBench, _VsConference, _VsDivision
 
 class Transactions:
     """
@@ -127,8 +128,52 @@ class LeagueLeaders:
         _values = self._pull.json()['resultSet']['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class PlayerClutchStats:
-    def __init__(self, aheadbehind='Ahead or Behind', 
+class ClassicStats:
+    def __init__(self,stattype="Team",datefrom = '',dateto = '',gamescope = '',
+        gamesegment = '',lastngames = '0',league = 'NBA',location = '',
+        measuretype = 1,month = '0',opponentteamid = '0',
+        outcome = '',paceadjust = 'N',permode = 'PerGame',period = '0',
+        playerexperience = '',playerposition = '',plusminus = 'N',
+        rank = 'N',season = '2014',seasonsegment = '',
+        seasontype = 'Regular Season',starterbench = '',vsconference = '',
+        vsdivision = ''):
+        if stattype.lower() == "team":
+            self._url = "http://stats.nba.com/stats/leaguedashteamstats?"
+        else: self._url = "http://stats.nba.com/stats/leaguedashplayerstats?"
+        self._api_param = {
+            'DateFrom' : datefrom,
+            'DateTo' : dateto,
+            'GameScope' : gamescope,
+            'GameSegment' : gamesegment,
+            'LastNGames' : lastngames,
+            'LeagueID' : _nbaLeague(league),
+            'Location' : location,
+            'MeasureType' : _measureType(measuretype),
+            'Month' : month,
+            'OpponentTeamID' : opponentteamid,
+            'Outcome' : outcome,
+            'PaceAdjust' : paceadjust,
+            'PerMode' : permode,
+            'Period' : period,
+            'PlayerExperience' : playerexperience,
+            'PlayerPosition' : playerposition,
+            'PlusMinus' : plusminus,
+            'Rank' : rank,
+            'Season' : _nbaSeason(season),
+            'SeasonSegment' : seasonsegment,
+            'SeasonType' : seasontype,
+            'StarterBench' : starterbench,
+            'VsConference' : vsconference,
+            'VsDivision' : vsdivision
+            }
+        self._pull = _requests.get(self._url, params=self._api_param)
+    def Stats(self):
+        _headers = self._pull.json()['resultSets'][0]['headers']
+        _values = self._pull.json()['resultSets'][0]['rowSet']
+        return [dict(zip(_headers, value)) for value in _values]
+ 
+class ClutchStats:
+    def __init__(self, stattype="Team", aheadbehind='Ahead or Behind', 
       clutchtime = 'Last 5 Minutes', datefrom='', dateto='', 
       gamescope='', gamesegment='', lastngames = '0', league = 'NBA', 
       location='', measuretype = 1, month = '0', 
@@ -137,7 +182,9 @@ class PlayerClutchStats:
       playerposition='', plusminus = 'N', pointdiff = '5', rank = 'N', 
       season = '2014', seasonsegment='', seasontype = 'Regular Season', 
       starterbench='', vsconference='', vsdivision=''):
-        self._url = "http://stats.nba.com/stats/leaguedashplayerclutch?"
+        if stattype.lower()=="team":
+            self._url = "http://stats.nba.com/stats/leaguedashteamclutch?"
+        else: self._url = "http://stats.nba.com/stats/leaguedashplayerclutch?"
         self._api_param = {
             'AheadBehind' : aheadbehind,
             'ClutchTime' : clutchtime,
@@ -168,75 +215,54 @@ class PlayerClutchStats:
             'VsDivision' : vsdivision
             }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def PlayerClutch(self):
+    def Clutch(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
-        return [dict(zip(_headers, value)) for value in _values]
+        return [dict(zip(_headers, value)) for value in _values]            
 
-class PlayerStats:
-    def __init__(self,datefrom = '',dateto = '',gamescope = '',
-        gamesegment = '',lastngames = '0',league = 'NBA',location = '',
-        measuretype = 1,month = '0',opponentteamid = '0',
-        outcome = '',paceadjust = 'N',permode = 'PerGame',period = '0',
-        playerexperience = '',playerposition = '',plusminus = 'N',
-        rank = 'N',season = '2014',seasonsegment = '',
-        seasontype = 'Regular Season',starterbench = '',vsconference = '',
-        vsdivision = ''):
-        self._url = "http://stats.nba.com/stats/leaguedashplayerstats?"
-        self._api_param = {
-            'DateFrom' : datefrom,
-            'DateTo' : dateto,
-            'GameScope' : gamescope,
-            'GameSegment' : gamesegment,
-            'LastNGames' : lastngames,
-            'LeagueID' : _nbaLeague(league),
-            'Location' : location,
-            'MeasureType' : _measureType(measuretype),
-            'Month' : month,
-            'OpponentTeamID' : opponentteamid,
-            'Outcome' : outcome,
-            'PaceAdjust' : paceadjust,
-            'PerMode' : permode,
-            'Period' : period,
-            'PlayerExperience' : playerexperience,
-            'PlayerPosition' : playerposition,
-            'PlusMinus' : plusminus,
-            'Rank' : rank,
-            'Season' : _nbaSeason(season),
-            'SeasonSegment' : seasonsegment,
-            'SeasonType' : seasontype,
-            'StarterBench' : starterbench,
-            'VsConference' : vsconference,
-            'VsDivision' : vsdivision
-            }
-        self._pull = _requests.get(self._url, params=self._api_param)
-    def LeagueStats(self):
-        _headers = self._pull.json()['resultSets'][0]['headers']
-        _values = self._pull.json()['resultSets'][0]['rowSet']
-        return [dict(zip(_headers, value)) for value in _values]
- 
-            
-            
+## Shooting class needs some further study of the data because it classifies shots in two levels. This class will be used for Player & Team as well as Self & Opponent
 
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+## class Shooting:
+##     def __init__(self,stattype="team", measure=["Base","Opponent"], season=2014, datefrom='', dateto='',distancerange=1,
+##     gamescope=1, gamesegment=1, lastngames=0, league="NBA", location=1, month=0, opponentteamid=0,
+##     outcome=1, paceadjust=1, permode=1, period=0, playerexperience=1, playerposition=1, plusminus=1,
+##     rank=1, seasonsegment=1, seasontype=1, starterbench=1, vsconference=1, vsdivision=1):
+##         if stattype.tolower() == "team":
+##             self._url = "http://stats.nba.com/stats/leaguedashteamshotlocations?"
+##         else: self._url = "http://stats.nba.com/stats/leaguedashplayershotlocations?"
+##         self._api_param = {
+##             'DateFrom':datefrom,
+##             'DateTo':dateto,
+##             'DistanceRange':_DistanceRange(distancerange),
+##             'GameScope':_GameScope(gamescope),
+##             'GameSegment':_GameSegment(gamesegment),
+##             'LastNGames':lastngames,
+##             'LeagueID':_nbaLeague(league),
+##             'Location':_Location(location),
+##             'MeasureType':measure,
+##             'Month':month=0,
+##             'OpponentTeamID':opponentteamid=0,
+##             'Outcome':_Outcome(outcome),
+##             'PaceAdjust':_PaceAdjust(paceadjust),
+##             'PerMode':_PerMode(permode),
+##             'Period':period=0,
+##             'PlayerExperience':_PlayerExperience(playerexperience),
+##             'PlayerPosition':_PlayerPosition(playerposition),
+##             'PlusMinus':_PlusMinus(plusminus),
+##             'Rank':_Rank(rank),
+##             'Season':_nbaSeason(season),
+##             'SeasonSegment':_SeasonSegment(seasonsegment),
+##             'SeasonType':_SeasonType(seasontype),
+##             'StarterBench':_StarterBench(starterbench),
+##             'VsConference':_VsConference(vsconference),
+##             'VsDivision':_VsDivision(vsdivision)
+##         }
+##         self._pull = _requests.get(self._url, params=self._api_param)
+##     def Shooting(self):
+##         _headers = self._pull.json()['resultSets'][0]['headers']
+##         _values = self._pull.json()['resultSets'][0]['rowSet']
+##         return [dict(zip(_headers, value)) for value in _values]
+
 
 __all__ = ['Transactions', 'DailyStandings', 'FranchiseHistory',
             'PlayoffPicture', 'LeagueLeaders', 'PlayerClutchStats',
