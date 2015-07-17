@@ -25,10 +25,19 @@ import pandas as pd
 
 The package is designed to work with [pandas](http://pandas.pydata.org/) in that the output of each API call to the NBA website it returned in a format that is easily converted into a pandas dataframe. 
 
-One of the key variables necessary to fully utilize `py-Goldsberry` is `playerid`. This is the unique id number assigned to each player by the NBA. `py-Goldsberry` is built to import a list of current and all time players. These can be found by calling the `playersCurrent` and `playersAllTime` variables. 
+###Getting a List of Players
+
+One of the key variables necessary to fully utilize `py-Goldsberry` is `playerid`. This is the unique id number assigned to each player by the NBA. `py-Goldsberry` has a top-level function `PlayerList()` built-in to give you quick access to a list of players and numbers. When you run the function, you should specify the year of the season from which you want the list of available players. 
 
 ```python
 
-playersCurrent = pd.DataFrame(goldsberry.PlayerList())
+playersCurrent = pd.DataFrame(goldsberry.PlayerList(2014))
 playersCurrent.head()
+```
+
+If you want a list of every player in the history of the NBA, you can pass the `AllTime=True` argument:
+
+```python
+playersAllTime = pd.DataFrame(goldsberry.PlayerList(AllTime=True))
+playersAllTime.head()
 ```
