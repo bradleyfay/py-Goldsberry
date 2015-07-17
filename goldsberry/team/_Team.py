@@ -1,4 +1,4 @@
-import _requests
+import requests as _requests
 from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType
 
 class Roster:
