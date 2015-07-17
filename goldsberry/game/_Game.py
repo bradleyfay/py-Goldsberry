@@ -250,3 +250,7 @@ class TrackingBox:
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
+
+__all__ = ['PlayByPlay', 'SummaryBox', 'TraditionalBox', 'AdvancedBox', 
+          'MiscellaneousBox', 'ScoringBox', 'FourFactorsBox', 'UsageBox', 
+          'TrackingBox']

@@ -357,3 +357,6 @@ class TeamShotSV:
         _headers = self._pull.json()['resultSets'][6]['headers']
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
+
+__all__ = ['Roster', 'History', 'Splits', 'SeasonStats', 'OnOff', 'YearlyStats', 'Gamelogs',
+          'Info', 'TeamPassingSV', 'TeamReboundsSV', 'TeamShotSV']

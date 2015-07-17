@@ -304,3 +304,5 @@ class Combine:
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
+
+__all__ = ['Anthro', 'Agility', 'NonStationaryShooting', 'SpotUpShooting', 'Combine']
