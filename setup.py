@@ -23,8 +23,8 @@ def read(*filenames, **kwargs):
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
-with open('CHANGELOG.rst') as changelog_file:
-    changelog = changelog_file.read().replace('.. :changelog:', '')
+#with open('CHANGELOG.rst') as changelog_file:
+#    changelog = changelog_file.read().replace('.. :changelog:', '')
 
 class PyTest(TestCommand):
       def finalize_options(self):
@@ -47,7 +47,7 @@ setup(
       tests_require=['pytest'],
       install_requires=['requests>=2.7'],
       description='API interface for stats.nba.com',
-      long_description=readme + '\n\n' + changelog,
+      long_description=readme, #+ '\n\n' + changelog,
       packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
       include_package_data=True,
       platforms='any',

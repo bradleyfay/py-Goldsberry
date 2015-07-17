@@ -1,25 +1,26 @@
-import requests
+import requests as _requests
+from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType, _seasonID 
 
 class Transactions:
     """
     """
     def __init__(self):
         self._url = "http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js"
-        self._pull = requests.get(self._url)
+        self._pull = _requests.get(self._url)
     def Transactions(self):
         return self._pull.json()['ListItems']
 
 class DailyStandings:
     """
     """
-    def __init__(self, date, LeagueID = 00, offset = 0):
+    def __init__(self, date, league = "NBA", offset = 0):
         self.url = "http://stats.nba.com/stats/scoreboard?"
         # Add Logic to test if date matches patter mm-dd-yyyy
-        self._api_param = {'LeagueID':LeagueID,
+        self._api_param = {'LeagueID':_nbaLeague(league),
                            'gameDate':date,
                            'DayOffset':offset
         }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def GameHeader(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -49,29 +50,13 @@ class DailyStandings:
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class PlayerList:
-    """
-    """
-    def __init__(self, CurrentSeason='1', LeagueID='00', Season='2014-15'):
-        self._url = "http://stats.nba.com/stats/commonallplayers?"
-        self._api_param = {'IsOnlyCurrentSeason':CurrentSeason,
-                           'LeagueID':LeagueID,
-                           'Season': Season
-        }
-        self._pull = requests.get(self._url, params=self._api_param)
-    def Players(self):
-        _headers = self._pull.json()['resultSets'][0]['headers']
-        _values = self._pull.json()['resultSets'][0]['rowSet']
-        return [dict(zip(_headers, value)) for value in _values]
-
 class FranchiseHistory:
     """
     """
-    def __init__(self, LeagueID='00'):
+    def __init__(self, league="NBA"):
         self._url = "http://stats.nba.com/stats/franchisehistory?"
-        self._api_param = {'LeagueID':LeagueID
-                           }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._api_param = {'LeagueID':_nbaLeague(league)}
+        self._pull = _requests.get(self._url, params=self._api_param)
     def FranchiseHistory(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -84,12 +69,12 @@ class FranchiseHistory:
 class PlayoffPicture:
     """
     """
-    def __init__(self, LeagueID='00', SeasonID='22014'):
-        self._url = "http://stats.nba.com/stats/franchisehistory?"
-        self._api_param = {'LeagueID':LeagueID,
-                           'SeasonID':SeasonID
+    def __init__(self, league='NBA', season=2014):
+        self._url = "http://stats.nba.com/stats/playoffpicture?"
+        self._api_param = {'LeagueID':_nbaLeague(league),
+                           'SeasonID':_seasonID(season)
                            }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def EastConfPlayoffPicture(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -127,7 +112,7 @@ class LeagueLeaders:
                            'StatCategory':statcategory
                            }
         #Scope: (RS)|(S)|(Rookies) one of these options
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def Leaders(self):
         _headers = self._pull.json()['resultSet']['headers']
         _values = self._pull.json()['resultSet']['rowSet']
@@ -173,7 +158,7 @@ class PlayerClutchStats:
             'VsConference' : vsconference,
             'VsDivision' : vsdivision
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PlayerClutch(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -215,7 +200,7 @@ class PlayerStats:
             'VsConference' : vsconference,
             'VsDivision' : vsdivision
             }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def LeagueStats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']

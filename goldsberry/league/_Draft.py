@@ -1,23 +1,13 @@
-import requests
+import requests as _requests
+from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType
 
 class Anthro:
-    """Retrieves anthropometric data collected during draft combine
-
-    Keyword arguments:
-    Season -- What season the data returned is associated with.
-        Default value is 2014-15
-        Takes values going back to 2000-01
-    LeagueID -- Unique ID Associated with various leagues owned by NBA
-        Default value = 00 (NBA)
-        Possible values = 00 (NBA), 10(NBADL), 20(WNBA) <- Double Check These
-    """
-
-    def __init__(self, Season='2014-15', LeagueID='00'):
+    def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombineplayeranthro?"
-        self._api_param = {'LeagueID':LeagueID,
-                           'SeasonYear':Season,
+        self._api_param = {'LeagueID':_nbaLeague(league),
+                           'SeasonYear':_nbaSeason(season),
         }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def data(self):
         """Returns list of dicts with anthropometric data
 
@@ -57,23 +47,11 @@ class Anthro:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-
 class Agility:
-    """Retrieves speed and agility data collected during draft combine
-
-    Keyword arguments:
-    Season -- What season the data returned is associated with.
-        Default value is 2014-15
-        Takes values going back to 2000-01
-    LeagueID -- Unique ID Associated with various leagues owned by NBA
-        Default value = 00 (NBA)
-        Possible values = 00 (NBA), 10(NBADL), 20(WNBA) <- Double Check These
-    """
-
-    def __init__(self, Season='2014-15', LeagueID='00'):
+    def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinedrillresults?"
-        self._api_param = {'LeagueID':LeagueID,
-                           'SeasonYear':Season,
+        self._api_param = {'LeagueID':_nbaLeague(league),
+                           'SeasonYear':_nbaSeason(season)
         }
         self._pull = requests.get(self._url, params=self._api_param)
     def data(self):
@@ -105,21 +83,10 @@ class Agility:
         return [dict(zip(_headers, value)) for value in _values]
 
 class NonStationaryShooting:
-    """Retrieves non-stationary shooting data collected during draft combine
-
-    Keyword arguments:
-    Season -- What season the data returned is associated with.
-        Default value is 2014-15
-        Takes values going back to 2000-01
-    LeagueID -- Unique ID Associated with various leagues owned by NBA
-        Default value = 00 (NBA)
-        Possible values = 00 (NBA), 10(NBADL), 20(WNBA) <- Double Check These
-    """
-
-    def __init__(self, Season='2014-15', LeagueID='00'):
+    def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinenonstationaryshooting?"
-        self._api_param = {'LeagueID':LeagueID,
-                           'SeasonYear':Season,
+        self._api_param = {'LeagueID':_nbaLeague(league),
+                           'SeasonYear':_nbaSeason(season)
         }
         self._pull = requests.get(self._url, params=self._api_param)
     def data(self):
@@ -178,21 +145,10 @@ class NonStationaryShooting:
         return [dict(zip(_headers, value)) for value in _values]
 
 class SpotUpShooting:
-    """Retrieves non-stationary shooting data collected during draft combine
-
-    Keyword arguments:
-    Season -- What season the data returned is associated with.
-        Default value is 2014-15
-        Takes values going back to 2000-01
-    LeagueID -- Unique ID Associated with various leagues owned by NBA
-        Default value = 00 (NBA)
-        Possible values = 00 (NBA), 10(NBADL), 20(WNBA) <- Double Check These
-    """
-
-    def __init__(self, Season='2014-15', LeagueID='00'):
+    def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinespotshooting?"
-        self._api_param = {'LeagueID':LeagueID,
-                           'SeasonYear':Season,
+        self._api_param = {'LeagueID':_nbaLeague(league),
+                           'SeasonYear':_nbaSeason(season)
         }
         self._pull = requests.get(self._url, params=self._api_param)
     def data(self):
@@ -286,21 +242,10 @@ class SpotUpShooting:
         return [dict(zip(_headers, value)) for value in _values]
 
 class Combine:
-    """Retrieves non-stationary shooting data collected during draft combine
-
-    Keyword arguments:
-    Season -- What season the data returned is associated with.
-        Default value is 2014-15
-        Takes values going back to 2000-01
-    LeagueID -- Unique ID Associated with various leagues owned by NBA
-        Default value = 00 (NBA)
-        Possible values = 00 (NBA), 10(NBADL), 20(WNBA) <- Double Check These
-    """
-
-    def __init__(self, Season='2014-15', LeagueID='00'):
+    def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinestats?"
-        self._api_param = {'LeagueID':LeagueID,
-                           'SeasonYear':Season,
+        self._api_param = {'LeagueID':_nbaLeague(league),
+                           'SeasonYear':_nbaSeason(season)
         }
         self._pull = requests.get(self._url, params=self._api_param)
     def data(self):

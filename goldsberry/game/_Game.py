@@ -1,7 +1,8 @@
-import requests
+import requests as _requests
+from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType
 
 class PlayByPlay:
-    def __init__(self, gameid, season='2014-15', seasontype='Regular Season',
+    def __init__(self, gameid, season='2014', seasontype='Regular Season',
                  startperiod=1, endperiod=10, startrange=0, endrange=28800,
                  rangetype=2):
         self._url = "http://stats.nba.com/stats/playbyplayv2?"
@@ -9,12 +10,12 @@ class PlayByPlay:
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':season,
+                           'Season':_nbaSeason(season),
                            'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def Plays(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -30,7 +31,7 @@ class SummaryBox:
     def __init__(self, gameid):
         self._url = "http://stats.nba.com/stats/boxscoresummaryv2?"
         self._api_param = {'GameID':gameid}
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def GameSummary(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -71,7 +72,7 @@ class SummaryBox:
 class TraditionalBox:
     """
     """
-    def __init__(self, gameid, season='2014-15', seasontype='Regular Season',
+    def __init__(self, gameid, season='2014', seasontype='Regular Season',
                  startperiod=1, endperiod=10, startrange=0, endrange=28800,
                  rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscoretraditionalv2?"
@@ -79,12 +80,12 @@ class TraditionalBox:
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':season,
+                           'Season':_nbaSeason(season),
                            'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PlayerStats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -97,7 +98,7 @@ class TraditionalBox:
 class AdvancedBox:
     """
     """
-    def __init__(self, gameid, season='2014-15', seasontype='Regular Season',
+    def __init__(self, gameid, season='2014', seasontype='Regular Season',
                  startperiod=1, endperiod=10, startrange=0, endrange=28800,
                  rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscoreadvancedv2?"
@@ -105,12 +106,12 @@ class AdvancedBox:
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':season,
+                           'Season':_nbaSeason(season),
                            'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PlayerStats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -123,7 +124,7 @@ class AdvancedBox:
 class MiscellaneousBox:
     """
     """
-    def __init__(self, gameid, season='2014-15', seasontype='Regular Season',
+    def __init__(self, gameid, season='2014', seasontype='Regular Season',
                  startperiod=1, endperiod=10, startrange=0, endrange=28800,
                  rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscoremiscv2?"
@@ -131,12 +132,12 @@ class MiscellaneousBox:
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':season,
+                           'Season':_nbaSeason(season),
                            'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PlayersMisc(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -149,7 +150,7 @@ class MiscellaneousBox:
 class ScoringBox:
     """
     """
-    def __init__(self, gameid, season='2014-15', seasontype='Regular Season',
+    def __init__(self, gameid, season='2014', seasontype='Regular Season',
                  startperiod=1, endperiod=10, startrange=0, endrange=28800,
                  rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscorescoringv2?"
@@ -157,12 +158,12 @@ class ScoringBox:
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':season,
+                           'Season':_nbaSeason(season),
                            'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PlayersScoring(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -175,7 +176,7 @@ class ScoringBox:
 class FourFactorsBox:
     """
     """
-    def __init__(self, gameid, season='2014-15', seasontype='Regular Season',
+    def __init__(self, gameid, season='2014', seasontype='Regular Season',
                  startperiod=1, endperiod=10, startrange=0, endrange=28800,
                  rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscorefourfactorsv2?"
@@ -183,12 +184,12 @@ class FourFactorsBox:
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':season,
+                           'Season':_nbaSeason(season),
                            'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PlayersFourFactors(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -201,7 +202,7 @@ class FourFactorsBox:
 class UsageBox:
     """
     """
-    def __init__(self, gameid, season='2014-15', seasontype='Regular Season',
+    def __init__(self, gameid, season='2014', seasontype='Regular Season',
                  startperiod=1, endperiod=10, startrange=0, endrange=28800,
                  rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscoreusagev2?"
@@ -209,12 +210,12 @@ class UsageBox:
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':season,
+                           'Season':_nbaSeason(season),
                            'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PlayersUsage(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
@@ -227,7 +228,7 @@ class UsageBox:
 class TrackingBox:
     """
     """
-    def __init__(self, gameid, season='2014-15', seasontype='Regular Season',
+    def __init__(self, gameid, season='2014', seasontype='Regular Season',
                  startperiod=1, endperiod=10, startrange=0, endrange=28800,
                  rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscoreplayertrackv2?"
@@ -235,12 +236,12 @@ class TrackingBox:
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':season,
+                           'Season':_nbaSeason(season),
                            'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
-        self._pull = requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def PlayersTrack(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']

@@ -1,13 +1,14 @@
-# measuretype = "(Base)|(Advanced)|(Misc)|(Four Factors)|(Scoring)|(Opponent)|(Usage)"
+
 import requests as _requests
+from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType
 
 class GameLog:
-    def __init__(self, playerid, season='2014-15',seasontype='Regular Season', leagueid='00'):
+    def __init__(self, playerid, season='2014',seasontype='Regular Season', league='NBA'):
         self._url = "http://stats.nba.com/stats/playergamelog?"
         self._api_param = {'PlayerID':playerid,
                           'SeasonType': seasontype,
-                          'Season': season,
-                          'LeagueID': leagueid
+                          'Season': _nbaSeason(season),
+                          'LeagueID': _nbaLeague(league)
                           }
         self._pull = _requests.get(self._url, params=self._api_param)
     def Log(self):
@@ -16,21 +17,21 @@ class GameLog:
         return [dict(zip(_headers, value)) for value in _values]
 
 class Splits:
-    def __init__(self, playerid, season='2014-15',seasontype='Regular Season', leagueid='00',
-      dateto='', datefrom='', gamesegment='', lastngames=0, location='', measuretype="Base",
+    def __init__(self, playerid, season='2014',seasontype='Regular Season', league='NBA',
+      dateto='', datefrom='', gamesegment='', lastngames=0, location='', measuretype=1,
       month=0, opponentteamid=0, outcome='', paceadjust="N", permode="PerGame", period=0,
       plusminus="N", rank="N", seasonsegment='', vsconference="", vsdivision=""):
       self._url = "http://stats.nba.com/stats/playerdashboardbygeneralsplits?"
       self._api_param = {'PlayerID':playerid,
                          'SeasonType': seasontype,
-                         'Season': season,
-                         'LeagueID': leagueid,
+                         'Season': _nbaSeason(season),
+                         'LeagueID': _nbaLeague(league),
                          'DateTo':dateto,
                          'DateFrom':datefrom,
                          'GameSegment':gamesegment,
                          'LastNGames':lastngames,
                          'Location':location,
-                         'MeasureType':measuretype,
+                         'MeasureType':_measureType(measuretype),
                          'Month':month,
                          'OpponentTeamID':opponentteamid,
                          'Outcome':outcome,
@@ -73,10 +74,10 @@ class Splits:
         return [dict(zip(_headers, value)) for value in _values]
 
 class Career:
-    def __init__(self, playerid, leagueid='00',permode="PerGame"):
+    def __init__(self, playerid, league='NBA',permode="PerGame"):
       self._url = "http://stats.nba.com/stats/playercareerstats?"
       self._api_param = {'PlayerID':playerid,
-                         'LeagueID':leagueid,
+                         'LeagueID':_nbaLeague(league),
                          'PerMode':permode}
       self._pull = _requests.get(self._url, params = self._api_param)
     def SeasonTotalsRegularSeason(self):
@@ -131,14 +132,14 @@ class Demo:
         return [dict(zip(_headers, value)) for value in _values]
 
 class ShotChart:
-    def __init__(self,playerid,leagueid='',season='2013-14', seasontype='Regular Season',teamid=0,gameid='',outcome='',location='',
+    def __init__(self,playerid,leagueid='',season='2013', seasontype='Regular Season',teamid=0,gameid='',outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',position='',
               period=0,lastngames=0,aheadbehind='',contextmeasure='FGM',clutchtime='',rookieyear='', contextfilter='',
               startperiod='1',endperiod='10',startrange='0', endrange='28800', gamesegment='', rangetype='2'):
         self._url = "http://stats.nba.com/stats/shotchartdetail?"
         self._api_param = {
              'LeagueID': leagueid,
-             'Season' :  season,
+             'Season' :  _nbaSeason(season),
              'SeasonType' : seasontype,
              'TeamID' : teamid,
              'PlayerID' : playerid,
@@ -178,14 +179,14 @@ class ShotChart:
         return [dict(zip(_headers, value)) for value in _values]
 
 class PlayerReboundLogSV:
-    def __init__(self,playerid,leagueid='00',season='2014-15', seasontype='Regular Season',teamid=0,outcome='',location='',
+    def __init__(self,playerid,league='NBA',season='2014', seasontype='Regular Season',teamid=0,outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',gamesegment='',period=0, 
               lastngames=0):
         self._url = "http://stats.nba.com/stats/playerdashptreboundlogs?"
         self._api_param = {
             'PlayerID' : playerid,
-            'LeagueID': leagueid,
-            'Season' :  season,
+            'LeagueID': _nbaLeague(league),
+            'Season' :  _nbaSeason(season),
             'SeasonType' : seasontype,
             'TeamID' : teamid,
             'Outcome' : outcome,
@@ -208,14 +209,14 @@ class PlayerReboundLogSV:
         return [dict(zip(_headers, value)) for value in _values]
 
 class PlayerShotLogSV:
-    def __init__(self,playerid,leagueid='00',season='2014-15', seasontype='Regular Season',teamid=0,outcome='',location='',
+    def __init__(self,playerid,league='NBA',season='2014', seasontype='Regular Season',teamid=0,outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',gamesegment='',period=0, 
               lastngames=0):
         self._url = "http://stats.nba.com/stats/playerdashptshotlog?"
         self._api_param = {
             'PlayerID' : playerid,
-            'LeagueID': leagueid,
-            'Season' :  season,
+            'LeagueID': _nbaLeague(league),
+            'Season' :  _nbaSeason(season),
             'SeasonType' : seasontype,
             'TeamID' : teamid,
             'Outcome' : outcome,
@@ -238,14 +239,14 @@ class PlayerShotLogSV:
         return [dict(zip(_headers, value)) for value in _values]
 
 class PlayerShotDefSV:
-    def __init__(self,playerid,leagueid='00',season='2014-15', seasontype='Regular Season',teamid=0,outcome='',location='',
+    def __init__(self,playerid,league='NBA',season='2014', seasontype='Regular Season',teamid=0,outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',gamesegment='',period=0, 
               lastngames=0, permode="PerGame"):
         self._url = "http://stats.nba.com/stats/playerdashptshotdefend?"
         self._api_param = {
             'PlayerID' : playerid,
-            'LeagueID': leagueid,
-            'Season' :  season,
+            'LeagueID': _nbaLeague(league),
+            'Season' :  _nbaSeason(season),
             'SeasonType' : seasontype,
             'TeamID' : teamid,
             'Outcome' : outcome,
@@ -269,14 +270,14 @@ class PlayerShotDefSV:
         return [dict(zip(_headers, value)) for value in _values]
 
 class PlayerPassingSV:
-    def __init__(self,playerid,leagueid='00',season='2014-15', seasontype='Regular Season',teamid=0,outcome='',location='',
+    def __init__(self,playerid,league='NBA',season='2014', seasontype='Regular Season',teamid=0,outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',gamesegment='',period=0, 
               lastngames=0, permode="PerGame"):
         self._url = "http://stats.nba.com/stats/playerdashptpass?"
         self._api_param = {
             'PlayerID' : playerid,
-            'LeagueID': leagueid,
-            'Season' :  season,
+            'LeagueID': _nbaLeague(league),
+            'Season' :  _nbaSeason(season),
             'SeasonType' : seasontype,
             'TeamID' : teamid,
             'Outcome' : outcome,
@@ -304,14 +305,14 @@ class PlayerPassingSV:
         return [dict(zip(_headers, value)) for value in _values]
 
 class PlayerReboundSV:
-    def __init__(self,playerid,leagueid='00',season='2014-15', seasontype='Regular Season',teamid=0,outcome='',location='',
+    def __init__(self,playerid,league='NBA',season='2014', seasontype='Regular Season',teamid=0,outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',gamesegment='',period=0, 
               lastngames=0, permode="PerGame"):
         self._url = "http://stats.nba.com/stats/playerdashptreb?"
         self._api_param = {
             'PlayerID' : playerid,
-            'LeagueID': leagueid,
-            'Season' :  season,
+            'LeagueID': _nbaLeague(league),
+            'Season' :  _nbaSeason(season),
             'SeasonType' : seasontype,
             'TeamID' : teamid,
             'Outcome' : outcome,
@@ -351,14 +352,14 @@ class PlayerReboundSV:
         return [dict(zip(_headers, value)) for value in _values]
 
 class PlayerShotSV:
-    def __init__(self,playerid,leagueid='00',season='2014-15', seasontype='Regular Season',teamid=0,outcome='',location='',
+    def __init__(self,playerid,league='NBA',season='2014', seasontype='Regular Season',teamid=0,outcome='',location='',
               month=0,seasonsegment='',datefrom='',dateto='',opponentteamid=0,vsconf='',vsdiv='',gamesegment='',period=0, 
               lastngames=0, permode="PerGame"):
         self._url = "http://stats.nba.com/stats/playerdashptshots?"
         self._api_param = {
             'PlayerID' : playerid,
-            'LeagueID': leagueid,
-            'Season' :  season,
+            'LeagueID': _nbaLeague(league),
+            'Season' :  _nbaSeason(season),
             'SeasonType' : seasontype,
             'TeamID' : teamid,
             'Outcome' : outcome,
@@ -404,3 +405,27 @@ class PlayerShotSV:
         _headers = self._pull.json()['resultSets'][6]['headers']
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
+
+def PlayerList(season='2014', AllTime=False, league='NBA'):
+  if AllTime:
+    _url = "http://stats.nba.com/stats/commonallplayers?"
+    _api_param = {'IsOnlyCurrentSeason':"0",
+                  'LeagueID':_nbaLeague(league),
+                  'Season': "2014-15"}
+    _pull = _requests.get(_url, params=_api_param)
+    _headers = _pull.json()['resultSets'][0]['headers']
+    _values = _pull.json()['resultSets'][0]['rowSet']
+    return [dict(zip(_headers, value)) for value in _values]
+  else:
+    _url = "http://stats.nba.com/stats/commonallplayers?"
+    _api_param = {'IsOnlyCurrentSeason':"1",
+                  'LeagueID': _nbaLeague(league),
+                  'Season': _nbaSeason(season)}
+    _pull = _requests.get(_url, params=_api_param)
+    _headers = _pull.json()['resultSets'][0]['headers']
+    _values = _pull.json()['resultSets'][0]['rowSet']
+    return [dict(zip(_headers, value)) for value in _values]
+
+__all__ = ["PlayerShotSV", "PlayerReboundSV", "PlayerPassingSV", 
+          "PlayerShotDefSV", "PlayerShotLogSV", "ShotChart",
+          "Demo", "Career", "Splits", "GameLog"]

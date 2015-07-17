@@ -1,2 +1,2 @@
-from goldsberry.league.League import *
-from goldsberry.league import Draft as draft
+from goldsberry.league._League import *
+from goldsberry.league import _Draft as draft
