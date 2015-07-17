@@ -263,6 +263,42 @@ class ClutchStats:
 ##         _values = self._pull.json()['resultSets'][0]['rowSet']
 ##         return [dict(zip(_headers, value)) for value in _values]
 
+class Lineups:
+  def __init__(self, groupsize=5, gameid='',season=2014, league="NBA", datefrom='', dateto='',  
+    measure=1, month=0, opponentteamid=0, paceadjust=1, permode=1, period=0, plusminus=1, rank=1,
+    seasonsegment=1, seasontype=1, vsconf=1, vsdiv=1, lastngames=0, location=1, outcome=1):
+    self._url = "http://stats.nba.com/stats/leaguedashlineups?"
+    self._api_param = {
+        'DateFrom':datefrom,
+        'DateTo':dateto,
+        'GameID':gameid,
+        'GameSegment':_GameSegment(gamesegment),
+        'GroupQuantity':groupsize,
+        'LastNGames':lastngames,
+        'LeagueID':_nbaLeague(league),
+        'Location':_Location(location),
+        'MeasureType':_measureType(measure),
+        'Month':month,
+        'OpponentTeamID':opponentteamid,
+        'Outcome':_Outcome(outcome),
+        'PaceAdjust':_PaceAdjust(paceadjust),
+        'PerMode':_PerMode(permode),
+        'Period':period,
+        'PlusMinus':_PlusMinus(plusminus),
+        'Rank':_Rank(rank),
+        'Season':_nbaSeason(season),
+        'SeasonSegment':_SeasonSegment(seasonsegment),
+        'SeasonType':_SeasonType(seasontype),
+        'VsConference':_VsConference(vsconf),
+        'VsDivision':_VsDivision(vsdiv)
+    }
+    self._pull = _requests.get(self._url, params=self._api_param)
+    def Lineups(self):
+        _headers = self._pull.json()['resultSets'][0]['headers']
+        _values = self._pull.json()['resultSets'][0]['rowSet']
+        return [dict(zip(_headers, value)) for value in _values]
+    
+
 
 __all__ = ['Transactions', 'DailyStandings', 'FranchiseHistory',
             'PlayoffPicture', 'LeagueLeaders', 'PlayerClutchStats',
