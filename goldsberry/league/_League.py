@@ -1,25 +1,21 @@
 import requests as _requests
+import datetime as _datetime
 from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType, _seasonID, _DistanceRange, _GameScope, _GameSegment, _Location, _Outcome, _PaceAdjust, _PerMode
 from goldsberry._apiFunc import _PlayerExperience, _PlayerPosition, _PlusMinus, _Rank, _SeasonSegment, _SeasonType, _StarterBench, _VsConference, _VsDivision, _Scope
-from goldsberry._apiFunc import _AheadBehind, _ClutchTime
-class Transactions:
-    """
-    """
-    def __init__(self):
-        self._url = "http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js"
-        self._pull = _requests.get(self._url)
-    def Transactions(self):
-        return self._pull.json()['ListItems']
+from goldsberry._apiFunc import _AheadBehind, _ClutchTime, _valiDate
 
-class DailyStandings:
-    """
-    """
-    def __init__(self, date, league = "NBA", offset = 0):
-        self.url = "http://stats.nba.com/stats/scoreboard?"
-        # Add Logic to test if date matches patter mm-dd-yyyy
-        self._api_param = {'LeagueID':_nbaLeague(league),
-                           'gameDate':date,
-                           'DayOffset':offset
+
+class ScoreBoard:
+    def __init__(self, date='', league="NBA", dayoffset=0):
+        try:
+            _valiDate(date)
+        except:
+            date = str(_datetime.date.today())
+        self._url = "http://stats.nba.com/stats/scoreboardV2?"
+        self._api_param = {
+                "gameDate":date,
+                "LeagueID":league,
+                "DayOffset":dayoffset
         }
         self._pull = _requests.get(self._url, params=self._api_param)
     def GameHeader(self):
@@ -50,6 +46,27 @@ class DailyStandings:
         _headers = self._pull.json()['resultSets'][6]['headers']
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
+    def TeamLeaders(self):
+        _headers = self._pull.json()['resultSets'][7['headers']
+        _values = self._pull.json()['resultSets'][7]['rowSet']
+        return [dict(zip(_headers, value)) for value in _values]
+    def TicketLinks(self):
+        _headers = self._pull.json()['resultSets'][8]['headers']
+        _values = self._pull.json()['resultSets'][8]['rowSet']
+        return [dict(zip(_headers, value)) for value in _values]
+    def WinProbability(self):
+        _headers = self._pull.json()['resultSets'][9]['headers']
+        _values = self._pull.json()['resultSets'][9]['rowSet']
+        return [dict(zip(_headers, value)) for value in _values]
+
+class Transactions:
+    """
+    """
+    def __init__(self):
+        self._url = "http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js"
+        self._pull = _requests.get(self._url)
+    def Transactions(self):
+        return self._pull.json()['ListItems']
 
 class FranchiseHistory:
     """
