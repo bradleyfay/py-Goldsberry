@@ -16,10 +16,10 @@ def _nbaSeason(x):
     else: raise Exception("Enter the four digit year for the first half of the desired season")
 
 def _seasonID(x):
-   if len(str(x)) == 4:
+    if len(str(x)) == 4:
         try:
             return "".join(["2",str(x)])
-        except ValueError: 
+        except ValueError:
             raise Exception("Enter the four digit year for the first half of the desired season")
     else: raise Exception("Enter the four digit year for the first half of the desired season")
 
