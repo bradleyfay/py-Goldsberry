@@ -9,7 +9,7 @@ Tests for `goldsberry` module.
 
 import unittest
 
-from goldsberry import {{ cookiecutter.repo_name }}
+from goldsberry import _apiFunc
 
 
 class TestGoldsberry(unittest.TestCase):
