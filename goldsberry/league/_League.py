@@ -1,5 +1,5 @@
 import requests as _requests
-import datetime as _datetime
+from dateutil.parser import parse as _parse
 from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType, _seasonID, _DistanceRange, _GameScope, _GameSegment, _Location, _Outcome, _PaceAdjust, _PerMode
 from goldsberry._apiFunc import _PlayerExperience, _PlayerPosition, _PlusMinus, _Rank, _SeasonSegment, _SeasonType, _StarterBench, _VsConference, _VsDivision, _Scope
 from goldsberry._apiFunc import _AheadBehind, _ClutchTime, _valiDate
@@ -7,14 +7,11 @@ from goldsberry._apiFunc import _AheadBehind, _ClutchTime, _valiDate
 
 class ScoreBoard:
     def __init__(self, date='', league="NBA", dayoffset=0):
-        try:
-            _valiDate(date)
-        except:
-            date = str(_datetime.date.today())
+        _valiDate(date)
         self._url = "http://stats.nba.com/stats/scoreboardV2?"
         self._api_param = {
                 "gameDate":date,
-                "LeagueID":league,
+                "LeagueID":_nbaLeague(league),
                 "DayOffset":dayoffset
         }
         self._pull = _requests.get(self._url, params=self._api_param)

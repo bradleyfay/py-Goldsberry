@@ -1,4 +1,4 @@
-import datetime as _datetime
+from dateutil.parser import parse as _parse
 
 def _nbaLeague(x):
     leagues = {"NBA":"00", "WNBA":"10", "NBADL":"20"}
@@ -150,10 +150,8 @@ def _DistanceRange(x):
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
 def _valiDate(date_text):
     try:
-        _datetime.datetime.strptime(date_text, '%Y-%m-%d')
-    except:
-        _datetime.datetime.strptime(date_text, '%m-%d-%Y')
-    else:
+        _parse(date_text)
+    except ValueError:
         raise ValueError("Incorrect data format, should be YYYY-MM-DD or MM-DD-YYYY")
 
 # BoxScore -- RangeType must be between 0 and 2.
