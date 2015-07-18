@@ -299,8 +299,8 @@ class PlayerPassingSV:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
     def PassesReceived(self):
-        _headers = self._pull.json()['resultSets'][0]['headers']
-        _values = self._pull.json()['resultSets'][0]['rowSet']
+        _headers = self._pull.json()['resultSets'][1]['headers']
+        _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
 class PlayerReboundSV:
