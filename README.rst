@@ -8,7 +8,7 @@ What is py-Goldsberry and why was it built?
 
 I attended the 2015 Sloan Sports Analytics conference and had the
 fortunate opportunity to listen to Kirk Goldsberry
-([@kirkgoldsberry](http://twitter.com/kirkgoldsberry)) address the crowd
+(@`kirkgoldsberry`_) address the crowd
 regarding the state of analytics in sports (You can watch the talk
 `here`_). One of the questions he addressed at the end was related to
 the availability of data (or lack thereof in some instances). Basically,
@@ -78,5 +78,6 @@ pass the ``AllTime=True`` argument:
     playersAllTime = pd.DataFrame(goldsberry.PlayerList(AllTime=True))
     playersAllTime.head()
 
+.. _kirkgoldsberry: http://twitter.com/kirkgoldsberry
 .. _here: https://www.youtube.com/watch?v=wLf2hLHlFI8
 .. _pandas: http://pandas.pydata.org/
