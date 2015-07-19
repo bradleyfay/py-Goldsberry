@@ -34,12 +34,25 @@ def _Scope(x):
         return measure[x]
     except:
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
-def _PerMode(x):
+def _PerModeSmall48(x):
     measure = {1:"Totals",2:"PerGame",3:"Per48"}
     try:
         return measure[x]
     except:
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
+def _PerModeSmall36(x):
+    measure = {1:"Totals",2:"PerGame",3:"Per36"}
+    try:
+        return measure[x]
+    except:
+        raise Exception("Please enter a number between 1 and "+str(len(measure)))
+def _PerModeMini(x):
+    measure = {1:"Totals",2:"PerGame"}
+    try:
+        return measure[x]
+    except:
+        raise Exception("Please enter a number between 1 and "+str(len(measure)))
+
 def _AheadBehind(x):
     measure = {1:"Ahead or Behind",2:"Behind or Tied",3:"Ahead or Tied"}
     try:
@@ -78,7 +91,7 @@ def _StarterBench(x):
         return measure[x]
     except:
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
-def _PerMode(x):
+def _PerModeLarge(x):
     measure = {1:"Totals",2:"PerGame",3:"MinutesPer",4:"Per48",5:"Per40",
                6:"Per36",7:"PerMinute", 8:"PerPossession", 9:"PerPlay", 
                10:"Per100Possessions", 11:"Per100Plays"}
@@ -175,7 +188,7 @@ def _Position(x):
 __all__ = ['_Position', '_ContextMeasure', '_valiDate', '_DistanceRange',
            '_GameSegment', '_VsDivision', '_VsConference', '_SeasonSegment'
            '_Location', '_Outcome', '_SeasonType', '_Rank', '_PaceAdjust',
-           '_PlusMinus', '_PerMode', '_StarterBench', '_PlayerPosition',
+           '_PlusMinus', '_PerModeSmall48', '_StarterBench', '_PlayerPosition',
            '_PlayerExperience', '_GameScope', '_ClutchTime', '_AheadBehind',
-           '_PerMode', '_Scope', '_measureType', '_seasonID', '_nbaSeason',
-           '_nbaLeague']
+           '_PerModeLarge', '_Scope', '_measureType', '_seasonID', '_nbaSeason',
+           '_nbaLeague','_PerModeSmall36', '_PerModeMini']

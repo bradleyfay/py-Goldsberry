@@ -38,7 +38,7 @@ class Splits:
                            'OpponentTeamID':opponentteamid,
                            'Outcome':_Outcome(outcome),
                            'PaceAdjust':_PaceAdjust(paceadjust),
-                           'PerMode':_PerMode(permode),
+                           'PerMode':_PerModeLarge(permode),
                            'Period':period,
                            'PlusMinus':_PlusMinus(plusminus),
                            'Rank':_Rank(rank),
@@ -78,8 +78,8 @@ class Career:
     def __init__(self, playerid, league='NBA',permode=1):
         self._url = "http://stats.nba.com/stats/playercareerstats?"
         self._api_param = {'PlayerID':playerid,
-                                                'LeagueID':_nbaLeague(league),
-                                                'PerMode':_PerMode(permode)}
+                           'LeagueID':_nbaLeague(league),
+                           'PerMode':_PerModeSmall36(permode)}
         self._pull = _requests.get(self._url, params = self._api_param)
     def SeasonTotalsRegularSeason(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
@@ -278,7 +278,7 @@ class PlayerShotDefSV:
                            'GameSegment' : _GameSegment(gamesegment),
                            'Period' :  period,
                            'LastNGames' : lastngames,
-                           'PerMode' : _PerMode(permode)
+                           'PerMode' : _PerModeMini(permode)
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
     def DefendingShot(self):
@@ -313,7 +313,7 @@ class PlayerPassingSV:
                            'GameSegment' : _GameSegment(gamesegment),
                            'Period' :  period,
                            'LastNGames' : lastngames,
-                           'PerMode' : _PerMode(permode)
+                           'PerMode' : _PerModeMini(permode)
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
     def PassesMade(self):
@@ -352,7 +352,7 @@ class PlayerReboundSV:
                            'GameSegment' : _GameSegment(gamesegment),
                            'Period' :  period,
                            'LastNGames' : lastngames,
-                           'PerMode' : _PerMode(permode)
+                           'PerMode' : _PerModeMini(permode)
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
     def Overall(self):
@@ -399,7 +399,7 @@ class PlayerShotSV:
                            'GameSegment' : _GameSegment(gamesegment),
                            'Period' :  period,
                            'LastNGames' : lastngames,
-                           'PerMode' : _PerMode(permode)
+                           'PerMode' : _PerModeMini(permode)
                            }
             self._pull = _requests.get(self._url, params=self._api_param)
     def Overall(self):
