@@ -6,7 +6,7 @@ from goldsberry._apiFunc import _AheadBehind, _ClutchTime, _valiDate
 
 
 class ScoreBoard:
-    def __init__(self, date='', league="NBA", dayoffset=0):
+    def __init__(self, date, league="NBA", dayoffset=0):
         _valiDate(date)
         self._url = "http://stats.nba.com/stats/scoreboardV2?"
         self._api_param = {
