@@ -47,7 +47,9 @@ def _AheadBehind(x):
     except:
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
 def _ClutchTime(x):
-    measure = {1:"Last 5 Minutes",2:"Last 4 Minutes",3:"Last 3 Minutes",3:"Last 2 Minutes",4:"Last 1 Minute",5:"Last 30 Seconds",6:"Last 10 Seconds"}
+    measure = {1:"Last 5 Minutes",2:"Last 4 Minutes",3:"Last 3 Minutes",
+               3:"Last 2 Minutes",4:"Last 1 Minute",5:"Last 30 Seconds",
+               6:"Last 10 Seconds", 7:''}
     try:
         return measure[x]
     except:
@@ -77,7 +79,9 @@ def _StarterBench(x):
     except:
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
 def _PerMode(x):
-    measure = {1:"Totals",2:"PerGame",3:"MinutesPer",4:"Per48",5:"Per40",6:"Per36",7:"PerMinute", 8:"PerPossession", 9:"PerPlay", 10:"Per100Possessions", 11:"Per100Plays"}
+    measure = {1:"Totals",2:"PerGame",3:"MinutesPer",4:"Per48",5:"Per40",
+               6:"Per36",7:"PerMinute", 8:"PerPossession", 9:"PerPlay", 
+               10:"Per100Possessions", 11:"Per100Plays"}
     try:
         return measure[x]
     except:
@@ -153,7 +157,25 @@ def _valiDate(date_text):
         _parse(date_text)
     except ValueError:
         raise ValueError("Incorrect data format, should be YYYY-MM-DD or MM-DD-YYYY")
-
+def _ContextMeasure(x):
+    measure = { 1:'FGM',2:'FGA',3:"FG_PCT",4:'FG3M',5:'FG3A',6:'FG3_PCT',8:'PF',
+                9:'EFG_PCT',10:'TS_PCT',11:'PTS_FB',12:'PTS_OFF_TOV',
+                13:'PTS_2ND_CHANCE',14:'PF'}
+    try:
+        return measure[x]
+    except:
+        raise Exception("Please enter a number between 1 and "+str(len(measure)))
+def _Position(x):
+    measure = {1:'',2:'Guard',3:'Center',4:'Forward'}
+    try:
+        return measure[x]
+    except:
+        raise Exception("Please enter a number between 1 and "+str(len(measure)))
 # BoxScore -- RangeType must be between 0 and 2.
-
-# All -- DateString validation
+__all__ = ['_Position', '_ContextMeasure', '_valiDate', '_DistanceRange',
+           '_GameSegment', '_VsDivision', '_VsConference', '_SeasonSegment'
+           '_Location', '_Outcome', '_SeasonType', '_Rank', '_PaceAdjust',
+           '_PlusMinus', '_PerMode', '_StarterBench', '_PlayerPosition',
+           '_PlayerExperience', '_GameScope', '_ClutchTime', '_AheadBehind',
+           '_PerMode', '_Scope', '_measureType', '_seasonID', '_nbaSeason',
+           '_nbaLeague']
