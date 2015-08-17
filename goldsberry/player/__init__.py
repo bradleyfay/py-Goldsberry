@@ -1,1 +1,1 @@
-from ._Player import *
+from goldsberry.player._Player import *
