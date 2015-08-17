@@ -1,256 +1,219 @@
 import requests as _requests
-from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType
+from goldsberry._apiFunc import *
 
-class PlayByPlay:
-    def __init__(self, gameid, season='2014', seasontype='Regular Season',
-                 startperiod=1, endperiod=10, startrange=0, endrange=28800,
-                 rangetype=2):
+class play_by_play:
+    def __init__(self, gameid, startperiod=1, endperiod=10):
         self._url = "http://stats.nba.com/stats/playbyplayv2?"
-        self._api_param = {'EndPeriod':endperiod,
-                           'EndRange':endrange,
-                           'GameID':gameid,
-                           'RangeType':rangetype,
-                           'Season':_nbaSeason(season),
-                           'SeasonType':seasontype,
-                           'StartPeriod':startperiod,
-                           'StartRange':startrange
+        self._api_param = {'EndPeriod':endperiod, 
+                           'GameID':gameid, 
+                           'StartPeriod':startperiod
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def Plays(self):
+    def plays(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def AvailableVideo(self):
+    def _available_video(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class SummaryBox:
-    """
-    """
+class boxscore_summary:
     def __init__(self, gameid):
         self._url = "http://stats.nba.com/stats/boxscoresummaryv2?"
         self._api_param = {'GameID':gameid}
         self._pull = _requests.get(self._url, params=self._api_param)
-    def GameSummary(self):
+    def game_summary(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def OtherStats(self):
+    def other_stats(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def Officials(self):
-        _headers = self._pull.json()['resultSets'][2]['headers']
+    def officials(self):
+         _headers = self._pull.json()['resultSets'][2]['headers']
         _values = self._pull.json()['resultSets'][2]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def Inactives(self):
+    def inactive_players(self):
         _headers = self._pull.json()['resultSets'][3]['headers']
         _values = self._pull.json()['resultSets'][3]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def GameInfo(self):
+    def game_info(self):
         _headers = self._pull.json()['resultSets'][4]['headers']
         _values = self._pull.json()['resultSets'][4]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def LineScore(self):
+    def line_score(self):
         _headers = self._pull.json()['resultSets'][5]['headers']
         _values = self._pull.json()['resultSets'][5]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def LastMeeting(self):
+    def last_meeting(self):
         _headers = self._pull.json()['resultSets'][5]['headers']
         _values = self._pull.json()['resultSets'][5]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def SeasonSeries(self):
+    def season_series(self):
         _headers = self._pull.json()['resultSets'][6]['headers']
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def AvailableVideo(self):
+    def _available_video(self):
         _headers = self._pull.json()['resultSets'][7]['headers']
         _values = self._pull.json()['resultSets'][7]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class TraditionalBox:
+class boxscore_traditional:
     """
     """
-    def __init__(self, gameid, season='2014', seasontype='Regular Season',
-                 startperiod=1, endperiod=10, startrange=0, endrange=28800,
-                 rangetype=2):
+    def __init__(self, gameid, startperiod=1, endperiod=10, startrange=0, 
+                endrange=28800, rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscoretraditionalv2?"
         self._api_param = {'EndPeriod':endperiod,
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':_nbaSeason(season),
-                           'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def PlayerStats(self):
+    def player_stats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def TeamStats(self):
+    def team_stats(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class AdvancedBox:
+class boxscore_advanced:
     """
     """
-    def __init__(self, gameid, season='2014', seasontype='Regular Season',
-                 startperiod=1, endperiod=10, startrange=0, endrange=28800,
-                 rangetype=2):
+    def __init__(self, gameid, startperiod=1, endperiod=10, startrange=0, 
+                endrange=28800, rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscoreadvancedv2?"
         self._api_param = {'EndPeriod':endperiod,
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':_nbaSeason(season),
-                           'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def PlayerStats(self):
+    def player_stats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def TeamStats(self):
+    def team_stats(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class MiscellaneousBox:
+class boxscore_misc:
     """
     """
-    def __init__(self, gameid, season='2014', seasontype='Regular Season',
-                 startperiod=1, endperiod=10, startrange=0, endrange=28800,
-                 rangetype=2):
+    def __init__(self, gameid, startperiod=1, endperiod=10, startrange=0, 
+                endrange=28800, rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscoremiscv2?"
         self._api_param = {'EndPeriod':endperiod,
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':_nbaSeason(season),
-                           'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def PlayersMisc(self):
+    def player_stats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def TeamMisc(self):
+    def team_stats(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class ScoringBox:
+class boxscore_scoring:
     """
     """
-    def __init__(self, gameid, season='2014', seasontype='Regular Season',
-                 startperiod=1, endperiod=10, startrange=0, endrange=28800,
-                 rangetype=2):
+    def __init__(self, gameid, startperiod=1, endperiod=10, startrange=0, 
+                endrange=28800, rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscorescoringv2?"
         self._api_param = {'EndPeriod':endperiod,
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':_nbaSeason(season),
-                           'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def PlayersScoring(self):
+    def player_stats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def TeamScoring(self):
+    def team_stats(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class FourFactorsBox:
+class boxscore_fourfactors:
     """
     """
-    def __init__(self, gameid, season='2014', seasontype='Regular Season',
-                 startperiod=1, endperiod=10, startrange=0, endrange=28800,
-                 rangetype=2):
+    def __init__(self, gameid, startperiod=1, endperiod=10, startrange=0, 
+                endrange=28800, rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscorefourfactorsv2?"
         self._api_param = {'EndPeriod':endperiod,
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':_nbaSeason(season),
-                           'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def PlayersFourFactors(self):
+    def player_stats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def TeamFourFactors(self):
+    def team_stats(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-class UsageBox:
+class boxscore_usage:
     """
     """
-    def __init__(self, gameid, season='2014', seasontype='Regular Season',
-                 startperiod=1, endperiod=10, startrange=0, endrange=28800,
-                 rangetype=2):
+    def __init__(self, gameid, startperiod=1, endperiod=10, startrange=0, 
+                endrange=28800, rangetype=2):
         self._url = "http://stats.nba.com/stats/boxscoreusagev2?"
         self._api_param = {'EndPeriod':endperiod,
                            'EndRange':endrange,
                            'GameID':gameid,
                            'RangeType':rangetype,
-                           'Season':_nbaSeason(season),
-                           'SeasonType':seasontype,
                            'StartPeriod':startperiod,
                            'StartRange':startrange
                            }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def PlayersUsage(self):
+    def player_stats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def TeamUsage(self):
+    def team_stats(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
         
-class TrackingBox:
+class boxscore_tracking:
     """
     """
-    def __init__(self, gameid, season='2014', seasontype='Regular Season',
-                 startperiod=1, endperiod=10, startrange=0, endrange=28800,
-                 rangetype=2):
+    def __init__(self, gameid):
         self._url = "http://stats.nba.com/stats/boxscoreplayertrackv2?"
-        self._api_param = {'EndPeriod':endperiod,
-                           'EndRange':endrange,
-                           'GameID':gameid,
-                           'RangeType':rangetype,
-                           'Season':_nbaSeason(season),
-                           'SeasonType':seasontype,
-                           'StartPeriod':startperiod,
-                           'StartRange':startrange
-                           }
+        self._api_param = {'GameID':gameid}
         self._pull = _requests.get(self._url, params=self._api_param)
-    def PlayersTrack(self):
+    def player_stats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def TeamTrack(self):
+    def team_stats(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-__all__ = ['PlayByPlay', 'SummaryBox', 'TraditionalBox', 'AdvancedBox', 
-          'MiscellaneousBox', 'ScoringBox', 'FourFactorsBox', 'UsageBox', 
-          'TrackingBox']
+__all__ = ['play_by_play', 'boxscore_summary', 'boxscore_traditional', 
+            'boxscore_advanced', 'boxscore_misc', 'boxscore_scoring',
+            'boxscore_fourfactors', 'boxscore_usage', 'boxscore_tracking']
