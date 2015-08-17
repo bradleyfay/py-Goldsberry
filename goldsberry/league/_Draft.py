@@ -1,5 +1,5 @@
 import requests as _requests
-from goldsberry._apiFunc import _nbaSeason, _nbaLeague
+from goldsberry._apiFunc import *
 
 class Anthro:
     def __init__(self, season='2014', league='NBA'):
@@ -46,7 +46,6 @@ class Anthro:
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
 class Agility:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinedrillresults?"
@@ -81,7 +80,6 @@ class Agility:
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
 class NonStationaryShooting:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinenonstationaryshooting?"
@@ -143,7 +141,6 @@ class NonStationaryShooting:
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
 class SpotUpShooting:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinespotshooting?"
@@ -240,7 +237,6 @@ class SpotUpShooting:
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
 class Combine:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinestats?"
