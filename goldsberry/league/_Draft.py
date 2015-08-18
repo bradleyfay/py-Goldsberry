@@ -1,7 +1,7 @@
 import requests as _requests
 from goldsberry._apiFunc import *
 
-class Anthro:
+class anthro:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombineplayeranthro?"
         self._api_param = {'LeagueID':_nbaLeague(league),
@@ -46,7 +46,7 @@ class Anthro:
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-class Agility:
+class agility:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinedrillresults?"
         self._api_param = {'LeagueID':_nbaLeague(league),
@@ -80,7 +80,7 @@ class Agility:
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-class NonStationaryShooting:
+class non_stationary_shooting:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinenonstationaryshooting?"
         self._api_param = {'LeagueID':_nbaLeague(league),
@@ -141,7 +141,7 @@ class NonStationaryShooting:
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-class SpotUpShooting:
+class spot_up_shooting:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinespotshooting?"
         self._api_param = {'LeagueID':_nbaLeague(league),
@@ -237,7 +237,7 @@ class SpotUpShooting:
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-class Combine:
+class combine:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinestats?"
         self._api_param = {'LeagueID':_nbaLeague(league),
@@ -301,4 +301,4 @@ class Combine:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-__all__ = ['Anthro', 'Agility', 'NonStationaryShooting', 'SpotUpShooting', 'Combine']
+__all__ = ['anthro', 'agility', 'non_stationary_shooting', 'spot_up_shooting', 'combine']
