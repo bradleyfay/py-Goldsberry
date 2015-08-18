@@ -1,57 +1,54 @@
 import requests as _requests
-from dateutil.parser import parse as _parse
-from goldsberry._apiFunc import _nbaSeason, _nbaLeague, _measureType, _seasonID, _DistanceRange, _GameScope, _GameSegment, _Location, _Outcome, _PaceAdjust, _PerMode
-from goldsberry._apiFunc import _PlayerExperience, _PlayerPosition, _PlusMinus, _Rank, _SeasonSegment, _SeasonType, _StarterBench, _VsConference, _VsDivision, _Scope
-from goldsberry._apiFunc import _AheadBehind, _ClutchTime, _valiDate
+from goldsberry._apiFunc import *
 
 
-class ScoreBoard:
+class daily_scoreboard:
     def __init__(self, date, league="NBA", dayoffset=0):
         _valiDate(date)
         self._url = "http://stats.nba.com/stats/scoreboardV2?"
         self._api_param = {
-                "gameDate":date,
+                "gameDate":_valiDate(date),
                 "LeagueID":_nbaLeague(league),
                 "DayOffset":dayoffset
         }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def GameHeader(self):
+    def game_header(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def LineScore(self):
+    def linescore(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def SeriesStandings(self):
+    def series_standings(self):
         _headers = self._pull.json()['resultSets'][2]['headers']
         _values = self._pull.json()['resultSets'][2]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def LastMeeting(self):
+    def last_meeting(self):
         _headers = self._pull.json()['resultSets'][3]['headers']
         _values = self._pull.json()['resultSets'][3]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def EastConfStandingsByDay(self):
+    def eastern_conference_standings(self):
         _headers = self._pull.json()['resultSets'][4]['headers']
         _values = self._pull.json()['resultSets'][4]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def WestConfStandingsByDay(self):
+    def western_conference_standings(self):
         _headers = self._pull.json()['resultSets'][5]['headers']
         _values = self._pull.json()['resultSets'][5]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def Available(self):
+    def available(self):
         _headers = self._pull.json()['resultSets'][6]['headers']
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def TeamLeaders(self):
+    def team_leaders(self):
         _headers = self._pull.json()['resultSets'][7]['headers']
         _values = self._pull.json()['resultSets'][7]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def TicketLinks(self):
+    def _ticket_links(self):
         _headers = self._pull.json()['resultSets'][8]['headers']
         _values = self._pull.json()['resultSets'][8]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def WinProbability(self):
+    def win_probability(self):
         _headers = self._pull.json()['resultSets'][9]['headers']
         _values = self._pull.json()['resultSets'][9]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
@@ -229,6 +226,41 @@ class ClutchStats:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]            
 
+class Lineups:
+    def __init__(self, groupsize=5, gameid='',season=2014, league="NBA", datefrom='', dateto='',  
+    measure=1, month=0, opponentteamid=0, paceadjust=1, permode=1, period=0, plusminus=1, rank=1,
+    seasonsegment=1, seasontype=1, vsconf=1, vsdiv=1, lastngames=0, location=1, outcome=1):
+        self._url = "http://stats.nba.com/stats/leaguedashlineups?"
+        self._api_param = {
+            'DateFrom':datefrom,
+            'DateTo':dateto,
+            'GameID':gameid,
+            'GameSegment':_GameSegment(gamesegment),
+            'GroupQuantity':groupsize,
+            'LastNGames':lastngames,
+            'LeagueID':_nbaLeague(league),
+            'Location':_Location(location),
+            'MeasureType':_measureType(measure),
+            'Month':month,
+            'OpponentTeamID':opponentteamid,
+            'Outcome':_Outcome(outcome),
+            'PaceAdjust':_PaceAdjust(paceadjust),
+            'PerMode':_PerMode(permode),
+            'Period':period,
+            'PlusMinus':_PlusMinus(plusminus),
+            'Rank':_Rank(rank),
+            'Season':_nbaSeason(season),
+            'SeasonSegment':_SeasonSegment(seasonsegment),
+            'SeasonType':_SeasonType(seasontype),
+            'VsConference':_VsConference(vsconf),
+            'VsDivision':_VsDivision(vsdiv)
+        }
+        self._pull = _requests.get(self._url, params=self._api_param)
+    def Lineups(self):
+        _headers = self._pull.json()['resultSets'][0]['headers']
+        _values = self._pull.json()['resultSets'][0]['rowSet']
+        return [dict(zip(_headers, value)) for value in _values]
+    
 ## Shooting class needs some further study of the data because it classifies shots in two levels. This class will be used for Player & Team as well as Self & Opponent
 
 ## class Shooting:
@@ -271,42 +303,6 @@ class ClutchStats:
 ##         _headers = self._pull.json()['resultSets'][0]['headers']
 ##         _values = self._pull.json()['resultSets'][0]['rowSet']
 ##         return [dict(zip(_headers, value)) for value in _values]
-
-class Lineups:
-    def __init__(self, groupsize=5, gameid='',season=2014, league="NBA", datefrom='', dateto='',  
-    measure=1, month=0, opponentteamid=0, paceadjust=1, permode=1, period=0, plusminus=1, rank=1,
-    seasonsegment=1, seasontype=1, vsconf=1, vsdiv=1, lastngames=0, location=1, outcome=1):
-        self._url = "http://stats.nba.com/stats/leaguedashlineups?"
-        self._api_param = {
-            'DateFrom':datefrom,
-            'DateTo':dateto,
-            'GameID':gameid,
-            'GameSegment':_GameSegment(gamesegment),
-            'GroupQuantity':groupsize,
-            'LastNGames':lastngames,
-            'LeagueID':_nbaLeague(league),
-            'Location':_Location(location),
-            'MeasureType':_measureType(measure),
-            'Month':month,
-            'OpponentTeamID':opponentteamid,
-            'Outcome':_Outcome(outcome),
-            'PaceAdjust':_PaceAdjust(paceadjust),
-            'PerMode':_PerMode(permode),
-            'Period':period,
-            'PlusMinus':_PlusMinus(plusminus),
-            'Rank':_Rank(rank),
-            'Season':_nbaSeason(season),
-            'SeasonSegment':_SeasonSegment(seasonsegment),
-            'SeasonType':_SeasonType(seasontype),
-            'VsConference':_VsConference(vsconf),
-            'VsDivision':_VsDivision(vsdiv)
-        }
-        self._pull = _requests.get(self._url, params=self._api_param)
-    def Lineups(self):
-        _headers = self._pull.json()['resultSets'][0]['headers']
-        _values = self._pull.json()['resultSets'][0]['rowSet']
-        return [dict(zip(_headers, value)) for value in _values]
-    
 
 
 __all__ = ['Transactions', 'ScoreBoard', 'FranchiseHistory',
