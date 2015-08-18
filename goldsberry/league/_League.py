@@ -1,7 +1,6 @@
 import requests as _requests
 from goldsberry._apiFunc import *
 
-
 class daily_scoreboard:
     def __init__(self, date, league="NBA", dayoffset=0):
         _valiDate(date)
@@ -52,33 +51,30 @@ class daily_scoreboard:
         _headers = self._pull.json()['resultSets'][9]['headers']
         _values = self._pull.json()['resultSets'][9]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
-class Transactions:
+class transactions:
     """
     """
     def __init__(self):
         self._url = "http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js"
         self._pull = _requests.get(self._url)
-    def Transactions(self):
+    def transactions(self):
         return self._pull.json()['ListItems']
-
-class FranchiseHistory:
+class franchise_history:
     """
     """
     def __init__(self, league="NBA"):
         self._url = "http://stats.nba.com/stats/franchisehistory?"
         self._api_param = {'LeagueID':_nbaLeague(league)}
         self._pull = _requests.get(self._url, params=self._api_param)
-    def FranchiseHistory(self):
+    def current_teams(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def DefunctTeams(self):
+    def defunct_teams(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
-class PlayoffPicture:
+class playoff_picture:
     """
     """
     def __init__(self, league='NBA', season=2014):
@@ -87,59 +83,57 @@ class PlayoffPicture:
                              'SeasonID':_seasonID(season)
                              }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def EastConfPlayoffPicture(self):
+    def eastern_conf_playoff_picture(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def WestConfPlayoffPicture(self):
+    def western_confe_playoff_picture(self):
         _headers = self._pull.json()['resultSets'][1]['headers']
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def EastConfStandings(self):
+    def eastern_conf_standing(self):
         _headers = self._pull.json()['resultSets'][2]['headers']
         _values = self._pull.json()['resultSets'][2]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def WestConfStandings(self):
+    def western_conf_standing(self):
         _headers = self._pull.json()['resultSets'][3]['headers']
         _values = self._pull.json()['resultSets'][3]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def EastConfRemainingGames(self):
+    def eastern_conf_remaining_games(self):
         _headers = self._pull.json()['resultSets'][4]['headers']
         _values = self._pull.json()['resultSets'][4]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def WestConfRemainingGames(self):
+    def western_conf_remaining_games(self):
         _headers = self._pull.json()['resultSets'][5]['headers']
         _values = self._pull.json()['resultSets'][5]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
-class LeagueLeaders:
-    def __init__(self, league='NBA', permode='PerGame', scope='S', season='2014',
-        seasontype='Regular Season', statcategory='PTS', AllTime = False):
+class league_leaders:
+    def __init__(self, AllTime = False, league='NBA', permode=2, scope=1, season='2014',
+        seasontype=1, statcategory=1):
         self._url = "http://stats.nba.com/stats/leagueleaders?"
         if not AllTime:
             self._api_param = {'LeagueID':_nbaLeague(league), 
-                                'Scope':scope,
-                                'PerMode':permode,
+                                'Scope':_Scope(scope),
+                                'PerMode':_PerModeSmall48(permode),
                                 'Season':_nbaSeason(season),
-                                'SeasonType':seasontype,
-                                'StatCategory':statcategory
+                                'SeasonType':_SeasonType4(seasontype),
+                                'StatCategory':_StatCategory(statcategory)
                                 }
         else: 
             self._api_param = {'LeagueID':_nbaLeague(league), 
-                                'Scope':scope,
-                                'PerMode':permode,
+                                'Scope':_Scope(scope),
+                                'PerMode':_PerModeSmall48(permode),
                                 'Season':"All Time",
-                                'SeasonType':seasontype,
-                                'StatCategory':statcategory
+                                'SeasonType':_SeasonType4(seasontype),
+                                'StatCategory':_StatCategory(statcategory)
                                 }
         #Scope: (RS)|(S)|(Rookies) one of these options
         self._pull = _requests.get(self._url, params=self._api_param)
-    def Leaders(self):
+    def leaders(self):
         _headers = self._pull.json()['resultSet']['headers']
         _values = self._pull.json()['resultSet']['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
-class ClassicStats:
+class classic_stats:
     def __init__(self,stattype="Team",datefrom='', dateto='', gamescope=1,
         gamesegment=1, lastngames='0', league='NBA', location=1,
         measuretype=1, month='0', opponentteamid='0', outcome=1, paceadjust=1, 
@@ -162,7 +156,7 @@ class ClassicStats:
             'OpponentTeamID' : opponentteamid,
             'Outcome' : _Outcome(outcome),
             'PaceAdjust' : _PaceAdjust(paceadjust),
-            'PerMode' : _PerMode(permode),
+            'PerMode' : _PerModeLarge(permode),
             'Period' : period,
             'PlayerExperience' : _PlayerExperience(playerexperience),
             'PlayerPosition' : _PlayerPosition(playerposition),
@@ -173,22 +167,21 @@ class ClassicStats:
             'SeasonType' : _SeasonType(seasontype),
             'StarterBench' : _StarterBench(starterbench),
             'VsConference' : _VsConference(vsconf),
-            'VsDivision' : VsDivision(vsdiv)
+            'VsDivision' : _VsDivision(vsdiv)
             }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def Stats(self):
+    def stats(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
- 
-class ClutchStats:
-    def __init__(self, stattype="Team", aheadbehind=1, clutchtime=1, datefrom='', 
+class clutch_stats:
+    def __init__(self, Team=True, aheadbehind=1, clutchtime=1, datefrom='', 
         dateto='', gamescope=1, gamesegment=1, lastngames='0', league='NBA', location=1,
         measuretype=1, month='0', opponentteamid='0', outcome=1, paceadjust=1, 
         permode=1, period='0', playerexperience=1, playerposition=1, plusminus=1,
         rank=1,season='2014',seasonsegment=1, seasontype=1, starterbench=1,vsconf=1,
         vsdiv=1):
-        if stattype.lower()=="team":
+        if Team:
             self._url = "http://stats.nba.com/stats/leaguedashteamclutch?"
         else: self._url = "http://stats.nba.com/stats/leaguedashplayerclutch?"
         self._api_param = {
@@ -206,7 +199,7 @@ class ClutchStats:
             'OpponentTeamID' : opponentteamid,
             'Outcome' : _Outcome(outcome),
             'PaceAdjust' : _PaceAdjust(paceadjust),
-            'PerMode' : _PerMode(permode),
+            'PerMode' : _PerModeLarge(permode),
             'Period' : period,
             'PlayerExperience' : _PlayerExperience(playerexperience),
             'PlayerPosition' : _PlayerPosition(playerposition),
@@ -218,15 +211,14 @@ class ClutchStats:
             'SeasonType' : _SeasonType(seasontype),
             'StarterBench' : _StarterBench(starterbench),
             'VsConference' : _VsConference(vsconf),
-            'VsDivision' : VsDivision(vsdiv)
+            'VsDivision' : _VsDivision(vsdiv)
             }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def Clutch(self):
+    def clutch(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]            
-
-class Lineups:
+class lineups:
     def __init__(self, groupsize=5, gameid='',season=2014, league="NBA", datefrom='', dateto='',  
     measure=1, month=0, opponentteamid=0, paceadjust=1, permode=1, period=0, plusminus=1, rank=1,
     seasonsegment=1, seasontype=1, vsconf=1, vsdiv=1, lastngames=0, location=1, outcome=1):
@@ -245,7 +237,7 @@ class Lineups:
             'OpponentTeamID':opponentteamid,
             'Outcome':_Outcome(outcome),
             'PaceAdjust':_PaceAdjust(paceadjust),
-            'PerMode':_PerMode(permode),
+            'PerMode':_PerModeLarge(permode),
             'Period':period,
             'PlusMinus':_PlusMinus(plusminus),
             'Rank':_Rank(rank),
@@ -256,11 +248,14 @@ class Lineups:
             'VsDivision':_VsDivision(vsdiv)
         }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def Lineups(self):
+    def lineups(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    
+
+__all__ = ['daily_scoreboard', 'transactions', 'franchise_history',
+            'playoff_picture', 'league_leaders', 'classic_stats',
+            'clutch_stats', 'lineups']
 ## Shooting class needs some further study of the data because it classifies shots in two levels. This class will be used for Player & Team as well as Self & Opponent
 
 ## class Shooting:
@@ -305,6 +300,3 @@ class Lineups:
 ##         return [dict(zip(_headers, value)) for value in _values]
 
 
-__all__ = ['Transactions', 'ScoreBoard', 'FranchiseHistory',
-            'PlayoffPicture', 'LeagueLeaders', 'ClutchStats',
-            'ClassicStats', 'Lineups']
