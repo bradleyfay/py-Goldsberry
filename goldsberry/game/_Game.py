@@ -32,7 +32,7 @@ class boxscore_summary:
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
     def officials(self):
-         _headers = self._pull.json()['resultSets'][2]['headers']
+        _headers = self._pull.json()['resultSets'][2]['headers']
         _values = self._pull.json()['resultSets'][2]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
     def inactive_players(self):
