@@ -209,7 +209,7 @@ class on_off_court:
         _headers = self._pull2.json()['resultSets'][2]['headers']
         _values = self._pull2.json()['resultSets'][2]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-class yearly_stats:
+class on_off_court:
     def __init__(self, teamid, permode=1,league='NBA', seasontype=1):
         self._url = "http://stats.nba.com/stats/teamyearbyyearstats?"
         self._api_param = {'TeamID':teamid,
@@ -329,7 +329,6 @@ class shooting_splits:
         _headers = self._pull.json()['resultSets'][6]['headers']
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-
 class passing_dashboard:
     def __init__(self,teamid,league='NBA',season='2014', seasontype=1,outcome=1,location=1,month=0,
                 seasonsegment=1,datefrom='',dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
@@ -458,8 +457,6 @@ class shot_dashboard:
         _values = self._pull.json()['resultSets'][5]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-
-
-
-__all__ = ['Roster', 'History', 'Splits', 'SeasonStats', 'OnOff', 'YearlyStats', 'GameLogs',
-                    'Info', 'TeamPassingSV', 'TeamReboundSV', 'TeamShotSV', 'Lineups']
+__all__ = ['team_info', 'roster', 'history', 'splits','season_stats', 'on_off_court', 
+           'on_off_court', 'game_logs', 'lineups', 'shooting_splits', 'passing_dashboard',
+           'passing_dashboard', 'shot_dashboard']
