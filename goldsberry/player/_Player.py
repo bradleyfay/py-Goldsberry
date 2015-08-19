@@ -78,17 +78,13 @@ class general_splits:
         dateto='', datefrom='', gamesegment=1, lastngames=0, location=1, measuretype=1,
         month=0, opponentteamid=0, outcome=1, paceadjust=1, permode=1, period=0,
         plusminus=1, rank=1, seasonsegment=1, vsconf=1, vsdiv=1):
-        if not dateto == '':
-            _valiDate(dateto)
-        if not datefrom == '':
-            _valiDate(datefrom)
         self._url = "http://stats.nba.com/stats/playerdashboardbygeneralsplits?"
         self._api_param = {'PlayerID':playerid,
                            'SeasonType': _SeasonType(seasontype),
                            'Season': _nbaSeason(season),
                            'LeagueID': _nbaLeague(league),
-                           'DateTo':dateto,
-                           'DateFrom':datefrom,
+                           'DateTo':_valiDate(dateto),
+                           'DateFrom':_valiDate(datefrom),
                            'GameSegment':_GameSegment(gamesegment),
                            'LastNGames':lastngames,
                            'Location':_Location(location),
@@ -160,8 +156,8 @@ class shot_dashboard:
                            'Location' : _Location(location),
                            'Month' : month,
                            'SeasonSegment' : _SeasonSegment(seasonsegment),
-                           'DateFrom' :  datefrom,
-                           'DateTo' : dateto,
+                           'DateFrom' :  _valiDate(datefrom),
+                           'DateTo' : _valiDate(dateto),
                            'OpponentTeamID' : opponentteamid,
                            'VsConference' : _VsConference(vsconf),
                            'VsDivision' : _VsDivision(vsdiv),
@@ -191,7 +187,7 @@ class shot_dashboard:
         _headers = self._pull.json()['resultSets'][4]['headers']
         _values = self._pull.json()['resultSets'][4]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
-    def closest_defender_10ft_plus(self):
+    def closest_defender_10ft(self):
         _headers = self._pull.json()['resultSets'][5]['headers']
         _values = self._pull.json()['resultSets'][5]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
@@ -201,13 +197,9 @@ class shot_dashboard:
         return [dict(zip(_headers, value)) for value in _values]
 class rebound_dashboard:
     def __init__(self,playerid,league='NBA',season='2014', seasontype=1,teamid=0,
-                             outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
-                             dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
-                             period=0,lastngames=0,permode=1):
-        if not dateto == '':
-            _valiDate(dateto)
-        if not datefrom == '':
-            _valiDate(datefrom)
+                outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
+                dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
+                period=0,lastngames=0,permode=1):
         self._url = "http://stats.nba.com/stats/playerdashptreb?"
         self._api_param = {'PlayerID' : playerid,
                            'LeagueID': _nbaLeague(league),
@@ -218,8 +210,8 @@ class rebound_dashboard:
                            'Location' : _Location(location),
                            'Month' : month,
                            'SeasonSegment' : _SeasonSegment(seasonsegment),
-                           'DateFrom' :  datefrom,
-                           'DateTo' : dateto,
+                           'DateFrom' :  _valiDate(datefrom),
+                           'DateTo' : _valiDate(dateto),
                            'OpponentTeamID' : opponentteamid,
                            'VsConference' : _VsConference(vsconf),
                            'VsDivision' : _VsDivision(vsdiv),
@@ -251,13 +243,9 @@ class rebound_dashboard:
         return [dict(zip(_headers, value)) for value in _values]
 class passing_dashboard:
     def __init__(self,playerid,league='NBA',season='2014', seasontype=1,teamid=0,
-                             outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
-                             dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
-                             period=0,lastngames=0,permode=1):
-        if not dateto == '':
-            _valiDate(dateto)
-        if not datefrom == '':
-            _valiDate(datefrom)
+                 outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
+                 dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
+                 period=0,lastngames=0,permode=1):
         self._url = "http://stats.nba.com/stats/playerdashptpass?"
         self._api_param = {'PlayerID' : playerid,
                            'LeagueID': _nbaLeague(league),
@@ -268,8 +256,8 @@ class passing_dashboard:
                            'Location' : _Location(location),
                            'Month' : month,
                            'SeasonSegment' : _SeasonSegment(seasonsegment),
-                           'DateFrom' :  datefrom,
-                           'DateTo' : dateto,
+                           'DateFrom' :  _valiDate(datefrom),
+                           'DateTo' : _valiDate(dateto),
                            'OpponentTeamID' : opponentteamid,
                            'VsConference' : _VsConference(vsconf),
                            'VsDivision' : _VsDivision(vsdiv),
@@ -289,13 +277,9 @@ class passing_dashboard:
         return [dict(zip(_headers, value)) for value in _values]
 class defense_dashboard:
     def __init__(self,playerid,league='NBA',season='2014', seasontype=1,teamid=0,
-                             outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
-                             dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
-                             period=0,lastngames=0,permode=1):
-        if not dateto == '':
-            _valiDate(dateto)
-        if not datefrom == '':
-            _valiDate(datefrom)
+                 outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
+                 dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
+                 period=0,lastngames=0,permode=1):
         self._url = "http://stats.nba.com/stats/playerdashptreb?"
         self._api_param = {'PlayerID' : playerid,
                            'LeagueID': _nbaLeague(league),
@@ -306,8 +290,8 @@ class defense_dashboard:
                            'Location' : _Location(location),
                            'Month' : month,
                            'SeasonSegment' : _SeasonSegment(seasonsegment),
-                           'DateFrom' :  datefrom,
-                           'DateTo' : dateto,
+                           'DateFrom' :  _valiDate(datefrom),
+                           'DateTo' : _valiDate(dateto),
                            'OpponentTeamID' : opponentteamid,
                            'VsConference' : _VsConference(vsconf),
                            'VsDivision' : _VsDivision(vsdiv),
@@ -323,13 +307,9 @@ class defense_dashboard:
         return [dict(zip(_headers, value)) for value in _values]
 class shot_log:
     def __init__(self,playerid,league='NBA',season='2014',seasontype=1,teamid=0,
-                             outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
-                             dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
-                             period=0,lastngames=0):
-        if not dateto == '':
-            _valiDate(dateto)
-        if not datefrom == '':
-            _valiDate(datefrom)
+                 outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
+                 dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
+                 period=0,lastngames=0):
         self._url = "http://stats.nba.com/stats/playerdashptshotlog?"
         self._api_param = {'PlayerID' : playerid,
                            'LeagueID': _nbaLeague(league),
@@ -340,8 +320,8 @@ class shot_log:
                            'Location' : _Location(location),
                            'Month' : month,
                            'SeasonSegment' : _SeasonSegment(seasonsegment),
-                           'DateFrom' :  datefrom,
-                           'DateTo' : dateto,
+                           'DateFrom' :  _valiDate(datefrom),
+                           'DateTo' : _valiDate(dateto),
                            'OpponentTeamID' : opponentteamid,
                            'VsConference' : _VsConference(vsconf),
                            'VsDivision' : _VsDivision(vsdiv),
@@ -356,13 +336,9 @@ class shot_log:
         return [dict(zip(_headers, value)) for value in _values]
 class rebound_log:
     def __init__(self,playerid,league='NBA',season='2014',seasontype=1,teamid=0,
-                             outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
-                             dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
-                             period=0,lastngames=0):
-        if not dateto == '':
-            _valiDate(dateto)
-        if not datefrom == '':
-            _valiDate(datefrom)
+                 outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
+                 dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
+                 period=0,lastngames=0):
         self._url = "http://stats.nba.com/stats/playerdashptreboundlogs?"
         self._api_param = {'PlayerID' : playerid,
                            'LeagueID': _nbaLeague(league),
@@ -373,8 +349,8 @@ class rebound_log:
                            'Location' : _Location(location),
                            'Month' : month,
                            'SeasonSegment' : _SeasonSegment(seasonsegment),
-                           'DateFrom' :  datefrom,
-                           'DateTo' : dateto,
+                           'DateFrom' :  _valiDate(datefrom),
+                           'DateTo' : _valiDate(dateto),
                            'OpponentTeamID' : opponentteamid,
                            'VsConference' : _VsConference(vsconf),
                            'VsDivision' : _VsDivision(vsdiv),
@@ -389,18 +365,14 @@ class rebound_log:
         return [dict(zip(_headers, value)) for value in _values]
 class shot_chart:
     def __init__(self,playerid,leagueid='',season='2014', seasontype=1,teamid=0,
-                             gameid='',outcome=1,location=1,month=0,seasonsegment=1,
-                             datefrom='',dateto='',opponentteamid=0,vsconf=1,vsdiv=1,
-                             position=1,period=0,lastngames=0,aheadbehind=1,
-                             contextmeasure=1,clutchtime=7,rookieyear='', 
-                             contextfilter='',startperiod='1',endperiod='10',startrange='0', 
-                             endrange='28800', gamesegment=1, rangetype='2'):
+                 gameid='',outcome=1,location=1,month=0,seasonsegment=1,
+                 datefrom='',dateto='',opponentteamid=0,vsconf=1,vsdiv=1,
+                 position=1,period=0,lastngames=0,aheadbehind=1,
+                 contextmeasure=1,clutchtime=7,rookieyear='', 
+                 contextfilter='',startperiod='1',endperiod='10',startrange='0', 
+                 endrange='28800', gamesegment=1, rangetype='2'):
         if not rookieyear == '':
             rookieyear = _nbaSeason(rookieyear)
-        if not dateto == '':
-            _valiDate(dateto)
-        if not datefrom == '':
-            _valiDate(datefrom)
         self._url = "http://stats.nba.com/stats/shotchartdetail?"
         self._api_param = {'LeagueID': leagueid,
                            'Season' :  _nbaSeason(season),
@@ -412,8 +384,8 @@ class shot_chart:
                            'Location' : _Location(location),
                            'Month' : month,
                            'SeasonSegment' : _SeasonSegment(seasonsegment),
-                           'DateFrom' :  datefrom,
-                           'DateTo' : dateto,
+                           'DateFrom' :  _valiDate(datefrom),
+                           'DateTo' : _valiDate(dateto),
                            'OpponentTeamID' : opponentteamid,
                            'VsConference' : _VsConference(vsconf),
                            'VsDivision' : _VsDivision(vsdiv),
