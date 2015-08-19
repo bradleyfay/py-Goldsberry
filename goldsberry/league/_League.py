@@ -144,8 +144,8 @@ class classic_stats:
             self._url = "http://stats.nba.com/stats/leaguedashteamstats?"
         else: self._url = "http://stats.nba.com/stats/leaguedashplayerstats?"
         self._api_param = {
-            'DateFrom' : datefrom,
-            'DateTo' : dateto,
+            'DateFrom' : _valiDate(datefrom),
+            'DateTo' : _valiDate(dateto),
             'GameScope' : _GameScope(gamescope),
             'GameSegment' : _GameSegment(gamesegment),
             'LastNGames' : lastngames,
@@ -187,8 +187,8 @@ class clutch_stats:
         self._api_param = {
             'AheadBehind' : _AheadBehind(aheadbehind),
             'ClutchTime' : _ClutchTime(clutchtime),
-            'DateFrom' : datefrom,
-            'DateTo' : dateto,
+            'DateFrom' : _valiDate(datefrom),
+            'DateTo' : _valiDate(dateto),
             'GameScope' : _GameScope(gamescope),
             'GameSegment' : _GameSegment(gamesegment),
             'LastNGames' : lastngames,
@@ -224,8 +224,8 @@ class lineups:
     seasonsegment=1, seasontype=1, vsconf=1, vsdiv=1, lastngames=0, location=1, outcome=1):
         self._url = "http://stats.nba.com/stats/leaguedashlineups?"
         self._api_param = {
-            'DateFrom':datefrom,
-            'DateTo':dateto,
+            'DateFrom':_valiDate(datefrom),
+            'DateTo':_valiDate(dateto),
             'GameID':gameid,
             'GameSegment':_GameSegment(gamesegment),
             'GroupQuantity':groupsize,
