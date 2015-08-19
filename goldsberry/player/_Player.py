@@ -166,7 +166,7 @@ class shot_dashboard:
                            'LastNGames' : lastngames,
                            'PerMode' : _PerModeMini(permode)
                            }
-            self._pull = _requests.get(self._url, params=self._api_param)
+        self._pull = _requests.get(self._url, params=self._api_param)
     def overall(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']

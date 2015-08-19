@@ -116,7 +116,7 @@ def _PerModeLarge(x):
     try:
         return measure[x]
     except:
-        raise Exception("Please enter a number between 1 and "+str(len(measure)))
+        raise Exception("Please enter a number between 1 and "+str(len(measure)))
 def _AheadBehind(x):
     measure = {1:"Ahead or Behind",2:"Behind or Tied",3:"Ahead or Tied"}
     try:
@@ -258,10 +258,11 @@ def _StatCategory(x):
     except:
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
 # BoxScore -- RangeType must be between 0 and 2.
-__all__ = ['_Position', '_ContextMeasure', '_valiDate', '_DistanceRange',
-           '_GameSegment', '_VsDivision', '_VsConference', '_SeasonSegment'
-           '_Location', '_Outcome', '_SeasonType', '_Rank', '_PaceAdjust',
-           '_PlusMinus', '_PerModeSmall48', '_StarterBench', '_PlayerPosition',
-           '_PlayerExperience', '_GameScope', '_ClutchTime', '_AheadBehind',
-           '_PerModeLarge', '_Scope', '_measureType', '_seasonID', '_nbaSeason',
-           '_nbaLeague','_PerModeSmall36', '_PerModeMini']
+__all__ = ['_nbaLeague', '_nbaSeason', '_seasonID', '_measureType',
+           '_Scope', '_PerModeSmall48', '_PerModeSmall36', '_PerModeMini',
+           '_PerModeLarge', '_AheadBehind', '_ClutchTime', '_GameScope', 
+           '_PlayerExperience', '_PlayerPosition', '_StarterBench', 
+           '_PlusMinus', '_PaceAdjust','_Rank', '_SeasonType', '_SeasonType4', 
+           '_Outcome', '_Location', '_SeasonSegment', '_VsConference', 
+           '_VsDivision', '_GameSegment','_DistanceRange','_valiDate', 
+           '_ContextMeasure', '_Position', '_StatCategory']
