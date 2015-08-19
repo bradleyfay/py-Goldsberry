@@ -228,7 +228,7 @@ def _DistanceRange(x):
     except:
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
 def _valiDate(date_text):
-    if not dateto == '':
+    if not date_text == '':
         try:
             date = _parse(date_text)
             return str(date.date())
