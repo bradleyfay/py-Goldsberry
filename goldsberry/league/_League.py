@@ -307,7 +307,7 @@ class shooting:
                 _headers.append(j + " " + i)
         _headers = self._pull.json()['resultSets']['headers'][1]['columnNames'][:_skip] + _headers
         return _headers
-    def Shooting(self):
+    def shooting(self):
         _headers = self.headers()
         _values = self._pull.json()['resultSets']['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
