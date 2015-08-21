@@ -6,3 +6,4 @@ Feature Addtions:
 * SportVu Module
 * Shooting Classes within League
 	* Includes header method that improves sorting of data when loaded to DataFrame
+* GAMEID class

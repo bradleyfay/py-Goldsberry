@@ -214,6 +214,11 @@ class boxscore_tracking:
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
+def GameIDs():
+    _url = "https://raw.github.com/bradleyfay/py-Goldsberry/master/data/gameids_trim.json"
+    _pull = _requests.get(_url)
+    return _pull.json()
+
 __all__ = ['play_by_play', 'boxscore_summary', 'boxscore_traditional', 
             'boxscore_advanced', 'boxscore_misc', 'boxscore_scoring',
             'boxscore_fourfactors', 'boxscore_usage', 'boxscore_tracking']
