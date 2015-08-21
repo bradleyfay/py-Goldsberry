@@ -1,9 +1,0 @@
-## Testing boxscore module
-## Will be all over the place until I get berrings
-import goldsberry
-import pandas as pd
-testing=goldsberry.boxscore.Traditional(gameid="0021401220")
-## How do we want users to find gameID's?
-## This one was manually taken from stat.nba.com and getting full list would be difficult
-testDF = pd.DataFrame(testing.PlayerStats())
-testDF.head()
