@@ -215,7 +215,7 @@ class boxscore_tracking:
         return [dict(zip(_headers, value)) for value in _values]
 
 def GameIDs():
-    _url = "https://raw.github.com/bradleyfay/py-Goldsberry/master/data/gameids_trim.json"
+    _url = "https://raw.github.com/bradleyfay/py-Goldsberry/master/data/gameids.json"
     _pull = _requests.get(_url)
     return _pull.json()
 
