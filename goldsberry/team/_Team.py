@@ -230,7 +230,7 @@ class game_logs:
                             'Season': _nbaSeason(season)
                             }
         self._pull = _requests.get(self._url, params=self._api_param)
-    def TeamGameLog(self):
+    def logs(self):
         _headers = self._pull.json()['resultSets'][0]['headers']
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
