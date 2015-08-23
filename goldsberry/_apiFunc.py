@@ -27,7 +27,7 @@ def _nbaSeason(x):
         return "1999-00"
     elif len(str(x)) == 4:
         try:
-            return "-".join([str(x),str(int(x) % 100 + 1)])
+            return "-".join([str(x),"%02d"%(int(x) % 100 + 1)])
         except ValueError: 
             raise Exception("Enter the four digit year for the first half of the desired season")
     else: raise Exception("Enter the four digit year for the first half of the desired season")
