@@ -216,7 +216,7 @@ def _VsDivision(x):
     except:
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
 def _GameSegment(x):
-    measure = {1:'',2:"First Half",3:"Overtime",2:"Second Half"}
+    measure = {1:'',2:"First Half",4:"Overtime",3:"Second Half"}
     try:
         return measure[x]
     except:
@@ -228,13 +228,14 @@ def _DistanceRange(x):
     except:
         raise Exception("Please enter a number between 1 and "+str(len(measure)))
 def _valiDate(date_text):
-    if not date_text == '':
+    if date_text == '':
+        return date_text
+    else:
         try:
             date = _parse(date_text)
             return str(date.date())
         except ValueError:
             raise ValueError("Incorrect data format, should be YYYY-MM-DD or MM-DD-YYYY")
-    else: pass
 def _ContextMeasure(x):
     measure = { 1:'FGM',2:'FGA',3:"FG_PCT",4:'FG3M',5:'FG3A',6:'FG3_PCT',8:'PF',
                 9:'EFG_PCT',10:'TS_PCT',11:'PTS_FB',12:'PTS_OFF_TOV',
