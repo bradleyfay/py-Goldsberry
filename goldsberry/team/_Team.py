@@ -119,7 +119,7 @@ class season_stats:
         dateto='', gamesegment=1, lastngames='0', location=1, measuretype=1,
         month='0', opponentteamid='0', outcome=1, paceadjust=1, permode=1,
         period='0', plusminus=1, seasonsegment=1, seasontype=1,
-        vsconf=1, vsdiv=1, rank='N'):
+        vsconf=1, vsdiv=1, rank=1):
         self._url = "http://stats.nba.com/stats/teamplayerdashboard?"
         self._api_param = {'TeamID':teamid,
                             'Season': _nbaSeason(season),
