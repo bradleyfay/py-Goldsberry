@@ -1,3 +1,10 @@
+Version 0.6.3
+============
+
+Bug Fixes
+* Fixed api function
+* Updated default season to 2015
+
 Version 0.6
 ============
 

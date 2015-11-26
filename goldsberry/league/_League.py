@@ -77,7 +77,7 @@ class franchise_history:
 class playoff_picture:
     """
     """
-    def __init__(self, league='NBA', season=2014):
+    def __init__(self, league='NBA', season=2015):
         self._url = "http://stats.nba.com/stats/playoffpicture?"
         self._api_param = {'LeagueID':_nbaLeague(league),
                              'SeasonID':_seasonID(season)
@@ -108,7 +108,7 @@ class playoff_picture:
         _values = self._pull.json()['resultSets'][5]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class league_leaders:
-    def __init__(self, AllTime = False, league='NBA', permode=2, scope=1, season='2014',
+    def __init__(self, AllTime = False, league='NBA', permode=2, scope=1, season='2015',
         seasontype=1, statcategory=1):
         self._url = "http://stats.nba.com/stats/leagueleaders?"
         if not AllTime:
@@ -138,7 +138,7 @@ class classic_stats:
         gamesegment=1, lastngames='0', league='NBA', location=1,
         measuretype=1, month='0', opponentteamid='0', outcome=1, paceadjust=1, 
         permode=1, period='0', playerexperience=1, playerposition=1, plusminus=1,
-        rank=1,season='2014',seasonsegment=1, seasontype=1, starterbench=1,vsconf=1,
+        rank=1,season='2015',seasonsegment=1, seasontype=1, starterbench=1,vsconf=1,
         vsdiv=1):
         if stattype.lower() == "team":
             self._url = "http://stats.nba.com/stats/leaguedashteamstats?"
@@ -179,7 +179,7 @@ class clutch_stats:
         dateto='', gamescope=1, gamesegment=1, lastngames='0', league='NBA', location=1,
         measuretype=1, month='0', opponentteamid='0', outcome=1, paceadjust=1, 
         permode=1, period='0', playerexperience=1, playerposition=1, plusminus=1,
-        rank=1,season='2014',seasonsegment=1, seasontype=1, starterbench=1,vsconf=1,
+        rank=1,season='2015',seasonsegment=1, seasontype=1, starterbench=1,vsconf=1,
         vsdiv=1):
         if Team:
             self._url = "http://stats.nba.com/stats/leaguedashteamclutch?"
@@ -219,7 +219,7 @@ class clutch_stats:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]            
 class lineups:
-    def __init__(self, groupsize=5, gameid='',season=2014, league="NBA", datefrom='', dateto='',  
+    def __init__(self, groupsize=5, gameid='',season=2015, league="NBA", datefrom='', dateto='',  
     measure=1, month=0, opponentteamid=0, paceadjust=1, permode=1, period=0, plusminus=1, rank=1,
     seasonsegment=1, seasontype=1, vsconf=1, vsdiv=1, lastngames=0, location=1, outcome=1):
         self._url = "http://stats.nba.com/stats/leaguedashlineups?"
@@ -260,7 +260,7 @@ __all__ = ['daily_scoreboard', 'transactions', 'franchise_history',
 ## Shooting class needs some further study of the data because it classifies shots in two levels. This class will be used for Player & Team as well as Self & Opponent
 
 class shooting:
-    def __init__(self,team=False, measure=1, season=2014, datefrom='', dateto='',distancerange=1,
+    def __init__(self,team=False, measure=1, season=2015, datefrom='', dateto='',distancerange=1,
     gamescope=1, gamesegment=1, lastngames=0, league="NBA", location=1, month=0, opponentteamid=0,
     outcome=1, paceadjust=1, permode=1, period=0, playerexperience=1, playerposition=1, plusminus=1,
     rank=1, seasonsegment=1, seasontype=1, starterbench=1, vsconference=1, vsdivision=1):

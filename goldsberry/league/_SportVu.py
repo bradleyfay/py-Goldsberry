@@ -2,7 +2,7 @@ import requests as _requests
 from goldsberry._apiFunc import *
 
 class catch_and_shoot:
-    def __init__(self, year=2014, team=False):
+    def __init__(self, year=2015, team=False):
         if team:
             self._url = ['http://stats.nba.com/js/data/sportvu/', str(year), '/catchShootTeamData.json']
         else:
@@ -16,7 +16,7 @@ class catch_and_shoot:
     def get_season(self):
         return self._pull.json()['parameters']['Season']
 class defense:
-    def __init__(self, year=2014, team=False):
+    def __init__(self, year=2015, team=False):
         if team:
             self._url = ['http://stats.nba.com/js/data/sportvu/', str(year), '/defenseTeamData.json']
         else:
@@ -30,7 +30,7 @@ class defense:
     def get_season(self):
         return self._pull.json()['parameters']['Season']
 class drives:
-    def __init__(self, year=2014, team=False):
+    def __init__(self, year=2015, team=False):
         if team:
             self._url = ['http://stats.nba.com/js/data/sportvu/', str(year), '/drivesTeamData.json']
         else:
@@ -44,7 +44,7 @@ class drives:
     def get_season(self):
         return self._pull.json()['parameters']['Season']
 class passing:
-    def __init__(self, year=2014, team=False):
+    def __init__(self, year=2015, team=False):
         if team:
             self._url = ['http://stats.nba.com/js/data/sportvu/', str(year), '/passingTeamData.json']
         else:
@@ -58,7 +58,7 @@ class passing:
     def get_season(self):
         return self._pull.json()['parameters']['Season']
 class touches:
-    def __init__(self, year=2014, team=False):
+    def __init__(self, year=2015, team=False):
         if team:
             self._url = ['http://stats.nba.com/js/data/sportvu/', str(year), '/touchesTeamData.json']
         else:
@@ -72,7 +72,7 @@ class touches:
     def get_season(self):
         return self._pull.json()['parameters']['Season']
 class pull_up_shooting:
-    def __init__(self, year=2014, team=False):
+    def __init__(self, year=2015, team=False):
         if team:
             self._url = ['http://stats.nba.com/js/data/sportvu/', str(year), '/pullUpShootTeamData.json']
         else:
@@ -86,7 +86,7 @@ class pull_up_shooting:
     def get_season(self):
         return self._pull.json()['parameters']['Season']
 class rebounding:
-    def __init__(self, year=2014, team=False):
+    def __init__(self, year=2015, team=False):
         if team:
             self._url = ['http://stats.nba.com/js/data/sportvu/', str(year), '/reboundingTeamData.json']
         else:
@@ -100,7 +100,7 @@ class rebounding:
     def get_season(self):
         return self._pull.json()['parameters']['Season']
 class shooting:
-    def __init__(self, year=2014, team=False):
+    def __init__(self, year=2015, team=False):
         if team:
             self._url = ['http://stats.nba.com/js/data/sportvu/', str(year), '/shootingTeamData.json']
         else:
@@ -114,7 +114,7 @@ class shooting:
     def get_season(self):
         return self._pull.json()['parameters']['Season']
 class speed:
-    def __init__(self, year=2014, team=False):
+    def __init__(self, year=2015, team=False):
         if team:
             self._url = ['http://stats.nba.com/js/data/sportvu/', str(year), '/speedTeamData.json']
         else:

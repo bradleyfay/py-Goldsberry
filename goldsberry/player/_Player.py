@@ -74,7 +74,7 @@ class career_stats:
         _values = self._pull.json()['resultSets'][12]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class general_splits:
-    def __init__(self, playerid, season='2014',seasontype=1, league='NBA',
+    def __init__(self, playerid, season='2015',seasontype=1, league='NBA',
         dateto='', datefrom='', gamesegment=1, lastngames=0, location=1, measuretype=1,
         month=0, opponentteamid=0, outcome=1, paceadjust=1, permode=1, period=0,
         plusminus=1, rank=1, seasonsegment=1, vsconf=1, vsdiv=1):
@@ -130,7 +130,7 @@ class general_splits:
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class game_logs:
-    def __init__(self, playerid, season='2014',seasontype=1, league='NBA'):
+    def __init__(self, playerid, season='2015',seasontype=1, league='NBA'):
         self._url = "http://stats.nba.com/stats/playergamelog?"
         self._api_param = {'PlayerID':playerid,
                             'SeasonType': _SeasonType(seasontype),
@@ -142,7 +142,7 @@ class game_logs:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class shot_dashboard:
-    def __init__(self,playerid,league='NBA',season='2014', seasontype=1,teamid=0,
+    def __init__(self,playerid,league='NBA',season='2015', seasontype=1,teamid=0,
                              outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
                              dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
                              period=0,lastngames=0, permode=1):
@@ -196,7 +196,7 @@ class shot_dashboard:
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class rebound_dashboard:
-    def __init__(self,playerid,league='NBA',season='2014', seasontype=1,teamid=0,
+    def __init__(self,playerid,league='NBA',season='2015', seasontype=1,teamid=0,
                 outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
                 dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
                 period=0,lastngames=0,permode=1):
@@ -242,7 +242,7 @@ class rebound_dashboard:
         _values = self._pull.json()['resultSets'][4]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class passing_dashboard:
-    def __init__(self,playerid,league='NBA',season='2014', seasontype=1,teamid=0,
+    def __init__(self,playerid,league='NBA',season='2015', seasontype=1,teamid=0,
                  outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
                  dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
                  period=0,lastngames=0,permode=1):
@@ -276,7 +276,7 @@ class passing_dashboard:
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class defense_dashboard:
-    def __init__(self,playerid,league='NBA',season='2014', seasontype=1,teamid=0,
+    def __init__(self,playerid,league='NBA',season='2015', seasontype=1,teamid=0,
                  outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
                  dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
                  period=0,lastngames=0,permode=1):
@@ -306,7 +306,7 @@ class defense_dashboard:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class shot_log:
-    def __init__(self,playerid,league='NBA',season='2014',seasontype=1,teamid=0,
+    def __init__(self,playerid,league='NBA',season='2015',seasontype=1,teamid=0,
                  outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
                  dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
                  period=0,lastngames=0):
@@ -335,7 +335,7 @@ class shot_log:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class rebound_log:
-    def __init__(self,playerid,league='NBA',season='2014',seasontype=1,teamid=0,
+    def __init__(self,playerid,league='NBA',season='2015',seasontype=1,teamid=0,
                  outcome=1,location=1,month=0,seasonsegment=1,datefrom='',
                  dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
                  period=0,lastngames=0):
@@ -364,7 +364,7 @@ class rebound_log:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class shot_chart:
-    def __init__(self,playerid,leagueid='',season='2014', seasontype=1,teamid=0,
+    def __init__(self,playerid,leagueid='',season='2015', seasontype=1,teamid=0,
                  gameid='',outcome=1,location=1,month=0,seasonsegment=1,
                  datefrom='',dateto='',opponentteamid=0,vsconf=1,vsdiv=1,
                  position=1,period=0,lastngames=0,aheadbehind=1,
@@ -414,12 +414,12 @@ class shot_chart:
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-def PlayerList(season='2014', AllTime=False, league='NBA'):
+def PlayerList(season='2015', AllTime=False, league='NBA'):
     if AllTime:
         _url = "http://stats.nba.com/stats/commonallplayers?"
         _api_param = {'IsOnlyCurrentSeason':"0",
                       'LeagueID':_nbaLeague(league),
-                      'Season': "2014-15"}
+                      'Season': "2015-15"}
         _pull = _requests.get(_url, params=_api_param)
         _headers = _pull.json()['resultSets'][0]['headers']
         _values = _pull.json()['resultSets'][0]['rowSet']

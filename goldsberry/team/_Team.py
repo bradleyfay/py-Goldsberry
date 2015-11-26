@@ -2,7 +2,7 @@ import requests as _requests
 from goldsberry._apiFunc import *
 
 class team_info:
-    def __init__(self, teamid, season='2014',league='NBA', seasontype=1):
+    def __init__(self, teamid, season='2015',league='NBA', seasontype=1):
         self._url = "http://stats.nba.com/stats/teaminfocommon?"
         self._api_param = {'TeamID':teamid,
                             'LeagueID': _nbaLeague(league),
@@ -19,7 +19,7 @@ class team_info:
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class roster:
-    def __init__(self, teamid, season='2014',league='NBA'):
+    def __init__(self, teamid, season='2015',league='NBA'):
         self._url = "http://stats.nba.com/stats/commonteamroster?"
         self._api_param = {'TeamID':teamid,
                             'Season': _nbaSeason(season),
@@ -61,7 +61,7 @@ class history:
     def retired_members(self):
         return self._pull.json()['TeamDetails'][5]['RetiredMembers']
 class splits:
-    def __init__(self, teamid, season='2014',league='NBA', datefrom='',
+    def __init__(self, teamid, season='2015',league='NBA', datefrom='',
         dateto='', gamesegment=1, lastngames='0', location=1, measuretype=1,
         month='0', opponentteamid='0', outcome=1, paceadjust=1, permode=1,
         period='0', plusminus=1, seasonsegment=1, seasontype=1,
@@ -115,7 +115,7 @@ class splits:
         _values = self._pull.json()['resultSets'][5]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class season_stats:
-    def __init__(self, teamid, season='2014',league='NBA', datefrom='',
+    def __init__(self, teamid, season='2015',league='NBA', datefrom='',
         dateto='', gamesegment=1, lastngames='0', location=1, measuretype=1,
         month='0', opponentteamid='0', outcome=1, paceadjust=1, permode=1,
         period='0', plusminus=1, seasonsegment=1, seasontype=1,
@@ -153,7 +153,7 @@ class season_stats:
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class on_off_court:
-    def __init__(self, teamid, season='2014',league='NBA', datefrom='',
+    def __init__(self, teamid, season='2015',league='NBA', datefrom='',
         dateto='', gamesegment=1, lastngames='0', location=1, measuretype=1,
         month='0', opponentteamid='0', outcome=1, paceadjust=1, permode=1,
         period='0', plusminus=1, seasonsegment=1, seasontype=1,
@@ -223,7 +223,7 @@ class on_off_court:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class game_logs:
-    def __init__(self, teamid, season='2014',seasontype=1):
+    def __init__(self, teamid, season='2015',seasontype=1):
         self._url = "http://stats.nba.com/stats/teamgamelog?"
         self._api_param = {'TeamID':teamid,
                             'SeasonType':_SeasonType(seasontype),
@@ -235,7 +235,7 @@ class game_logs:
         _values = self._pull.json()['resultSets'][0]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class lineups:
-    def __init__(self, teamid, groupsize=5, measure=1, gameid='',season=2014, league="NBA", datefrom='',   
+    def __init__(self, teamid, groupsize=5, measure=1, gameid='',season=2015, league="NBA", datefrom='',   
         dateto='', month=0, opponentteamid=0, paceadjust=1, permode=1, period=0, plusminus=1, rank=1,
         seasonsegment=1, seasontype=1, vsconf=1, vsdiv=1, lastngames=0, location=1, outcome=1):
         self._url = "http://stats.nba.com/stats/teamdashlineups?"
@@ -274,7 +274,7 @@ class lineups:
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class shooting_splits:
-    def __init__(self, teamid, measure=1, season=2014, league="NBA", datefrom='',   
+    def __init__(self, teamid, measure=1, season=2015, league="NBA", datefrom='',   
         dateto='', month=0, opponentteamid=0, paceadjust=1, permode=1, period=0, plusminus=1, rank=1,
         seasonsegment=1, seasontype=1, vsconf=1, vsdiv=1, lastngames=0, location=1, outcome=1):
         self._url = "http://stats.nba.com/stats/teamdashboardbyshootingsplits?"
@@ -330,7 +330,7 @@ class shooting_splits:
         _values = self._pull.json()['resultSets'][6]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class passing_dashboard:
-    def __init__(self,teamid,league='NBA',season='2014', seasontype=1,outcome=1,location=1,month=0,
+    def __init__(self,teamid,league='NBA',season='2015', seasontype=1,outcome=1,location=1,month=0,
                 seasonsegment=1,datefrom='',dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
                 period=0,lastngames=0, permode=1):
         self._url = "http://stats.nba.com/stats/teamdashptpass?"
@@ -363,7 +363,7 @@ class passing_dashboard:
         _values = self._pull.json()['resultSets'][1]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class rebound_dashboard:
-    def __init__(self,teamid,league='NBA',season='2014', seasontype=1,outcome=1,location=1,month=0,
+    def __init__(self,teamid,league='NBA',season='2015', seasontype=1,outcome=1,location=1,month=0,
                 seasonsegment=1,datefrom='',dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,
                 period=0,lastngames=0, permode=1):
         self._url = "http://stats.nba.com/stats/teamdashptreb?"
@@ -408,7 +408,7 @@ class rebound_dashboard:
         _values = self._pull.json()['resultSets'][4]['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 class shot_dashboard:
-    def __init__(self,teamid,league='NBA',season='2014', seasontype=1,outcome=1,location=1,month=0,
+    def __init__(self,teamid,league='NBA',season='2015', seasontype=1,outcome=1,location=1,month=0,
         seasonsegment=1,datefrom='',dateto='',opponentteamid=0,vsconf=1,vsdiv=1,gamesegment=1,period=0,
         lastngames=0, permode=1):
         self._url = "http://stats.nba.com/stats/teamdashptshots?"
