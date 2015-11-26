@@ -23,11 +23,9 @@ def _nbaSeason(x):
     _Draft.SpotUpShooting(), _Draft.Combine()
 
     """
-    if str(x) == "1999":
-        return "1999-00"
-    elif len(str(x)) == 4:
+    if len(str(x)) == 4:
         try:
-            return "-".join([str(x),"%02d"%(int(x) % 100 + 1)])
+            return '{0}-{1}'.format(y, str(int(y) % 100 + 1)[-2:].zfill(2))
         except ValueError: 
             raise ValueError("Enter the four digit year for the first half of the desired season")
     else: raise ValueError("Enter the four digit year for the first half of the desired season")
