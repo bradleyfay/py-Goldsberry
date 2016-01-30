@@ -60,7 +60,7 @@ class game_logs(PLAYER, default_parameters):
         return self._get_table_from_data(self._datatables, 0)
 
 class shot_dashboard(PLAYER, default_parameters):
-    _url_modifier = 'playerdasptshots'
+    _url_modifier = 'playerdashptshots'
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def general(self):
