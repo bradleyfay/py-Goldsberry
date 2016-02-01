@@ -25,65 +25,62 @@ class daily_scoreboard(DAILY, default_parameters):
         return self._get_table_from_data(self._datatables, 9)
 
 class franchise_history(LEAGUE):
-	_url_modifier = 'franchisehistory'
-	def current_teams(self):
-		return self._get_table_from_data(self._datatables, 0)
-	def defunct_teams(self):
-		return self._get_table_from_data(self._datatables, 1)
+    _url_modifier = 'franchisehistory'
+    def current_teams(self):
+        return self._get_table_from_data(self._datatables, 0)
+    def defunct_teams(self):
+        return self._get_table_from_data(self._datatables, 1)
 
 class playoff_picture(LEAGUE):
-	_url_modifier = 'playoff_picture'
-	def eastern_conf_playoff_picture(self):
-		return self._get_table_from_data(self._datatables, 0)
-	def western_conf_playoff_picture(self):
-		return self._get_table_from_data(self._datatables, 1)
-	def eastern_conf_standings(self):
-		return self._get_table_from_data(self._datatables, 2)
-	def western_conf_standings(self):
-		return self._get_table_from_data(self._datatables, 3)
-	def eastern_conf_remaining_games(self):
-		return self._get_table_from_data(self._datatables, 4)
-	def western_conf_remaining_games(self):
-		return self._get_table_from_data(self._datatables, 5)
-
+    _url_modifier = 'playoff_picture'
+    def eastern_conf_playoff_picture(self):
+        return self._get_table_from_data(self._datatables, 0)
+    def western_conf_playoff_picture(self):
+        return self._get_table_from_data(self._datatables, 1)
+    def eastern_conf_standings(self):
+        return self._get_table_from_data(self._datatables, 2)
+    def western_conf_standings(self):
+        return self._get_table_from_data(self._datatables, 3)
+    def eastern_conf_remaining_games(self):
+        return self._get_table_from_data(self._datatables, 4)
+    def western_conf_remaining_games(self):
+        return self._get_table_from_data(self._datatables, 5)
 
 class team_stats_classic(LEAGUE):
-	_url_modifier = 'leaguedashteamstats'
-	def stats(self):
-		return self._get_table_from_data(self._datatables, 0)
+    _url_modifier = 'leaguedashteamstats'
+    def stats(self):
+        return self._get_table_from_data(self._datatables, 0)
 
 class player_stats_classic(LEAGUE):
-	_url_modifier = 'leaguedashplayerstats'
-	def stats(self):
-		return self._get_table_from_data(self._datatables, 0)
+    _url_modifier = 'leaguedashplayerstats'
+    def stats(self):
+        return self._get_table_from_data(self._datatables, 0)
 
 class team_stats_clutch(LEAGUE):
-	_url_modifier = 'leaguedashteamclutch'
-	def clutch_stats(self):
-		return self._get_table_from_data(self._datatables, 0)
+    _url_modifier = 'leaguedashteamclutch'
+    def clutch_stats(self):
+        return self._get_table_from_data(self._datatables, 0)
 
 class player_stats_clutch(LEAGUE):
-	_url_modifier = 'leaguedashplayerclutch'
-	def clutch_stats(self):
-		return self._get_table_from_data(self._datatables, 0)
+    _url_modifier = 'leaguedashplayerclutch'
+    def clutch_stats(self):
+        return self._get_table_from_data(self._datatables, 0)
 
-class lineups(LEAGUE):
-	_url_modifier = 'leaguedashlineups'
-	def lineups(self):
-		return self._get_table_from_data(self._datatables, 0)
-
+class lineups(LEAGUE, default_parameters):
+    _url_modifier = 'leaguedashlineups'
+    def lineups(self):
+        return self._get_table_from_data(self._datatables, 0)
 
 ## This one might not work because it's the key 'resultSet', not 'resultSets'
 class league_leaders(LEAGUE):
-	_url_modifier = 'leagueleaders'
-	def leaders(self):
-		return self._get_table_from_data(self._datatables, 0)
-
+    _url_modifier = 'leagueleaders'
+    def leaders(self):
+        return self._get_table_from_data(self._datatables, 0)
 
 class transactions(BASE):
-	_pull_url = "http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js"
+    _pull_url = "http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js"
     def transactions(self):
-        return self._pull.json()['ListItems']
+        return #self._pull.json()['ListItems']
 
 ## Shooting class needs some further study of the data because it classifies shots in two levels. This class will be used for Player & Team as well as Self & Opponent
 
@@ -140,4 +137,7 @@ class shooting(object):
         _values = self._pull.json()['resultSets']['rowSet']
         return [dict(zip(_headers, value)) for value in _values]
 
-
+__all__ = ['daily_scoreboard', 'franchise_history', 'playoff_picture',
+           'team_stats_classic', 'player_stats_classic', 'lineups',
+           'team_stats_clutch', 'player_stats_clutch', 'league_leaders',
+           'transactions', 'shooting']

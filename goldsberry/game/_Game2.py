@@ -72,7 +72,7 @@ class boxscore_usage(GAME, default_parameters):
         return self._get_table_from_data(self._datatables, 1)
 
 class boxscore_tracking(GAME, default_parameters):
-    _url_modifier = 'boxscoretrackingv2'
+    _url_modifier = 'boxscoreplayertrackv2'
     def player_stats(self):
         return self._get_table_from_data(self._datatables, 0)
     def team_stats(self):
@@ -85,5 +85,5 @@ def GameIDs():
     return _pull.json()
 
 __all__ = ['play_by_play', 'boxscore_summary', 'boxscore_traditional', 
-            'boxscore_advanced', 'boxscore_misc', 'boxscore_scoring',
-            'boxscore_fourfactors', 'boxscore_usage', 'boxscore_tracking']
+           'boxscore_advanced', 'boxscore_miscellaneous', 'boxscore_scoring',
+           'boxscore_fourfactors', 'boxscore_usage', 'boxscore_tracking']

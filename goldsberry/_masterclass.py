@@ -98,7 +98,7 @@ class PLAYTYPE(object):
             'Connection': 'keep-alive'
         }
         base_url = "http://stats.nba.com/js/data/playtype/"
-        if team
+        if team:
             scope = 'team_'
         else: scope = 'player_'
         pull_url = "{0}{1}{2}.js".format(base_url, scope, url_modifier)
@@ -123,13 +123,16 @@ class PLAYTYPE(object):
     def season(self):
         return self._datatables['parameters']['Season']
 
+class BASE(NBA_datapull):
+    _junk = ''
+
 class SPORTVU(object):
     def __init__(self, year=2015, team=False):
         self.year = year
         self.team = team
-        self._get_nba_data(self._url_modifier, self.year)
+        self._get_nba_data(self._url_modifier, self.year, self.team)
 
-    def _get_nba_data(self, url_modifier, year, team=self.team) :
+    def _get_nba_data(self, url_modifier, year, team) :
         header_data = {
             'Accept-Encoding': 'gzip, deflate, sdch',
             'Accept-Language': 'en-US,en;q=0.8',

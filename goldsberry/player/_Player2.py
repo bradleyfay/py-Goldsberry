@@ -59,7 +59,7 @@ class game_logs(PLAYER, default_parameters):
     def logs(self):
         return self._get_table_from_data(self._datatables, 0)
 
-class shot_dashboard(PLAYER, default_parameters):
+class shot_dashboard(PLAYER, player_dashboard_params):
     _url_modifier = 'playerdashptshots'
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
@@ -76,7 +76,7 @@ class shot_dashboard(PLAYER, default_parameters):
     def touch_time(self):
         return self._get_table_from_data(self._datatables, 6)
 
-class rebound_dashboard(PLAYER, default_parameters):
+class rebound_dashboard(PLAYER, player_dashboard_params):
     _url_modifier = 'playerdashptreb'
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
@@ -89,14 +89,14 @@ class rebound_dashboard(PLAYER, default_parameters):
     def rebound_distanct(self):
         return self._get_table_from_data(self._datatables, 4)
 
-class passing_dashboard(PLAYER, default_parameters):
+class passing_dashboard(PLAYER, player_dashboard_params):
     _url_modifier = 'playerdashptpass'
     def passes_made(self):
         return self._get_table_from_data(self._datatables, 0)
     def passes_received(self):
         return self._get_table_from_data(self._datatables, 1)
 
-class defense_dashboard(PLAYER, default_parameters):
+class defense_dashboard(PLAYER, player_dashboard_params):
     _url_modifier = 'playerdashptshotdefend'
     def defending_shot(self):
         return self._get_table_from_data(self._datatables, 0)
