@@ -1,10 +1,11 @@
+from __future__ import print_function
 import requests as _requests
 
 class NBA_datapull(object):
     # Set QueryString Parameters
-    #_api_params = {}
+    #api_params = {}
     def SET_parameters(self, param, value):
-        self._api_params[param] = value
+        self.api_params[param] = value
 
     def _get_nba_data(self, url_modifier, api_params):
         base_url = 'http://stats.nba.com/stats/'
@@ -23,14 +24,18 @@ class NBA_datapull(object):
         }
         response = _requests.get(pull_url, params = api_params,
                                 headers = header_data)
-        self._url = response.url
-        self._headers = response.request.headers
+
         if response.status_code == 200:
             self._datatables = response.json()
         else:
             # Change this to Exception
-            print 'HTTP Response {0}: {1}'.format(response.status_code,
-                                                   response.reason)
+            txt = response.text.split(';')
+            txt = [x.replace(' property','') for x in txt]
+            txt = [x.replace('The ','') for x in txt]
+            txt = [x.split(' is')[0] for x in txt]
+            txt = [x.lstrip() for x in txt]
+            print("Please use the SET_parameters method to set the following paramters", "\n".join(txt))
+
     def _get_table_from_data(self, nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values  = nba_table['resultSets'][table_id]['rowSet']
@@ -43,7 +48,7 @@ class PLAYER(NBA_datapull):
             self.SET_parameters(k,v)
         self.GET_raw_data()
     def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self._api_params)
+        self._get_nba_data(self._url_modifier,self.api_params)
 
 class TEAM(NBA_datapull):
     def __init__(self, teamid, **kwargs):
@@ -52,7 +57,7 @@ class TEAM(NBA_datapull):
             self.SET_parameters(k,v)
         self.GET_raw_data()
     def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self._api_params)
+        self._get_nba_data(self._url_modifier,self.api_params)
 
 class GAME(NBA_datapull):
     def __init__(self, gameid, **kwargs):
@@ -61,7 +66,7 @@ class GAME(NBA_datapull):
             self.SET_parameters(k,v)
         self.GET_raw_data()
     def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self._api_params)
+        self._get_nba_data(self._url_modifier,self.api_params)
 
 class DAILY(NBA_datapull):
     def __init__(self, date, **kwargs):
@@ -70,7 +75,7 @@ class DAILY(NBA_datapull):
             self.SET_parameters(k,v)
         self.GET_raw_data()
     def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self._api_params)
+        self._get_nba_data(self._url_modifier,self.api_params)
 
 class LEAGUE(NBA_datapull):
     def __init__(self, **kwargs):
@@ -78,7 +83,7 @@ class LEAGUE(NBA_datapull):
             self.SET_parameters(k,v)
         self.GET_raw_data()
     def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self._api_params)
+        self._get_nba_data(self._url_modifier,self.api_params)
 
 class PLAYTYPE(object):
     def __init__(self, team=False):
@@ -109,8 +114,8 @@ class PLAYTYPE(object):
             self._datatables = response.json()
         else:
             # Change this to Exception
-            print 'HTTP Response {0}: {1}'.format(response.status_code,
-                                                   response.reason)
+            print('HTTP Response {0}: {1}'.format(response.status_code,
+                                                   response.reason))
     def _get_table_from_data(self, nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values  = nba_table['resultSets'][table_id]['rowSet']
@@ -158,8 +163,8 @@ class SPORTVU(object):
             self._datatables = response.json()
         else:
             # Change this to Exception
-            print 'HTTP Response {0}: {1}'.format(response.status_code,
-                                                   response.reason)
+            print('HTTP Response {0}: {1}'.format(response.status_code,
+                                                   response.reason))
     def _get_table_from_data(self, nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values  = nba_table['resultSets'][table_id]['rowSet']
