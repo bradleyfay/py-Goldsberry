@@ -27,3 +27,12 @@ class player_dashboard_params(param_base):
 
 class default_parameters(object):
     api_params = {}
+
+class game_id_params(object):
+    api_params = {
+    'LeagueID':'00',
+    'Season':'2015-16',
+    'PlayerOrTeam':'T',
+    'Direction':'DESC',
+    'SeasonType':'Regular Season',
+    'Sorter':'FGM'}

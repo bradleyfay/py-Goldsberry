@@ -78,11 +78,11 @@ class boxscore_tracking(GAME, default_parameters):
     def team_stats(self):
         return self._get_table_from_data(self._datatables, 1)
 
-# Replace this with code from email
-def GameIDs():
-    _url = "https://raw.github.com/bradleyfay/py-Goldsberry/master/data/gameids.json"
-    _pull = _requests.get(_url)
-    return _pull.json()
+# Courtesy of daniel.silvis@gmail.com
+class GameIDs(LEAGUE,game_id_params):
+    _url_modifier = 'leaguegamelog'
+    def game_list(self):
+        return self._get_table_from_data(self._datatables, 0)
 
 __all__ = ['play_by_play', 'boxscore_summary', 'boxscore_traditional', 
            'boxscore_advanced', 'boxscore_miscellaneous', 'boxscore_scoring',
