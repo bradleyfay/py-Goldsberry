@@ -8,7 +8,7 @@ class demographics(PLAYER, param_base):
     def headline_stats(self):
         return self._get_table_from_data(self._datatables, 1)
 
-class career_stats(PLAYER, param_base):
+class career_stats(PLAYER, plyr_career):
     _url_modifier = 'playerprofilev2'
     def season_totals_regular(self):
         return self._get_table_from_data(self._datatables, 0)
@@ -37,24 +37,25 @@ class career_stats(PLAYER, param_base):
     def next_game(self):
         return self._get_table_from_data(self._datatables, 12)
 
-class general_splits(PLAYER, param_base):
-    _url_modifier = 'playerdashboardbygeneralsplits'
-    def overall(self):
-        return self._get_table_from_data(self._datatables, 0)
-    def location(self):
-        return self._get_table_from_data(self._datatables, 1)
-    def wins_losses(self):
-        return self._get_table_from_data(self._datatables, 2)
-    def month(self):
-        return self._get_table_from_data(self._datatables, 3)
-    def pre_post_allstar(self):
-        return self._get_table_from_data(self._datatables, 4)
-    def starting_position(self):
-        return self._get_table_from_data(self._datatables, 5)
-    def days_rest(self):
-        return self._get_table_from_data(self._datatables, 6)
+# BLOCKED BY NBA
+# class general_splits(PLAYER, param_base):
+#     _url_modifier = 'playerdashboardbygeneralsplits'
+#     def overall(self):
+#         return self._get_table_from_data(self._datatables, 0)
+#     def location(self):
+#         return self._get_table_from_data(self._datatables, 1)
+#     def wins_losses(self):
+#         return self._get_table_from_data(self._datatables, 2)
+#     def month(self):
+#         return self._get_table_from_data(self._datatables, 3)
+#     def pre_post_allstar(self):
+#         return self._get_table_from_data(self._datatables, 4)
+#     def starting_position(self):
+#         return self._get_table_from_data(self._datatables, 5)
+#     def days_rest(self):
+#         return self._get_table_from_data(self._datatables, 6)
 
-class game_logs(PLAYER, param_base):
+class game_logs(PLAYER, plyr_gamelogs):
     _url_modifier = 'playergamelog'
     def logs(self):
         return self._get_table_from_data(self._datatables, 0)
@@ -76,18 +77,19 @@ class shot_dashboard(PLAYER, player_dashboard_params):
     def touch_time(self):
         return self._get_table_from_data(self._datatables, 6)
 
-class rebound_dashboard(PLAYER, player_dashboard_params):
-    _url_modifier = 'playerdashptreb'
-    def overall(self):
-        return self._get_table_from_data(self._datatables, 0)
-    def shot_type(self):
-        return self._get_table_from_data(self._datatables, 1)
-    def contesting_rebounders(self):
-        return self._get_table_from_data(self._datatables, 2)
-    def shot_distance(self):
-        return self._get_table_from_data(self._datatables, 3)
-    def rebound_distanct(self):
-        return self._get_table_from_data(self._datatables, 4)
+# BLOCKED BY NBA
+# class rebound_dashboard(PLAYER, player_dashboard_params):
+#     _url_modifier = 'playerdashptreb'
+#     def overall(self):
+#         return self._get_table_from_data(self._datatables, 0)
+#     def shot_type(self):
+#         return self._get_table_from_data(self._datatables, 1)
+#     def contesting_rebounders(self):
+#         return self._get_table_from_data(self._datatables, 2)
+#     def shot_distance(self):
+#         return self._get_table_from_data(self._datatables, 3)
+#     def rebound_distanct(self):
+#         return self._get_table_from_data(self._datatables, 4)
 
 class passing_dashboard(PLAYER, player_dashboard_params):
     _url_modifier = 'playerdashptpass'

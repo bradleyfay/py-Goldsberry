@@ -1,3 +1,2 @@
 include README.rst
 include docs/*.txt
-include data/gameids.json

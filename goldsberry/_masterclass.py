@@ -22,20 +22,19 @@ class NBA_datapull(object):
             'Cache-Control': 'max-age=0',
             'Connection': 'keep-alive'
         }
-        response = _requests.get(pull_url, params = api_params,
+        self._response = _requests.get(pull_url, params = api_params,
                                 headers = header_data)
 
-        if response.status_code == 200:
-            self._datatables = response.json()
+        if self._response.status_code == 200:
+            self._datatables = self._response.json()
         else:
             # Change this to Exception
-            txt = response.text.split(';')
+            txt = self._response.text.split(';')
             txt = [x.replace(' property','') for x in txt]
             txt = [x.replace('The ','') for x in txt]
             txt = [x.split(' is')[0] for x in txt]
             txt = [x.lstrip() for x in txt]
             print("Please use the SET_parameters method to set the following paramters", "\n".join(txt))
-
     def _get_table_from_data(self, nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values  = nba_table['resultSets'][table_id]['rowSet']
@@ -107,15 +106,19 @@ class PLAYTYPE(object):
             scope = 'team_'
         else: scope = 'player_'
         pull_url = "{0}{1}{2}.js".format(base_url, scope, url_modifier)
-        response = _requests.get(pull_url, headers = header_data)
-        self._url = response.url
-        self._headers = response.request.headers
-        if response.status_code == 200:
-            self._datatables = response.json()
+        self._response = _requests.get(pull_url, params = api_params,
+                                headers = header_data)
+
+        if self._response.status_code == 200:
+            self._datatables = self._response.json()
         else:
             # Change this to Exception
-            print('HTTP Response {0}: {1}'.format(response.status_code,
-                                                   response.reason))
+            txt = self._response.text.split(';')
+            txt = [x.replace(' property','') for x in txt]
+            txt = [x.replace('The ','') for x in txt]
+            txt = [x.split(' is')[0] for x in txt]
+            txt = [x.lstrip() for x in txt]
+            print("Please use the SET_parameters method to set the following paramters", "\n".join(txt))
     def _get_table_from_data(self, nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values  = nba_table['resultSets'][table_id]['rowSet']
@@ -156,15 +159,19 @@ class SPORTVU(object):
         else: team = ''
         pull_url = "{0}{1}/{2}{3}Data.json".format(base_url, 
                                                 year, url_modifier,team)
-        response = _requests.get(pull_url, headers = header_data)
-        self._url = response.url
-        self._headers = response.request.headers
-        if response.status_code == 200:
-            self._datatables = response.json()
+        self._response = _requests.get(pull_url, params = api_params,
+                                headers = header_data)
+        if self._response.status_code == 200:
+            self._datatables = self._response.json()
         else:
             # Change this to Exception
-            print('HTTP Response {0}: {1}'.format(response.status_code,
-                                                   response.reason))
+            txt = self._response.text.split(';')
+            txt = [x.replace(' property','') for x in txt]
+            txt = [x.replace('The ','') for x in txt]
+            txt = [x.split(' is')[0] for x in txt]
+            txt = [x.lstrip() for x in txt]
+            print("Please use the SET_parameters method to set the following paramters", "\n".join(txt))
+
     def _get_table_from_data(self, nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values  = nba_table['resultSets'][table_id]['rowSet']

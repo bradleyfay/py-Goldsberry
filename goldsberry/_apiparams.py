@@ -1,10 +1,16 @@
 class param_base(object):
     api_params = {'LeagueID':'00', 'Season':'2015-16'}
 
-class player_list(param_base):
+class plyr_career(object):
+    api_params = {'LeagueID':'00', 'Season':'2015-16', 'PerMode':'PerGame'}
+
+class plyr_gamelogs(object):
+    api_params = {'LeagueID':'00', 'Season':'2015-16', 'SeasonType':'Regualar Season'}
+
+class player_list(object):
     _api_params = {'IsOnlyCurrentSeason':'1','LeagueID':'00','Season':'2015-16'}
 
-class player_dashboard_params(param_base):
+class player_dashboard_params(object):
     api_params = {
         'DateFrom':'',
         'DateTo':'',
