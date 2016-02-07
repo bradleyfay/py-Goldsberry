@@ -41,6 +41,39 @@ p_ply_list = {
     'Season':'2015-16'
 }
 
+p_ply_shotchart = {
+    'ContextMeasure': 'FGM',
+    'DateFrom': '',
+    'DateTo': '',
+    'GameID': '',
+    'GameSegment': '',
+    'LastNGames': 0,
+    'LeagueID': '00',
+    'Location': '',
+    'Month': 0,
+    'OpponentTeamID': 0,
+    'Outcome': '',
+    'Period': 0,
+    'PlayerID': 202326,
+    'Position': '',
+    'RookieYear': '',
+    'Season': '2015-16',
+    'SeasonSegment': '',
+    'SeasonType': u'Regular Season',
+    'TeamID': 0,
+    'VsConference': '',
+    'VsDivision': ''
+    }
+
+p_game_ids = {
+    'LeagueID':'00',
+    'Season':'2015-16',
+    'PlayerOrTeam':'T',
+    'Direction':'DESC',
+    'SeasonType':'Regular Season',
+    'Sorter':'FGM'
+}
+
 class default_parameters(object):
     def __init__(self):
         pass
