@@ -55,35 +55,30 @@ class PLAYER(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(PlayerID=playerid, **kwargs)
         self.GET_raw_data()
-    
 
 class TEAM(NBA_datapull):
     def __init__(self, teamid, **kwargs):
+        NBA_datapull.__init__(self)
         self.SET_parameters(TeamID=teamid,**kwargs)
         self.GET_raw_data()
-    def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self.api_params)
 
 class GAME(NBA_datapull):
     def __init__(self, gameid, **kwargs):
+        NBA_datapull.__init__(self)
         self.SET_parameters(GameID=gameid,**kwargs)
         self.GET_raw_data()
-    def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self.api_params)
 
 class DAILY(NBA_datapull):
     def __init__(self, date, **kwargs):
+        NBA_datapull.__init__(self)
         self.SET_parameters(gameDate=date, **kwargs) # Needs format validation
         self.GET_raw_data()
-    def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self.api_params)
 
 class LEAGUE(NBA_datapull):
     def __init__(self, **kwargs):
+        NBA_datapull.__init__(self)
         self.SET_parameters(**kwargs)
         self.GET_raw_data()
-    def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self.api_params)
 
 class PLAYTYPE(object):
     def __init__(self, team=False):

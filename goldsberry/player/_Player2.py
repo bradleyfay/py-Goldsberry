@@ -7,6 +7,7 @@ class demographics(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(PlayerID = playerid, **p_base)
         self._url_modifier = 'commonplayerinfo'
+        self.GET_raw_data()
     def player_info(self):
         return self._get_table_from_data(self._datatables, 0)
     def headline_stats(self):
@@ -17,6 +18,7 @@ class career_stats(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(PlayerID = playerid, **p_ply_career)
         self._url_modifier = 'playerprofilev2'
+        self.GET_raw_data()
     def season_totals_regular(self):
         return self._get_table_from_data(self._datatables, 0)
     def career_totals_regular(self):
@@ -44,32 +46,12 @@ class career_stats(NBA_datapull):
     def next_game(self):
         return self._get_table_from_data(self._datatables, 12)
 
-# BLOCKED BY NBA
-class general_splits(NBA_datapull):
-    def __init__(self, playerid):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(PlayerID = playerid, **p_ply_career)
-        self._url_modifier = 'playerdashboardbygeneralsplits'
-    def overall(self):
-        return self._get_table_from_data(self._datatables, 0)
-    def location(self):
-        return self._get_table_from_data(self._datatables, 1)
-    def wins_losses(self):
-        return self._get_table_from_data(self._datatables, 2)
-    def month(self):
-        return self._get_table_from_data(self._datatables, 3)
-    def pre_post_allstar(self):
-        return self._get_table_from_data(self._datatables, 4)
-    def starting_position(self):
-        return self._get_table_from_data(self._datatables, 5)
-    def days_rest(self):
-        return self._get_table_from_data(self._datatables, 6)
-
 class game_logs(NBA_datapull):
     def __init__(self, playerid):
         NBA_datapull.__init__(self)
         self.SET_parameters(PlayerID = playerid, **p_ply_gamelogs)
         self._url_modifier = 'playergamelog'
+        self.GET_raw_data()
     def logs(self):
         return self._get_table_from_data(self._datatables, 0)
 
@@ -78,6 +60,7 @@ class shot_dashboard(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(PlayerID = playerid, **p_ply_dashboard)
         self._url_modifier = 'playerdashptshots'
+        self.GET_raw_data()
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def general(self):
@@ -93,12 +76,13 @@ class shot_dashboard(NBA_datapull):
     def touch_time(self):
         return self._get_table_from_data(self._datatables, 6)
 
-# BLOCKED BY NBA
+
 class rebound_dashboard(NBA_datapull):
     def __init__(self, playerid):
         NBA_datapull.__init__(self)
         self.SET_parameters(PlayerID = playerid, **p_ply_dashboard)
         self._url_modifier = 'playerdashptreb'
+        self.GET_raw_data()
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def shot_type(self):
@@ -115,6 +99,7 @@ class passing_dashboard(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(PlayerID = playerid, **p_ply_dashboard)
         self._url_modifier = 'playerdashptpass'
+        self.GET_raw_data()
     def passes_made(self):
         return self._get_table_from_data(self._datatables, 0)
     def passes_received(self):
@@ -125,47 +110,74 @@ class defense_dashboard(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(PlayerID = playerid, **p_ply_dashboard)
         self._url_modifier = 'playerdashptshotdefend'
+        self.GET_raw_data()
     def defending_shot(self):
-        return self._get_table_from_data(self._datatables, 0)
-
-class shot_log(NBA_datapull):
-    def __init__(self, playerid):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(PlayerID = playerid, **p_base)
-        self._url_modifier = 'playerdashptsshotlog'
-    def log(self):
-        return self._get_table_from_data(self._datatables, 0)
-
-class rebound_log(NBA_datapull):
-    def __init__(self, playerid):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(PlayerID = playerid, **p_base)
-        self._url_modifier = 'playerdashptreboundlogs'
-    def log(self):
         return self._get_table_from_data(self._datatables, 0)
 
 class shot_chart(NBA_datapull):
     def __init__(self, playerid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(PlayerID = playerid, **p_base)
+        self.SET_parameters(PlayerID = playerid, **p_ply_shotchart)
         self._url_modifier = 'shotchartdetail'
+        self.GET_raw_data()
     def chart(self):
         return self._get_table_from_data(self._datatables, 0)
     def leagueaverage(self):
         return self._get_table_from_data(self._datatables, 1)
 
 class PlayerList(NBA_datapull):
-    _url_modifier = 'commonallplayers'
     def __init__(self):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_ply_list)
+        self._url_modifier = 'commonallplayers'
         self.GET_raw_data()
     def GET_raw_data(self):
         self._get_nba_data(self._url_modifier,self.api_params)
     def players(self):
         return self._get_table_from_data(self._datatables, 0)
 
-__all__ = ["demographics", "career_stats", "general_splits", 
+# BLOCKED BY NBA
+class shot_log(NBA_datapull):
+    def __init__(self, playerid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(PlayerID = playerid, **p_base)
+        self._url_modifier = 'playerdashptsshotlog'
+        self.GET_raw_data()
+    def log(self):
+        return self._get_table_from_data(self._datatables, 0)
+# BLOCKED BY NBA
+class rebound_log(NBA_datapull):
+    def __init__(self, playerid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(PlayerID = playerid, **p_base)
+        self._url_modifier = 'playerdashptreboundlogs'
+        self.GET_raw_data()
+    def log(self):
+        return self._get_table_from_data(self._datatables, 0)
+
+# BLOCKED BY NBA
+class general_splits(NBA_datapull):
+    def __init__(self, playerid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(PlayerID = playerid, **p_ply_career)
+        self._url_modifier = 'playerdashboardbygeneralsplits'
+        self.GET_raw_data()
+    def overall(self):
+        return self._get_table_from_data(self._datatables, 0)
+    def location(self):
+        return self._get_table_from_data(self._datatables, 1)
+    def wins_losses(self):
+        return self._get_table_from_data(self._datatables, 2)
+    def month(self):
+        return self._get_table_from_data(self._datatables, 3)
+    def pre_post_allstar(self):
+        return self._get_table_from_data(self._datatables, 4)
+    def starting_position(self):
+        return self._get_table_from_data(self._datatables, 5)
+    def days_rest(self):
+        return self._get_table_from_data(self._datatables, 6)
+
+__all__ = ["demographics", "career_stats", dsaaaaaaaaaaaaas 
            "game_logs", "shot_dashboard", "rebound_dashboard",
-           "passing_dashboard", "defense_dashboard", "shot_log", 
-           "rebound_log", "shot_chart"]
+           "passing_dashboard", "defense_dashboard",  
+           "shot_chart"]

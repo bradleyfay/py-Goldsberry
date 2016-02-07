@@ -12,7 +12,7 @@ p_ply_career = {
 p_ply_gamelogs = {
     'LeagueID':'00',
     'Season':'2015-16',
-    'SeasonType':'Regualar Season'
+    'SeasonType':'Regular Season'
 }
 
 p_ply_dashboard = {
