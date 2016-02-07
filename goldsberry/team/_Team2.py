@@ -1,49 +1,35 @@
 from goldsberry._masterclass import *
 from goldsberry._apiparams import *
 
-class history:
-    def __init__(self, teamid):
-        self._url = "".join(["http://stats.nba.com/feeds/teams/profile/",str(teamid),"_TeamProfile.js"])
-        self._pull = _requests.get(self._url)
-    def details(self):
-        return self._pull.json()['TeamDetails'][0]['Details']
-    def history(self):
-        return self._pull.json()['TeamDetails'][1]['History']
-    def social_sites(self):
-        return self._pull.json()['TeamDetails'][2]['SocialSites']
-    def championships(self):
-        if self._pull.json()['TeamDetails'][3]['Awards'][0]['Championships'] == []:
-            return ["None"]
-        else: return self._pull.json()['TeamDetails'][3]['Awards'][0]['Championships']
-    def conference_titles(self):
-        if self._pull.json()['TeamDetails'][3]['Awards'][1]['ConferenceTitles'] == []:
-            return ["None"]
-        else: return self._pull.json()['TeamDetails'][3]['Awards'][1]['ConferenceTitles']
-    def divisional_titles(self):
-        if self._pull.json()['TeamDetails'][3]['Awards'][2]['DivitionalTitles'] == []:
-            return ['None']
-        else: return self._pull.json()['TeamDetails'][3]['Awards'][2]['DivitionalTitles']
-    def hof_inductees(self):
-        return self._pull.json()['TeamDetails'][4]['HallOfFameInductees']
-    def retired_members(self):
-        return self._pull.json()['TeamDetails'][5]['RetiredMembers']
 
-class team_info(TEAM, default_parameters):
-    _url_modifier = 'teaminfocommon'
+class team_info(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teaminfocommon'
+        self.GET_raw_data()
     def info(self):
         return self._get_table_from_data(self._datatables, 0)
     def season_ranks(self):
         return self._get_table_from_data(self._datatables, 1)
 
-class roster(TEAM, default_parameters):
-    _url_modifier = 'commonteamroster'
+class roster(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'commonteamroster'
+        self.GET_raw_data()
     def player(self):
         return self._get_table_from_data(self._datatables, 0)
     def coaches(self):
         return self._get_table_from_data(self._datatables, 1)
 
-class splits(TEAM, default_parameters):
-    _url_modifier = 'teamdashboardbygeneralsplits'
+class splits(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamdashboardbygeneralsplits'
+        self.GET_raw_data()
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def location(self):
@@ -57,15 +43,23 @@ class splits(TEAM, default_parameters):
     def days_rest(self):
         return self._get_table_from_data(self._datatables, 5)
 
-class season_stats(TEAM, default_parameters):
-    _url_modifier = 'teamplayerdashboard'
+class season_stats(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamplayerdashboard'
+        self.GET_raw_data()
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def player_totals(self):
         return self._get_table_from_data(self._datatables, 1)
 
-class on_off_court(TEAM, default_parameters):
-    _url_modifier = 'teamplayeronoffdetails'
+class on_off_court(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier =  'teamplayeronoffdetails'
+        self.GET_raw_data()
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def on_court(self):
@@ -79,25 +73,41 @@ class on_off_court(TEAM, default_parameters):
     def off_court_summary(self):
         return self._get_table_from_data(self._datatables, 5)
 
-class year_by_year(TEAM, default_parameters):
-    _url_modifier = 'teamyearbyyearstats'
+class year_by_year(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamyearbyyearstats'
+        self.GET_raw_data()
     def team_stats(self):
         return self._get_table_from_data(self._datatables, 0)
 
-class game_logs(TEAM, default_parameters):
-    _url_modifier = 'teamgamelog'
+class game_logs(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamgamelog'
+        self.GET_raw_data()
     def logs(self):
         return self._get_table_from_data(self._datatables, 0)
 
-class lineups(TEAM, default_parameters):
-    _url_modifier = 'teamdashlineups'
+class lineups(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamdashlineups'
+        self.GET_raw_data()
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def lineups(self):
         return self._get_table_from_data(self._datatables, 1)
 
-class shooting_splits(TEAM, default_parameters):
-    _url_modifier = 'teamdashboardbyshootingsplits'
+class shooting_splits(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamdashboardbyshootingsplits'
+        self.GET_raw_data()
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def shot_5ft(self):
@@ -113,15 +123,23 @@ class shooting_splits(TEAM, default_parameters):
     def assisted_by(self):
         return self._get_table_from_data(self._datatables, 6)
 
-class passing_dashboard(TEAM, default_parameters):
-    _url_modifier = 'teamdashptpass'
+class passing_dashboard(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamdashptpass'
+        self.GET_raw_data()
     def passes_made(self):
         return self._get_table_from_data(self._datatables, 0)
     def passes_received(self):
         return self._get_table_from_data(self._datatables, 1)
 
-class rebound_dashboard(TEAM, default_parameters):
-    _url_modifier = 'teamdashptreb'
+class rebound_dashboard(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamdashptreb'
+        self.GET_raw_data()
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def shot_type(self):
@@ -133,8 +151,12 @@ class rebound_dashboard(TEAM, default_parameters):
     def rebound_distance(self):
         return self._get_table_from_data(self._datatables, 4)
 
-class shot_dashboard(TEAM, default_parameters):
-    _url_modifier = 'teamdashptshots'
+class shot_dashboard(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamdashptshots'
+        self.GET_raw_data()
     def overall(self):
         return self._get_table_from_data(self._datatables, 0)
     def general(self):
@@ -150,11 +172,42 @@ class shot_dashboard(TEAM, default_parameters):
     def touch_time(self):
         return self._get_table_from_data(self._datatables, 6)
 
-class defense_dashboard(TEAM, default_parameters):
-    _url_modifier = 'teamdashptshotdefend'
+class defense_dashboard(NBA_datapull):
+    def __init__(self, teamid):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(TeamID = teamid, **p_base)
+        self._url_modifier = 'teamdashptshotdefend'
+        self.GET_raw_data()
     def defending_shot(self):
         return self._get_table_from_data(self._datatables, 0)
 
-__all__ = ['team_info', 'roster', 'history', 'splits','season_stats', 'on_off_court', 
+__all__ = ['team_info', 'roster', 'splits','season_stats', 'on_off_court', 
            'on_off_court', 'game_logs', 'lineups', 'shooting_splits', 'passing_dashboard',
            'passing_dashboard', 'shot_dashboard']
+
+# class history:
+#     def __init__(self, teamid):
+#         self._url = "".join(["http://stats.nba.com/feeds/teams/profile/",str(teamid),"_TeamProfile.js"])
+#         self._pull = _requests.get(self._url)
+#     def details(self):
+#         return self._pull.json()['TeamDetails'][0]['Details']
+#     def history(self):
+#         return self._pull.json()['TeamDetails'][1]['History']
+#     def social_sites(self):
+#         return self._pull.json()['TeamDetails'][2]['SocialSites']
+#     def championships(self):
+#         if self._pull.json()['TeamDetails'][3]['Awards'][0]['Championships'] == []:
+#             return ["None"]
+#         else: return self._pull.json()['TeamDetails'][3]['Awards'][0]['Championships']
+#     def conference_titles(self):
+#         if self._pull.json()['TeamDetails'][3]['Awards'][1]['ConferenceTitles'] == []:
+#             return ["None"]
+#         else: return self._pull.json()['TeamDetails'][3]['Awards'][1]['ConferenceTitles']
+#     def divisional_titles(self):
+#         if self._pull.json()['TeamDetails'][3]['Awards'][2]['DivitionalTitles'] == []:
+#             return ['None']
+#         else: return self._pull.json()['TeamDetails'][3]['Awards'][2]['DivitionalTitles']
+#     def hof_inductees(self):
+#         return self._pull.json()['TeamDetails'][4]['HallOfFameInductees']
+#     def retired_members(self):
+#         return self._pull.json()['TeamDetails'][5]['RetiredMembers']
