@@ -1,5 +1,7 @@
 py-Goldsberry
 =============
+.. image:: https://travis-ci.org/bradleyfay/py-Goldsberry.svg?branch=master
+    :target: https://travis-ci.org/bradleyfay/py-Goldsberry
 
 A Python Package for easily acquiring NBA Data for analysis
 
@@ -32,7 +34,9 @@ This package is a work in progress. As the NBA continues to make more
 data available, I will do my best to update ``py-Goldsberry`` to reflect
 these additions. Currently, there is almost a cumbersome amount of data
 available from the NBA so dealing with what is there is a bit of a
-challenge.
+challenge. 
+
+*UPDATE:* The NBA has apparently masked some of the tables that were previously available. The log level data is no longer available. This is disappointing as there was a multitude of research opportunities availble with the use of the data. Hopefully, the NBA will make this data available again in the near future.
 
 Getting started
 ---------------
@@ -49,7 +53,7 @@ session with the following command:
 
 .. code:: python
 
-    import goldsberry
+    import goldsberry as gb
     import pandas as pd
 
 The package is designed to work with `pandas`_ in that the output of
@@ -61,10 +65,8 @@ Getting a List of Players
 
 One of the key variables necessary to fully utilize ``py-Goldsberry`` is
 ``playerid``. This is the unique id number assigned to each player by
-the NBA. ``py-Goldsberry`` has a top-level function ``PlayerList()``
-built-in to give you quick access to a list of players and numbers. When
-you run the function, you should specify the year of the season from
-which you want the list of available players.
+the NBA. ``py-Goldsberry`` has a top-level class ``PlayerList()``
+built-in to give you quick access to a list of players and numbers. 
 
 .. code:: python
 

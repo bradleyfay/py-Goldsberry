@@ -2,10 +2,15 @@ from __future__ import print_function
 import requests as _requests
 
 class NBA_datapull(object):
-    # Set QueryString Parameters
-    #api_params = {}
-    def SET_parameters(self, param, value):
-        self.api_params[param] = value
+    def __init__(self):
+        self.api_params = {}
+
+    def get_parameters(self):
+        return self.api_params.keys()
+    def get_parameter_values(self):
+        return self.api_params.values()
+    def get_parameter_items(self):
+        return self.api_params
 
     def _get_nba_data(self, url_modifier, api_params):
         base_url = 'http://stats.nba.com/stats/'
@@ -39,47 +44,43 @@ class NBA_datapull(object):
         headers = nba_table['resultSets'][table_id]['headers']
         values  = nba_table['resultSets'][table_id]['rowSet']
         return [dict(zip(headers, value)) for value in values]
+    def GET_raw_data(self):
+        self._get_nba_data(self._url_modifier,self.api_params)
+    def SET_parameters(self, **kwargs):
+        for k,v in kwargs.iteritems():
+            self.api_params[k]=v
 
 class PLAYER(NBA_datapull):
     def __init__(self, playerid, **kwargs):
-        self.SET_parameters('PlayerID', playerid)
-        for k,v in kwargs:
-            self.SET_parameters(k,v)
+        NBA_datapull.__init__(self)
+        self.SET_parameters(PlayerID=playerid, **kwargs)
         self.GET_raw_data()
-    def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier,self.api_params)
+    
 
 class TEAM(NBA_datapull):
     def __init__(self, teamid, **kwargs):
-        self.SET_parameters('TeamID', teamid)
-        for k,v in kwargs:
-            self.SET_parameters(k,v)
+        self.SET_parameters(TeamID=teamid,**kwargs)
         self.GET_raw_data()
     def GET_raw_data(self):
         self._get_nba_data(self._url_modifier,self.api_params)
 
 class GAME(NBA_datapull):
     def __init__(self, gameid, **kwargs):
-        self.SET_parameters('GameID', gameid)
-        for k,v in kwargs:
-            self.SET_parameters(k,v)
+        self.SET_parameters(GameID=gameid,**kwargs)
         self.GET_raw_data()
     def GET_raw_data(self):
         self._get_nba_data(self._url_modifier,self.api_params)
 
 class DAILY(NBA_datapull):
     def __init__(self, date, **kwargs):
-        self.SET_parameters('gameDate', date) # Needs format validation
-        for k,v in kwargs:
-            self.SET_parameters(k,v)
+        self.SET_parameters(gameDate=date, **kwargs) # Needs format validation
         self.GET_raw_data()
     def GET_raw_data(self):
         self._get_nba_data(self._url_modifier,self.api_params)
 
 class LEAGUE(NBA_datapull):
     def __init__(self, **kwargs):
-        for k,v in kwargs:
-            self.SET_parameters(k,v)
+        self.SET_parameters(**kwargs)
         self.GET_raw_data()
     def GET_raw_data(self):
         self._get_nba_data(self._url_modifier,self.api_params)
