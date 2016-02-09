@@ -50,36 +50,6 @@ class NBA_datapull(object):
         for k,v in kwargs.iteritems():
             self.api_params[k]=v
 
-class PLAYER(NBA_datapull):
-    def __init__(self, playerid, **kwargs):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(PlayerID=playerid, **kwargs)
-        self.GET_raw_data()
-
-class TEAM(NBA_datapull):
-    def __init__(self, teamid, **kwargs):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID=teamid,**kwargs)
-        self.GET_raw_data()
-
-class GAME(NBA_datapull):
-    def __init__(self, gameid, **kwargs):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(GameID=gameid,**kwargs)
-        self.GET_raw_data()
-
-class DAILY(NBA_datapull):
-    def __init__(self, date, **kwargs):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(gameDate=date, **kwargs) # Needs format validation
-        self.GET_raw_data()
-
-class LEAGUE(NBA_datapull):
-    def __init__(self, **kwargs):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**kwargs)
-        self.GET_raw_data()
-
 class PLAYTYPE(object):
     def __init__(self, team=False):
         self._get_nba_data(self._url_modifier, team)
@@ -126,9 +96,6 @@ class PLAYTYPE(object):
         return self._get_table_from_data(self._datatables, 1)
     def season(self):
         return self._datatables['parameters']['Season']
-
-class BASE(NBA_datapull):
-    _junk = ''
 
 class SPORTVU(object):
     def __init__(self, year=2015, team=False):

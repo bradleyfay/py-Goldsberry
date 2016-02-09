@@ -35,5 +35,5 @@ class misc(PLAYTYPE):
     _url_modifier = 'Misc'
 
 __all__ = ['transition', 'isolation', 'pick_and_roll_ball_handler', 
-'pick_and_roll_roll_man', 'postup', 'spotup', 'handoff', 'cut', 
+'pick_and_roll_man', 'postup', 'spotup', 'handoff', 'cut', 
 'offscreen', 'offrebound', 'misc']
