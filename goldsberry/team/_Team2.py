@@ -185,8 +185,7 @@ __all__ = ['defense_dashboard', 'game_logs', 'lineups', 'passing_dashboard',
            'shot_dashboard', 'shooting_splits', 'splits', 'team_info',
            'year_by_year']
 
-# 
-class history:
+# class history:
 #     def __init__(self, teamid):
 #         self._url = "".join(["http://stats.nba.com/feeds/teams/profile/",str(teamid),"_TeamProfile.js"])
 #         self._pull = _requests.get(self._url)

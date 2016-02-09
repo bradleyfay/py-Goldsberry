@@ -227,6 +227,120 @@ p_game_bs = {
 
 p_game_pbp = {'EndPeriod': 0, 'StartPeriod': 0}
 
+p_league_sb = {'DayOffset': '0', 'LeagueID': '00'}
+
+p_league_history = {'LeagueID': '00'}
+
+p_league_leaders = {
+    'LeagueID':'00',
+    'PerMode':'PerGame',
+    'Scope':'RS',
+    'Season':'2015-16',
+    'SeasonType':'Regular Season',
+    'StatCategory':'PTS'}
+
+p_league_lineups = {
+    'Conference': None,
+    'DateFrom': '2016-01-02',
+    'DateTo': '2016-01-01',
+    'Division': None,
+    'GameSegment': None,
+    'GroupQuantity': 2,
+    'LastNGames': 0,
+    'LeagueID': '00',
+    'Location': None,
+    'MeasureType': 'Base',
+    'Month': 0,
+    'OpponentTeamID': 0,
+    'Outcome': None,
+    'PORound': None,
+    'PaceAdjust': 'Y',
+    'PerMode': 'Totals',
+    'Period': 0,
+    'PlusMinus': 'Y',
+    'Rank': 'Y',
+    'Season': '2015-16',
+    'SeasonSegment': None,
+    'SeasonType': 'Regular Season',
+    'ShotClockRange': None,
+    'TeamID': None,
+    'VsConference': None,
+    'VsDivision': None
+}
+
+p_league_classic = {
+    'College': None,
+    'Conference': None,
+    'Country': None,
+    'DateFrom': None,
+    'DateTo': None,
+    'Division': None,
+    'DraftPick': None,
+    'DraftYear': None,
+    'GameScope': None,
+    'GameSegment': None,
+    'Height': None,
+    'LastNGames': 0,
+    'LeagueID': '00',
+    'Location': None,
+    'MeasureType': 'Base',
+    'Month': 0,
+    'OpponentTeamID': 0,
+    'Outcome': None,
+    'PORound': None,
+    'PaceAdjust': 'Y',
+    'PerMode': 'Totals',
+    'Period': 0,
+    'PlayerExperience': None,
+    'PlayerPosition': None,
+    'PlusMinus': 'Y',
+    'Rank': 'Y',
+    'Season': '2015-16',
+    'SeasonSegment': None,
+    'SeasonType': 'Regular Season',
+    'ShotClockRange': None,
+    'StarterBench': None,
+    'TeamID': None,
+    'VsConference': None,
+    'VsDivision': None,
+    'Weight': None
+}
+
+p_league_clutch = {
+    'AheadBehind': '',
+    'ClutchTime': '',
+    'DateFrom': '',
+    'DateTo': '',
+    'Direction': 'DESC',
+    'GameScope': '',
+    'GameSegment': '',
+    'LastNGames': 0,
+    'LeagueID': '00',
+    'Location': '',
+    'MeasureType': 'Base',
+    'Month': 0,
+    'OpponentTeamID': 0,
+    'Outcome': '',
+    'PaceAdjust': 'Y',
+    'PerMode': 'Totals',
+    'Period': 0,
+    'PlayerExperience': '',
+    'PlayerOrTeam': 'T',
+    'PlayerPosition': '',
+    'PlusMinus': 'Y',
+    'PointDiff': 0,
+    'Rank': 'Y',
+    'Season': '2015-16',
+    'SeasonSegment': '',
+    'SeasonType': 'Regular Season',
+    'Sorter': 'FGM',
+    'StarterBench': '',
+    'VsConference': '',
+    'VsDivision': ''
+}
+
+
+
 class default_parameters(object):
     def __init__(self):
         pass

@@ -2,9 +2,9 @@ from goldsberry._masterclass import *
 from goldsberry._apiparams import *
 
 class daily_scoreboard(NBA_datapull):
-    def __init__(self):
-        NBA_datapull.__init__(self, date)
-        self.SET_parameters(gameDate=date,**p_game_ids)
+    def __init__(self, date):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(gameDate=date,**p_league_sb)
         self._url_modifier = 'scoreboardV2'
         self.GET_raw_data()
     def game_header(self):
@@ -31,7 +31,7 @@ class daily_scoreboard(NBA_datapull):
 class franchise_history(NBA_datapull):
     def __init__(self):
         NBA_datapull.__init__(self)
-        self.SET_parameters(**p_game_ids)
+        self.SET_parameters(**p_league_history)
         self._url_modifier = 'franchisehistory'
         self.GET_raw_data()
     def current_teams(self):
@@ -39,11 +39,32 @@ class franchise_history(NBA_datapull):
     def defunct_teams(self):
         return self._get_table_from_data(self._datatables, 1)
 
+## This one might not work because it's the key 'resultSet', not 'resultSets'
+## Confirmed does not work
+class league_leaders(NBA_datapull):
+    def __init__(self):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(**p_league_leaders)
+        self._url_modifier = 'leagueleaders'
+        self.GET_raw_data()
+    def leaders(self):
+        return self._get_table_from_data(self._datatables, 0)
+
+class lineups(NBA_datapull):
+    def __init__(self):
+        NBA_datapull.__init__(self)
+        self.SET_parameters(**p_game_ids)
+        self._url_modifier = 'leaguedashlineups'
+        self.GET_raw_data()
+    def lineups(self):
+        return self._get_table_from_data(self._datatables, 0)
+
+# Doubl Check Stem
 class playoff_picture(NBA_datapull):
     def __init__(self):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_game_ids)
-        self._url_modifier = 'playoff_picture'
+        self._url_modifier = 'playoffpicture'
         self.GET_raw_data()
     def eastern_conf_playoff_picture(self):
         return self._get_table_from_data(self._datatables, 0)
@@ -61,7 +82,7 @@ class playoff_picture(NBA_datapull):
 class team_stats_classic(NBA_datapull):
     def __init__(self):
         NBA_datapull.__init__(self)
-        self.SET_parameters(**p_game_ids)
+        self.SET_parameters(**p_league_classic)
         self._url_modifier = 'leaguedashteamstats'
         self.GET_raw_data()
     def stats(self):
@@ -70,7 +91,7 @@ class team_stats_classic(NBA_datapull):
 class player_stats_classic(NBA_datapull):
     def __init__(self):
         NBA_datapull.__init__(self)
-        self.SET_parameters(**p_game_ids)
+        self.SET_parameters(**p_league_classic)
         self._url_modifier = 'leaguedashplayerstats'
         self.GET_raw_data()
     def stats(self):
@@ -79,7 +100,7 @@ class player_stats_classic(NBA_datapull):
 class team_stats_clutch(NBA_datapull):
     def __init__(self):
         NBA_datapull.__init__(self)
-        self.SET_parameters(**p_game_ids)
+        self.SET_parameters(**p_league_clutch)
         self._url_modifier = 'leaguedashteamclutch'
         self.GET_raw_data()
     def clutch_stats(self):
@@ -88,30 +109,13 @@ class team_stats_clutch(NBA_datapull):
 class player_stats_clutch(NBA_datapull):
     def __init__(self):
         NBA_datapull.__init__(self)
-        self.SET_parameters(**p_game_ids)
+        self.SET_parameters(**p_league_clutch)
         self._url_modifier = 'leaguedashplayerclutch'
         self.GET_raw_data()
     def clutch_stats(self):
         return self._get_table_from_data(self._datatables, 0)
 
-class lineups(NBA_datapull):
-    def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_game_ids)
-        self._url_modifier = 'leaguedashlineups'
-        self.GET_raw_data()
-    def lineups(self):
-        return self._get_table_from_data(self._datatables, 0)
 
-## This one might not work because it's the key 'resultSet', not 'resultSets'
-class league_leaders(NBA_datapull):
-    def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_game_ids)
-        self._url_modifier = 'leagueleaders'
-        self.GET_raw_data()
-    def leaders(self):
-        return self._get_table_from_data(self._datatables, 0)
 
 # class transactions(BASE):
 #     _pull_url = "http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js"
