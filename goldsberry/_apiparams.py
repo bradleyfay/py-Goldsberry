@@ -218,6 +218,15 @@ p_team_info = {
     'SeasonType': 'Pre Season'
     }
 
+p_game_bs = {
+    'EndPeriod': 0,
+    'EndRange': 0,
+    'RangeType': 0,
+    'StartPeriod': 0,
+    'StartRange': 0}
+
+p_game_pbp = {'EndPeriod': 0, 'StartPeriod': 0}
+
 class default_parameters(object):
     def __init__(self):
         pass
