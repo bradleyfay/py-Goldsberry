@@ -1,7 +1,5 @@
 py-Goldsberry
 =============
-.. image:: https://travis-ci.org/bradleyfay/py-Goldsberry.svg?branch=master
-    :target: https://travis-ci.org/bradleyfay/py-Goldsberry
 
 A Python Package for easily acquiring NBA Data for analysis
 
