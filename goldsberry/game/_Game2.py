@@ -106,7 +106,7 @@ class boxscore_usage(NBA_datapull):
 class play_by_play(NBA_datapull):
     def __init__(self, gameid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(GameID = gameid, **p_base)
+        self.SET_parameters(GameID = gameid, **p_game_pbp)
         self._url_modifier = 'playbyplayv2'
         self.GET_raw_data()
     def player_info(self):
