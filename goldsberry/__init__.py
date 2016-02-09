@@ -1,6 +1,6 @@
 __author__ = 'Bradley Fay'
 __email__ = 'bradley.fay@gmail.com'
-__version__ = '0.7.1'
+__version__ = '0.8.0'
 
 import goldsberry.game
 import goldsberry.league
