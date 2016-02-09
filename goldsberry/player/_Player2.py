@@ -43,6 +43,7 @@ class career_stats(NBA_datapull):
         return self._get_table_from_data(self._datatables, 10)
     def career_high(self):
         return self._get_table_from_data(self._datatables, 11)
+
     def next_game(self):
         return self._get_table_from_data(self._datatables, 12)
 
@@ -177,7 +178,7 @@ class general_splits(NBA_datapull):
     def days_rest(self):
         return self._get_table_from_data(self._datatables, 6)
 
-__all__ = ["demographics", "career_stats", dsaaaaaaaaaaaaas 
+__all__ = ["demographics", "career_stats",  
            "game_logs", "shot_dashboard", "rebound_dashboard",
            "passing_dashboard", "defense_dashboard",  
            "shot_chart"]

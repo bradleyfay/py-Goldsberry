@@ -6,6 +6,7 @@ class daily_scoreboard(NBA_datapull):
         NBA_datapull.__init__(self, date)
         self.SET_parameters(gameDate=date,**p_game_ids)
         self._url_modifier = 'scoreboardV2'
+        self.GET_raw_data()
     def game_header(self):
         return self._get_table_from_data(self._datatables, 0)
     def linescore(self):
@@ -32,6 +33,7 @@ class franchise_history(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_game_ids)
         self._url_modifier = 'franchisehistory'
+        self.GET_raw_data()
     def current_teams(self):
         return self._get_table_from_data(self._datatables, 0)
     def defunct_teams(self):
@@ -42,6 +44,7 @@ class playoff_picture(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_game_ids)
         self._url_modifier = 'playoff_picture'
+        self.GET_raw_data()
     def eastern_conf_playoff_picture(self):
         return self._get_table_from_data(self._datatables, 0)
     def western_conf_playoff_picture(self):
@@ -60,6 +63,7 @@ class team_stats_classic(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_game_ids)
         self._url_modifier = 'leaguedashteamstats'
+        self.GET_raw_data()
     def stats(self):
         return self._get_table_from_data(self._datatables, 0)
 
@@ -68,6 +72,7 @@ class player_stats_classic(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_game_ids)
         self._url_modifier = 'leaguedashplayerstats'
+        self.GET_raw_data()
     def stats(self):
         return self._get_table_from_data(self._datatables, 0)
 
@@ -76,6 +81,7 @@ class team_stats_clutch(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_game_ids)
         self._url_modifier = 'leaguedashteamclutch'
+        self.GET_raw_data()
     def clutch_stats(self):
         return self._get_table_from_data(self._datatables, 0)
 
@@ -84,6 +90,7 @@ class player_stats_clutch(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_game_ids)
         self._url_modifier = 'leaguedashplayerclutch'
+        self.GET_raw_data()
     def clutch_stats(self):
         return self._get_table_from_data(self._datatables, 0)
 
@@ -92,6 +99,7 @@ class lineups(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_game_ids)
         self._url_modifier = 'leaguedashlineups'
+        self.GET_raw_data()
     def lineups(self):
         return self._get_table_from_data(self._datatables, 0)
 
@@ -101,6 +109,7 @@ class league_leaders(NBA_datapull):
         NBA_datapull.__init__(self)
         self.SET_parameters(**p_game_ids)
         self._url_modifier = 'leagueleaders'
+        self.GET_raw_data()
     def leaders(self):
         return self._get_table_from_data(self._datatables, 0)
 

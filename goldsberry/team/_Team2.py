@@ -5,7 +5,7 @@ from goldsberry._apiparams import *
 class team_info(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_info)
         self._url_modifier = 'teaminfocommon'
         self.GET_raw_data()
     def info(self):
@@ -27,7 +27,7 @@ class roster(NBA_datapull):
 class splits(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_team_split)
         self._url_modifier = 'teamdashboardbygeneralsplits'
         self.GET_raw_data()
     def overall(self):
@@ -46,7 +46,7 @@ class splits(NBA_datapull):
 class season_stats(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_team_season)
         self._url_modifier = 'teamplayerdashboard'
         self.GET_raw_data()
     def overall(self):
@@ -57,7 +57,7 @@ class season_stats(NBA_datapull):
 class on_off_court(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_team_onoff)
         self._url_modifier =  'teamplayeronoffdetails'
         self.GET_raw_data()
     def overall(self):
@@ -85,7 +85,7 @@ class year_by_year(NBA_datapull):
 class game_logs(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_ply_gamelogs)
         self._url_modifier = 'teamgamelog'
         self.GET_raw_data()
     def logs(self):
@@ -94,7 +94,7 @@ class game_logs(NBA_datapull):
 class lineups(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_team_lineups)
         self._url_modifier = 'teamdashlineups'
         self.GET_raw_data()
     def overall(self):
@@ -105,7 +105,7 @@ class lineups(NBA_datapull):
 class shooting_splits(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_team_shooting)
         self._url_modifier = 'teamdashboardbyshootingsplits'
         self.GET_raw_data()
     def overall(self):
@@ -126,7 +126,7 @@ class shooting_splits(NBA_datapull):
 class passing_dashboard(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_team_dashbd)
         self._url_modifier = 'teamdashptpass'
         self.GET_raw_data()
     def passes_made(self):
@@ -137,7 +137,7 @@ class passing_dashboard(NBA_datapull):
 class rebound_dashboard(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_team_dashbd)
         self._url_modifier = 'teamdashptreb'
         self.GET_raw_data()
     def overall(self):
@@ -154,7 +154,7 @@ class rebound_dashboard(NBA_datapull):
 class shot_dashboard(NBA_datapull):
     def __init__(self, teamid):
         NBA_datapull.__init__(self)
-        self.SET_parameters(TeamID = teamid, **p_base)
+        self.SET_parameters(TeamID = teamid, **p_team_dashbd)
         self._url_modifier = 'teamdashptshots'
         self.GET_raw_data()
     def overall(self):
