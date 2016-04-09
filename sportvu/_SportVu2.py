@@ -1,32 +1,42 @@
-from goldsberry.masterclass import *
+from goldsberry.masterclass import SportVuProvider
 
-class catch_and_shoot(SPORTVU):
+
+class catch_and_shoot(SportVuProvider):
     _url_modifier = 'catchShoot'
 
-class defense(SPORTVU):
+
+class defense(SportVuProvider):
     _url_modifier = 'defense'
 
-class drives(SPORTVU):
+
+class drives(SportVuProvider):
     _url_modifier = 'drives'
 
-class passing(SPORTVU):
+
+class passing(SportVuProvider):
     _url_modifier = 'passing'
 
-class touches(SPORTVU):
+
+class touches(SportVuProvider):
     _url_modifier = 'touches'
 
-class pull_up_shooting(SPORTVU):
+
+class pull_up_shooting(SportVuProvider):
     _url_modifier = 'pullUpShoot'
 
-class rebounding(SPORTVU):
+
+class rebounding(SportVuProvider):
     _url_modifier = 'rebounding'
 
-class shooting(SPORTVU):
+
+class shooting(SportVuProvider):
     _url_modifier = 'shooting'
 
-class speed(SPORTVU):
+
+class speed(SportVuProvider):
     _url_modifier = 'speed'
 
-__all__ = ['catch_and_shoot', 'defense', 'drives', 'passing', 
-    'touches', 'pull_up_shooting', 'rebounding', 'shooting', 
-    'speed']
+
+__all__ = ['catch_and_shoot', 'defense', 'drives', 'passing',
+           'touches', 'pull_up_shooting', 'rebounding', 'shooting',
+           'speed']
