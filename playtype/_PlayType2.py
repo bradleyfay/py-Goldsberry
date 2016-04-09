@@ -1,5 +1,5 @@
-from goldsberry._masterclass import PLAYTYPE
-from goldsberry._apiparams import *
+from goldsberry.masterclass import PLAYTYPE
+from goldsberry.apiparams import *
 
 
 class transition(PLAYTYPE):

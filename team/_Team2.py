@@ -1,29 +1,32 @@
-from goldsberry._masterclass import *
-from goldsberry._apiparams import *
+import goldsberry.masterclass
+from goldsberry.apiparams import *
 
 
-class defense_dashboard(NbaDataProvider):
-    def __init__(self, teamid):
+class defense_dashboard(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamdashptshotdefend'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base,
+                                                        TeamID=team_id)
 
     def defending_shot(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 
-class game_logs(NbaDataProvider):
-    def __init__(self, teamid):
+class game_logs(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamgamelog'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_gamelogs, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_gamelogs,
+                                                        TeamID=team_id)
 
     def logs(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 
-class lineups(NbaDataProvider):
-    def __init__(self, teamid):
+class lineups(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamdashlineups'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_lineups, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_lineups,
+                                                        TeamID=team_id)
 
     def overall(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -32,10 +35,11 @@ class lineups(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 1)
 
 
-class passing_dashboard(NbaDataProvider):
-    def __init__(self, teamid):
+class passing_dashboard(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamdashptpass'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_dashbd, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_dashbd,
+                                                        TeamID=team_id)
 
     def passes_made(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -44,10 +48,11 @@ class passing_dashboard(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 1)
 
 
-class on_off_court(NbaDataProvider):
-    def __init__(self, teamid):
+class on_off_court(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamplayeronoffdetails'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_onoff, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_onoff,
+                                                        TeamID=team_id)
 
     def overall(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -68,10 +73,11 @@ class on_off_court(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 5)
 
 
-class rebound_dashboard(NbaDataProvider):
-    def __init__(self, teamid):
+class rebound_dashboard(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamdashptreb'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_dashbd, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_dashbd,
+                                                        TeamID=team_id)
 
     def overall(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -89,10 +95,11 @@ class rebound_dashboard(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 4)
 
 
-class roster(NbaDataProvider):
-    def __init__(self, teamid):
+class roster(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'commonteamroster'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base,
+                                                        TeamID=team_id)
 
     def player(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -101,10 +108,11 @@ class roster(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 1)
 
 
-class season_stats(NbaDataProvider):
-    def __init__(self, teamid):
+class season_stats(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamplayerdashboard'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_season, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_season,
+                                                        TeamID=team_id)
 
     def overall(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -113,10 +121,11 @@ class season_stats(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 1)
 
 
-class shot_dashboard(NbaDataProvider):
-    def __init__(self, teamid):
+class shot_dashboard(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamdashptshots'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_dashbd, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_dashbd,
+                                                        TeamID=team_id)
 
     def overall(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -140,10 +149,11 @@ class shot_dashboard(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 6)
 
 
-class shooting_splits(NbaDataProvider):
-    def __init__(self, teamid):
+class shooting_splits(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamdashboardbyshootingsplits'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_shooting, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_shooting,
+                                                        TeamID=team_id)
 
     def overall(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -167,10 +177,11 @@ class shooting_splits(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 6)
 
 
-class splits(NbaDataProvider):
-    def __init__(self, teamid):
+class splits(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamdashboardbygeneralsplits'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_split, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_split,
+                                                        TeamID=team_id)
 
     def overall(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -191,10 +202,11 @@ class splits(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 5)
 
 
-class team_info(NbaDataProvider):
-    def __init__(self, teamid):
+class team_info(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teaminfocommon'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_info, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_info,
+                                                        TeamID=team_id)
 
     def info(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -203,10 +215,11 @@ class team_info(NbaDataProvider):
         return self.get_table_from_data(self.data_tables, 1)
 
 
-class year_by_year(NbaDataProvider):
-    def __init__(self, teamid):
+class year_by_year(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, team_id):
         url_modifier = 'teamyearbyyearstats'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base, TeamID=teamid)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base,
+                                                        TeamID=team_id)
 
     def team_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -218,8 +231,8 @@ __all__ = ['defense_dashboard', 'game_logs', 'lineups', 'passing_dashboard',
            'year_by_year']
 
 # class history:
-#     def __init__(self, teamid):
-#         self._url = "".join(["http://stats.nba.com/feeds/teams/profile/",str(teamid),"_TeamProfile.js"])
+#     def __init__(self, team_id):
+#         self._url = "".join(["http://stats.nba.com/feeds/teams/profile/",str(team_id),"_TeamProfile.js"])
 #         self._pull = _requests.get(self._url)
 #     def details(self):
 #         return self._pull.json()['TeamDetails'][0]['Details']

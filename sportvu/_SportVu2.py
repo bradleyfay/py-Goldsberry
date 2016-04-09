@@ -1,4 +1,4 @@
-from goldsberry._masterclass import *
+from goldsberry.masterclass import *
 
 class catch_and_shoot(SPORTVU):
     _url_modifier = 'catchShoot'

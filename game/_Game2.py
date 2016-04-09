@@ -1,5 +1,5 @@
-from goldsberry._masterclass import *
-from goldsberry._apiparams import *
+from goldsberry.masterclass import NbaDataProvider
+from goldsberry.apiparams import *
 
 
 class boxscore_advanced(NbaDataProvider):
