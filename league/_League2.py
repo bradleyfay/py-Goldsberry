@@ -1,119 +1,119 @@
 from goldsberry._masterclass import *
 from goldsberry._apiparams import *
 
-class daily_scoreboard(NBA_datapull):
+class daily_scoreboard(NbaDataProvider):
     def __init__(self, date):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(gameDate=date,**p_league_sb)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(gameDate=date, **p_league_sb)
         self._url_modifier = 'scoreboardV2'
-        self.GET_raw_data()
+        self._set_class_data()
     def game_header(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
     def linescore(self):
-        return self._get_table_from_data(self._datatables, 1)
+        return self.get_table_from_data(self.data_tables, 1)
     def series_standings(self):
-        return self._get_table_from_data(self._datatables, 2)
+        return self.get_table_from_data(self.data_tables, 2)
     def last_meeting(self):
-        return self._get_table_from_data(self._datatables, 3)
+        return self.get_table_from_data(self.data_tables, 3)
     def eastern_conference_standings(self):
-        return self._get_table_from_data(self._datatables, 4)
+        return self.get_table_from_data(self.data_tables, 4)
     def western_conference_standings(self):
-        return self._get_table_from_data(self._datatables, 5)
+        return self.get_table_from_data(self.data_tables, 5)
     def available(self):
-        return self._get_table_from_data(self._datatables, 6)
+        return self.get_table_from_data(self.data_tables, 6)
     def team_leaders(self):
-        return self._get_table_from_data(self._datatables, 7)
+        return self.get_table_from_data(self.data_tables, 7)
     def _ticket_links(self):
-        return self._get_table_from_data(self._datatables, 8)
+        return self.get_table_from_data(self.data_tables, 8)
     def win_probability(self):
-        return self._get_table_from_data(self._datatables, 9)
+        return self.get_table_from_data(self.data_tables, 9)
 
-class franchise_history(NBA_datapull):
+class franchise_history(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_league_history)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_league_history)
         self._url_modifier = 'franchisehistory'
-        self.GET_raw_data()
+        self._set_class_data()
     def current_teams(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
     def defunct_teams(self):
-        return self._get_table_from_data(self._datatables, 1)
+        return self.get_table_from_data(self.data_tables, 1)
 
 ## This one might not work because it's the key 'resultSet', not 'resultSets'
 ## Confirmed does not work
-class league_leaders(NBA_datapull):
+class league_leaders(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_league_leaders)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_league_leaders)
         self._url_modifier = 'leagueleaders'
-        self.GET_raw_data()
+        self._set_class_data()
     def leaders(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
-class lineups(NBA_datapull):
+class lineups(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_game_ids)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_game_ids)
         self._url_modifier = 'leaguedashlineups'
-        self.GET_raw_data()
+        self._set_class_data()
     def lineups(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
 # Doubl Check Stem
-class playoff_picture(NBA_datapull):
+class playoff_picture(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_game_ids)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_game_ids)
         self._url_modifier = 'playoffpicture'
-        self.GET_raw_data()
+        self._set_class_data()
     def eastern_conf_playoff_picture(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
     def western_conf_playoff_picture(self):
-        return self._get_table_from_data(self._datatables, 1)
+        return self.get_table_from_data(self.data_tables, 1)
     def eastern_conf_standings(self):
-        return self._get_table_from_data(self._datatables, 2)
+        return self.get_table_from_data(self.data_tables, 2)
     def western_conf_standings(self):
-        return self._get_table_from_data(self._datatables, 3)
+        return self.get_table_from_data(self.data_tables, 3)
     def eastern_conf_remaining_games(self):
-        return self._get_table_from_data(self._datatables, 4)
+        return self.get_table_from_data(self.data_tables, 4)
     def western_conf_remaining_games(self):
-        return self._get_table_from_data(self._datatables, 5)
+        return self.get_table_from_data(self.data_tables, 5)
 
-class team_stats_classic(NBA_datapull):
+class team_stats_classic(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_league_classic)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_league_classic)
         self._url_modifier = 'leaguedashteamstats'
-        self.GET_raw_data()
+        self._set_class_data()
     def stats(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
-class player_stats_classic(NBA_datapull):
+class player_stats_classic(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_league_classic)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_league_classic)
         self._url_modifier = 'leaguedashplayerstats'
-        self.GET_raw_data()
+        self._set_class_data()
     def stats(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
-class team_stats_clutch(NBA_datapull):
+class team_stats_clutch(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_league_clutch)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_league_clutch)
         self._url_modifier = 'leaguedashteamclutch'
-        self.GET_raw_data()
+        self._set_class_data()
     def clutch_stats(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
-class player_stats_clutch(NBA_datapull):
+class player_stats_clutch(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_league_clutch)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_league_clutch)
         self._url_modifier = 'leaguedashplayerclutch'
-        self.GET_raw_data()
+        self._set_class_data()
     def clutch_stats(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
 
 

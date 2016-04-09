@@ -1,50 +1,50 @@
 from goldsberry._masterclass import *
 from goldsberry._apiparams import *
 
-class anthro(NBA_datapull):
+class anthro(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_draft)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_draft)
         self._url_modifier = 'draftcombineplayeranthro'
-        self.GET_raw_data()
+        self._set_class_data()
     def data(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
-class agility(NBA_datapull):
+class agility(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_draft)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_draft)
         self._url_modifier = 'draftcombinedrillresults'
-        self.GET_raw_data()
+        self._set_class_data()
     def data(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
-class non_stationary_shooting(NBA_datapull):
+class non_stationary_shooting(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_draft)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_draft)
         self._url_modifier = 'draftcombinenonstationaryshooting'
-        self.GET_raw_data()
+        self._set_class_data()
     def data(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
-class spot_up_shooting(NBA_datapull):
+class spot_up_shooting(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_draft)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_draft)
         self._url_modifier = 'draftcombinespotshooting'
-        self.GET_raw_data()
+        self._set_class_data()
     def data(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
-class combine(NBA_datapull):
+class combine(NbaDataProvider):
     def __init__(self):
-        NBA_datapull.__init__(self)
-        self.SET_parameters(**p_draft)
+        NbaDataProvider.__init__(self)
+        self.set_default_api_parameters(**p_draft)
         self._url_modifier = 'draftcombinestats'
-        self.GET_raw_data()
+        self._set_class_data()
     def data(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.get_table_from_data(self.data_tables, 0)
 
 __all__ = ['anthro', 'agility', 'non_stationary_shooting', 'spot_up_shooting',
            'combine']
