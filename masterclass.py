@@ -48,7 +48,7 @@ class NbaDataProvider(object):
             txt = [x.replace('The ', '') for x in txt]
             txt = [x.split(' is')[0] for x in txt]
             txt = [x.lstrip() for x in txt]
-            raise Exception("Please use the set_default_api_parameters method to set the following paramters",
+            raise ValueError("Please use the set_default_api_parameters method to set the following paramters",
                             "\n".join(txt))
 
     @staticmethod
@@ -71,7 +71,7 @@ class NbaDataProvider(object):
             if not self.api_params.has_key(k):
                 wrong_parameters_names.append(k)
         if wrong_parameters_names:
-            raise Exception(
+            raise ValueError(
                 'The following parameters:\n' +
                 '\n'.join(wrong_parameters_names) +
                 '\nDoes not exist for this class. Please set only existing parameters')
@@ -79,8 +79,12 @@ class NbaDataProvider(object):
             self.api_params.update(kwargs)
 
     def reinitialize_data_with_new_parameters(self, **kwargs):
-        self._set_api_parameters(**kwargs)
-        self._set_class_data()
+        original_api_params = self.api_params
+        try:
+            self._set_api_parameters(**kwargs)
+            self._set_class_data()
+        except ValueError:
+            self.api_params = original_api_params
 
 
 class PlayTypeProvider(object):
