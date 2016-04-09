@@ -4,9 +4,9 @@ from goldsberry._masterclass import NbaDataProvider
 
 class demographics(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'commonplayerinfo'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_base)
-        self._url_modifier = 'commonplayerinfo'
         self._set_class_data()
 
     def player_info(self):
@@ -18,9 +18,9 @@ class demographics(NbaDataProvider):
 
 class career_stats(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'playerprofilev2'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_ply_career)
-        self._url_modifier = 'playerprofilev2'
         self._set_class_data()
 
     def season_totals_regular(self):
@@ -65,9 +65,9 @@ class career_stats(NbaDataProvider):
 
 class game_logs(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'playergamelog'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_ply_gamelogs)
-        self._url_modifier = 'playergamelog'
         self._set_class_data()
 
     def logs(self):
@@ -76,9 +76,9 @@ class game_logs(NbaDataProvider):
 
 class shot_dashboard(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'playerdashptshots'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_ply_dashboard)
-        self._url_modifier = 'playerdashptshots'
         self._set_class_data()
 
     def overall(self):
@@ -105,9 +105,9 @@ class shot_dashboard(NbaDataProvider):
 
 class rebound_dashboard(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'playerdashptreb'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_ply_dashboard)
-        self._url_modifier = 'playerdashptreb'
         self._set_class_data()
 
     def overall(self):
@@ -128,9 +128,9 @@ class rebound_dashboard(NbaDataProvider):
 
 class passing_dashboard(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'playerdashptpass'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_ply_dashboard)
-        self._url_modifier = 'playerdashptpass'
         self._set_class_data()
 
     def passes_made(self):
@@ -142,9 +142,9 @@ class passing_dashboard(NbaDataProvider):
 
 class defense_dashboard(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'playerdashptshotdefend'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_ply_dashboard)
-        self._url_modifier = 'playerdashptshotdefend'
         self._set_class_data()
 
     def defending_shot(self):
@@ -153,9 +153,9 @@ class defense_dashboard(NbaDataProvider):
 
 class shot_chart(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'shotchartdetail'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_ply_shotchart)
-        self._url_modifier = 'shotchartdetail'
         self._set_class_data()
 
     def chart(self):
@@ -167,9 +167,9 @@ class shot_chart(NbaDataProvider):
 
 class PlayerList(NbaDataProvider):
     def __init__(self):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'commonallplayers'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(**p_ply_list)
-        self._url_modifier = 'commonallplayers'
         self._set_class_data()
 
     def players(self):
@@ -179,9 +179,9 @@ class PlayerList(NbaDataProvider):
 # BLOCKED BY NBA
 class shot_log(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'playerdashptsshotlog'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_base)
-        self._url_modifier = 'playerdashptsshotlog'
         self._set_class_data()
 
     def log(self):
@@ -191,9 +191,9 @@ class shot_log(NbaDataProvider):
 # BLOCKED BY NBA
 class rebound_log(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'playerdashptreboundlogs'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_base)
-        self._url_modifier = 'playerdashptreboundlogs'
         self._set_class_data()
 
     def log(self):
@@ -203,9 +203,9 @@ class rebound_log(NbaDataProvider):
 # BLOCKED BY NBA
 class general_splits(NbaDataProvider):
     def __init__(self, playerid):
-        NbaDataProvider.__init__(self)
+        url_modifier = 'playerdashboardbygeneralsplits'
+        NbaDataProvider.__init__(self, url_modifier)
         self.set_default_api_parameters(PlayerID=playerid, **p_ply_career)
-        self._url_modifier = 'playerdashboardbygeneralsplits'
         self._set_class_data()
 
     def overall(self):

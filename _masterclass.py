@@ -15,9 +15,9 @@ header_data = {
 
 
 class NbaDataProvider(object):
-    def __init__(self):
+    def __init__(self, url_modifier):
         self.api_params = {}
-        self._url_modifier = ''
+        self._url_modifier = url_modifier
 
     def get_parameters(self):
         return self.api_params.keys()
