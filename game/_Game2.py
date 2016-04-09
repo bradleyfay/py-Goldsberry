@@ -5,9 +5,7 @@ from goldsberry._apiparams import *
 class boxscore_advanced(NbaDataProvider):
     def __init__(self, gameid):
         url_modifier = 'boxscoreadvancedv2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(GameID=gameid, **p_game_bs)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid)
 
     def player_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -19,9 +17,7 @@ class boxscore_advanced(NbaDataProvider):
 class boxscore_fourfactors(NbaDataProvider):
     def __init__(self, gameid):
         url_modifier = 'boxscorefourfactorsv2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(GameID=gameid, **p_game_bs)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid)
 
     def player_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -33,9 +29,7 @@ class boxscore_fourfactors(NbaDataProvider):
 class boxscore_miscellaneous(NbaDataProvider):
     def __init__(self, gameid):
         url_modifier = 'boxscoremiscv2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(GameID=gameid, **p_game_bs)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid)
 
     def player_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -47,9 +41,7 @@ class boxscore_miscellaneous(NbaDataProvider):
 class boxscore_scoring(NbaDataProvider):
     def __init__(self, gameid):
         url_modifier = 'boxscorescoringv2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(GameID=gameid, **p_base)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base, GameID=gameid)
 
     def player_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -61,9 +53,7 @@ class boxscore_scoring(NbaDataProvider):
 class boxscore_summary(NbaDataProvider):
     def __init__(self, gameid):
         url_modifier = 'boxscoresummaryv2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(GameID=gameid)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, GameID=gameid)
 
     def game_summary(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -96,9 +86,7 @@ class boxscore_summary(NbaDataProvider):
 class boxscore_tracking(NbaDataProvider):
     def __init__(self, gameid):
         url_modifier = 'boxscoreplayertrackv2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(GameID=gameid)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, GameID=gameid)
 
     def player_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -110,9 +98,7 @@ class boxscore_tracking(NbaDataProvider):
 class boxscore_traditional(NbaDataProvider):
     def __init__(self, gameid):
         url_modifier = 'boxscoretraditionalv2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(GameID=gameid, **p_game_bs)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid)
 
     def player_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -124,9 +110,7 @@ class boxscore_traditional(NbaDataProvider):
 class boxscore_usage(NbaDataProvider):
     def __init__(self, gameid):
         url_modifier = 'boxscoreusagev2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(GameID=gameid, **p_game_bs)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid)
 
     def player_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -138,9 +122,7 @@ class boxscore_usage(NbaDataProvider):
 class play_by_play(NbaDataProvider):
     def __init__(self, gameid):
         url_modifier = 'playbyplayv2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(GameID=gameid, **p_game_pbp)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_pbp, GameID=gameid)
 
     def player_info(self):
         return self.get_table_from_data(self.data_tables, 0)
@@ -153,9 +135,7 @@ class play_by_play(NbaDataProvider):
 class GameIDs(NbaDataProvider):
     def __init__(self):
         url_modifier = 'leaguegamelog'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(**p_game_ids)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids)
 
     def game_list(self):
         return self.get_table_from_data(self.data_tables, 0)

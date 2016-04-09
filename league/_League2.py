@@ -4,9 +4,7 @@ from goldsberry._apiparams import *
 class daily_scoreboard(NbaDataProvider):
     def __init__(self, date):
         url_modifier = 'scoreboardV2'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(gameDate=date, **p_league_sb)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_sb, gameDate=date)
     def game_header(self):
         return self.get_table_from_data(self.data_tables, 0)
     def linescore(self):
@@ -31,9 +29,7 @@ class daily_scoreboard(NbaDataProvider):
 class franchise_history(NbaDataProvider):
     def __init__(self):
         url_modifier = 'franchisehistory'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(**p_league_history)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_history)
     def current_teams(self):
         return self.get_table_from_data(self.data_tables, 0)
     def defunct_teams(self):
@@ -44,18 +40,14 @@ class franchise_history(NbaDataProvider):
 class league_leaders(NbaDataProvider):
     def __init__(self):
         url_modifier = 'leagueleaders'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(**p_league_leaders)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_leaders)
     def leaders(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 class lineups(NbaDataProvider):
     def __init__(self):
         url_modifier = 'leaguedashlineups'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(**p_game_ids)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids)
     def lineups(self):
         return self.get_table_from_data(self.data_tables, 0)
 
@@ -63,9 +55,7 @@ class lineups(NbaDataProvider):
 class playoff_picture(NbaDataProvider):
     def __init__(self):
         url_modifier = 'playoffpicture'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(**p_game_ids)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids)
     def eastern_conf_playoff_picture(self):
         return self.get_table_from_data(self.data_tables, 0)
     def western_conf_playoff_picture(self):
@@ -82,36 +72,28 @@ class playoff_picture(NbaDataProvider):
 class team_stats_classic(NbaDataProvider):
     def __init__(self):
         url_modifier = 'leaguedashteamstats'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(**p_league_classic)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_classic)
     def stats(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 class player_stats_classic(NbaDataProvider):
     def __init__(self):
         url_modifier = 'leaguedashplayerstats'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(**p_league_classic)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_classic)
     def stats(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 class team_stats_clutch(NbaDataProvider):
     def __init__(self):
         url_modifier = 'leaguedashteamclutch'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(**p_league_clutch)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch)
     def clutch_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 class player_stats_clutch(NbaDataProvider):
     def __init__(self):
         url_modifier = 'leaguedashplayerclutch'
-        NbaDataProvider.__init__(self, url_modifier)
-        self.set_default_api_parameters(**p_league_clutch)
-        self._set_class_data()
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch)
     def clutch_stats(self):
         return self.get_table_from_data(self.data_tables, 0)
 

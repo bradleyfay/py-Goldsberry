@@ -15,9 +15,14 @@ header_data = {
 
 
 class NbaDataProvider(object):
-    def __init__(self, url_modifier):
+    def __init__(self, url_modifier, default_params=None, **kwargs):
+        if not default_params:
+            default_params = {}
         self.api_params = {}
         self._url_modifier = url_modifier
+        self.set_default_api_parameters(**default_params)
+        self.set_default_api_parameters(**kwargs)
+        self._set_class_data()
 
     def get_parameters(self):
         return self.api_params.keys()
