@@ -4,8 +4,8 @@ from goldsberry._apiFunc import *
 class anthro:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombineplayeranthro?"
-        self._api_param = {'LeagueID':_nbaLeague(league),
-                           'SeasonYear':_nbaSeason(season),
+        self._api_param = {'LeagueID':_nba_league(league),
+                           'SeasonYear':_nba_season(season),
         }
         self._pull = _requests.get(self._url, params=self._api_param)
     def data(self):
@@ -49,8 +49,8 @@ class anthro:
 class agility:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinedrillresults?"
-        self._api_param = {'LeagueID':_nbaLeague(league),
-                           'SeasonYear':_nbaSeason(season)
+        self._api_param = {'LeagueID':_nba_league(league),
+                           'SeasonYear':_nba_season(season)
         }
         self._pull = requests.get(self._url, params=self._api_param)
     def data(self):
@@ -83,8 +83,8 @@ class agility:
 class non_stationary_shooting:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinenonstationaryshooting?"
-        self._api_param = {'LeagueID':_nbaLeague(league),
-                           'SeasonYear':_nbaSeason(season)
+        self._api_param = {'LeagueID':_nba_league(league),
+                           'SeasonYear':_nba_season(season)
         }
         self._pull = requests.get(self._url, params=self._api_param)
     def data(self):
@@ -144,8 +144,8 @@ class non_stationary_shooting:
 class spot_up_shooting:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinespotshooting?"
-        self._api_param = {'LeagueID':_nbaLeague(league),
-                           'SeasonYear':_nbaSeason(season)
+        self._api_param = {'LeagueID':_nba_league(league),
+                           'SeasonYear':_nba_season(season)
         }
         self._pull = requests.get(self._url, params=self._api_param)
     def data(self):
@@ -240,8 +240,8 @@ class spot_up_shooting:
 class combine:
     def __init__(self, season='2014', league='NBA'):
         self._url = "http://stats.nba.com/stats/draftcombinestats?"
-        self._api_param = {'LeagueID':_nbaLeague(league),
-                           'SeasonYear':_nbaSeason(season)
+        self._api_param = {'LeagueID':_nba_league(league),
+                           'SeasonYear':_nba_season(season)
         }
         self._pull = requests.get(self._url, params=self._api_param)
     def data(self):
