@@ -1,45 +1,52 @@
+default_season = '2015-16'
+
 p_base = {
-    'LeagueID':'00',
-    'Season':'2015-16'
+    'LeagueID': '00',
+    'Season': default_season
 }
 
-
 p_ply_career = {
-    'LeagueID':'00',
-    'Season':'2015-16',
-    'PerMode':'PerGame'
+    'LeagueID': '00',
+    'Season': default_season,
+    'PerMode': 'PerGame'
+}
+
+p_team_year_by_year = {
+    'LeagueID': '00',
+    'SeasonType': 'Regular Season',
+    'PerMode': 'PerGame'
 }
 
 p_ply_gamelogs = {
-    'LeagueID':'00',
-    'Season':'2015-16',
-    'SeasonType':'Regular Season'
+    'LeagueID': '00',
+    'Season': default_season,
+    'SeasonType': 'Regular Season'
 }
 
 p_ply_dashboard = {
-    'DateFrom':'',
-    'DateTo':'',
-    'GameSegment':'',
-    'LastNGames':0,
-    'Location':'',
-    'Month':0,
-    'OpponentTeamID':0,
-    'Outcome':'',
-    'Period':0,
-    'PerMode':'PerGame',
-    'Season':'2015-16',
-    'SeasonSegment':'',
-    'SeasonType':'Regular Season',
-    'TeamID':0,
-    'VsConference':'',
-    'VsDivision':'',
-    'LeagueID':'00'
+    'DateFrom': '',
+    'DateTo': '',
+    'GameSegment': '',
+    'LastNGames': 0,
+    'Location': '',
+    'Month': 0,
+    'OpponentTeamID': 0,
+    'Outcome': '',
+    'Period': 0,
+    'PerMode': 'PerGame',
+    'Season': default_season,
+    'SeasonSegment': '',
+    'SeasonType': 'Regular Season',
+    'TeamID': 0,
+    'VsConference': '',
+    'VsDivision': '',
+    'LeagueID': '00'
 }
 
 p_ply_list = {
-    'IsOnlyCurrentSeason':'1',
-    'LeagueID':'00',
-    'Season':'2015-16'
+    'IsOnlyCurrentSeason': '1',
+    'LeagueID': '00',
+    'Season': default_season
 }
 
 p_ply_shotchart = {
@@ -57,21 +64,21 @@ p_ply_shotchart = {
     'Period': 0,
     'Position': '',
     'RookieYear': '',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'TeamID': 0,
     'VsConference': '',
     'VsDivision': ''
-    }
+}
 
 p_game_ids = {
-    'LeagueID':'00',
-    'Season':'2015-16',
-    'PlayerOrTeam':'T',
-    'Direction':'DESC',
-    'SeasonType':'Regular Season',
-    'Sorter':'FGM'
+    'LeagueID': '00',
+    'Season': default_season,
+    'PlayerOrTeam': 'T',
+    'Direction': 'DESC',
+    'SeasonType': 'Regular Season',
+    'Sorter': 'FGM'
 }
 
 p_team_lineups = {
@@ -93,7 +100,7 @@ p_team_lineups = {
     'Period': 0,
     'PlusMinus': 'Y',
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'ShotClockRange': '',
@@ -116,7 +123,7 @@ p_team_onoff = {
     'Period': 0,
     'PlusMinus': 'Y',
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'VsConference': '',
@@ -125,19 +132,21 @@ p_team_onoff = {
 p_team_dashbd = {
     'DateFrom': '',
     'DateTo': '',
+    'GameSegment': '',
     'LastNGames': 0,
     'LeagueID': '00',
     'Location': '',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
+    'Period': 0,
     'PerMode': 'Totals',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'VsConference': '',
     'VsDivision': ''
-    }
+}
 
 p_team_season = {
     'DateFrom': '',
@@ -156,7 +165,7 @@ p_team_season = {
     'Period': 0,
     'PlusMinus': 'Y',
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'ShotClockRange': '',
@@ -181,7 +190,7 @@ p_team_shooting = {
     'Period': 0,
     'PlusMinus': 'Y',
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'ShotClockRange': '',
@@ -205,7 +214,7 @@ p_team_split = {
     'Period': 0,
     'PlusMinus': 'Y',
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'ShotClockRange': '',
@@ -213,10 +222,10 @@ p_team_split = {
     'VsDivision': ''}
 
 p_team_info = {
-    'LeagueID':'00',
-    'Season': '2015-16',
+    'LeagueID': '00',
+    'Season': default_season,
     'SeasonType': 'Pre Season'
-    }
+}
 
 p_game_bs = {
     'EndPeriod': 0,
@@ -232,12 +241,12 @@ p_league_sb = {'DayOffset': '0', 'LeagueID': '00'}
 p_league_history = {'LeagueID': '00'}
 
 p_league_leaders = {
-    'LeagueID':'00',
-    'PerMode':'PerGame',
-    'Scope':'RS',
-    'Season':'2015-16',
-    'SeasonType':'Regular Season',
-    'StatCategory':'PTS'}
+    'LeagueID': '00',
+    'PerMode': 'PerGame',
+    'Scope': 'RS',
+    'Season': default_season,
+    'SeasonType': 'Regular Season',
+    'StatCategory': 'PTS'}
 
 p_league_lineups = {
     'Conference': '',
@@ -259,7 +268,7 @@ p_league_lineups = {
     'Period': 0,
     'PlusMinus': 'Y',
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'ShotClockRange': '',
@@ -295,7 +304,7 @@ p_league_classic = {
     'PlayerPosition': '',
     'PlusMinus': 'Y',
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'ShotClockRange': '',
@@ -330,7 +339,7 @@ p_league_clutch = {
     'PlusMinus': 'Y',
     'PointDiff': 0,
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': 'Regular Season',
     'Sorter': 'FGM',
@@ -339,4 +348,4 @@ p_league_clutch = {
     'VsDivision': ''
 }
 
-p_draft = {'LeagueID': '00', 'SeasonYear': '2015-16'}
+p_draft = {'LeagueID': '00', 'SeasonYear': default_season}

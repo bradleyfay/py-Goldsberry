@@ -2,6 +2,7 @@ from __future__ import print_function
 import requests as _requests
 import cgi
 import copy
+from contextlib import contextmanager
 
 header_data = {
     'Accept-Encoding': 'gzip, deflate, sdch',
@@ -24,12 +25,10 @@ class ObjectManager(object):
         self.set_default_api_parameters(**default_params)
         self.set_default_api_parameters(**kwargs)
         self._set_class_data()
-        self._original_dict_ = copy.deepcopy(self.__dict__)
 
-    def restore_original_state(self):
-        original_dict = self._original_dict_
+    def restore_class_dict(self, class_dict):
         self.__dict__.clear()
-        self.__dict__.update(original_dict)
+        self.__dict__.update(class_dict)
 
     def get_parameter_keys(self):
         return self.api_params.keys()
@@ -70,12 +69,13 @@ class ObjectManager(object):
 
     def set_default_api_parameters(self, **kwargs):
         for k, v in kwargs.items():
-            self.api_params[k] = v
+            if v is not None:
+                self.api_params[k] = v
 
     def _set_api_parameters(self, **kwargs):
         wrong_parameters_names = []
         for k, v in kwargs.items():
-            if not self.api_params.has_key(k):
+            if k not in self.api_params:
                 wrong_parameters_names.append(k)
         if wrong_parameters_names:
             raise ValueError(
@@ -85,13 +85,17 @@ class ObjectManager(object):
         else:
             self.api_params.update(kwargs)
 
+    @contextmanager
     def reinitialize_data_with_new_parameters(self, **kwargs):
-        original_api_params = self.api_params
+        original_dict = copy.deepcopy(self.__dict__)
         try:
             self._set_api_parameters(**kwargs)
             self._set_class_data()
-        except ValueError:
-            self.api_params = original_api_params
+        except ValueError as e:
+            self.restore_class_dict(original_dict)
+            raise e
+        yield
+        self.restore_class_dict(original_dict)
 
 
 class NbaDataProvider(object):
@@ -125,7 +129,8 @@ class PlayTypeProvider(object):
             txt = [x.lstrip() for x in txt]
             print("Please use the set_default_api_parameters method to set the following paramters", "\n".join(txt))
 
-    def _get_table_from_data(self, nba_table, table_id):
+    @staticmethod
+    def _get_table_from_data(nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values = nba_table['resultSets'][table_id]['rowSet']
         return [dict(zip(headers, value)) for value in values]
@@ -168,7 +173,8 @@ class SportVuProvider(object):
             txt = [x.lstrip() for x in txt]
             print("Please use the set_default_api_parameters method to set the following paramters", "\n".join(txt))
 
-    def _get_table_from_data(self, nba_table, table_id):
+    @staticmethod
+    def _get_table_from_data(nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values = nba_table['resultSets'][table_id]['rowSet']
         return [dict(zip(headers, value)) for value in values]
