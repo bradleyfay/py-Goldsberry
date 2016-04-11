@@ -8,34 +8,34 @@ class daily_scoreboard(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_sb, gameDate=date)
 
     def game_header(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def linescore(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
     def series_standings(self):
-        return self.get_table_from_data(self.data_tables, 2)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
     def last_meeting(self):
-        return self.get_table_from_data(self.data_tables, 3)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
 
     def eastern_conference_standings(self):
-        return self.get_table_from_data(self.data_tables, 4)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
 
     def western_conference_standings(self):
-        return self.get_table_from_data(self.data_tables, 5)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
 
     def available(self):
-        return self.get_table_from_data(self.data_tables, 6)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 6)
 
     def team_leaders(self):
-        return self.get_table_from_data(self.data_tables, 7)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 7)
 
     def _ticket_links(self):
-        return self.get_table_from_data(self.data_tables, 8)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 8)
 
     def win_probability(self):
-        return self.get_table_from_data(self.data_tables, 9)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 9)
 
 
 class franchise_history(NbaDataProvider):
@@ -44,10 +44,10 @@ class franchise_history(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_history)
 
     def current_teams(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def defunct_teams(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
 
 # This one might not work because it's the key 'resultSet', not 'resultSets'
@@ -58,7 +58,7 @@ class league_leaders(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_leaders)
 
     def leaders(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 class lineups(NbaDataProvider):
@@ -67,7 +67,7 @@ class lineups(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids)
 
     def lineups(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 # Doubl Check Stem
@@ -77,22 +77,22 @@ class playoff_picture(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids)
 
     def eastern_conf_playoff_picture(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def western_conf_playoff_picture(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
     def eastern_conf_standings(self):
-        return self.get_table_from_data(self.data_tables, 2)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
     def western_conf_standings(self):
-        return self.get_table_from_data(self.data_tables, 3)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
 
     def eastern_conf_remaining_games(self):
-        return self.get_table_from_data(self.data_tables, 4)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
 
     def western_conf_remaining_games(self):
-        return self.get_table_from_data(self.data_tables, 5)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
 
 
 class team_stats_classic(NbaDataProvider):
@@ -101,7 +101,7 @@ class team_stats_classic(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_classic)
 
     def stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 class player_stats_classic(NbaDataProvider):
@@ -110,7 +110,7 @@ class player_stats_classic(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_classic)
 
     def stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 class team_stats_clutch(NbaDataProvider):
@@ -119,7 +119,7 @@ class team_stats_clutch(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch)
 
     def clutch_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 class player_stats_clutch(NbaDataProvider):
@@ -128,7 +128,7 @@ class player_stats_clutch(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch)
 
     def clutch_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 # class transactions(BASE):

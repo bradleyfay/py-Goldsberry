@@ -9,7 +9,7 @@ class defense_dashboard(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def defending_shot(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 class game_logs(goldsberry.masterclass.NbaDataProvider):
@@ -19,7 +19,7 @@ class game_logs(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def logs(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 class lineups(goldsberry.masterclass.NbaDataProvider):
@@ -29,10 +29,10 @@ class lineups(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def overall(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def lineups(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
 
 class passing_dashboard(goldsberry.masterclass.NbaDataProvider):
@@ -42,10 +42,10 @@ class passing_dashboard(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def passes_made(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def passes_received(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
 
 class on_off_court(goldsberry.masterclass.NbaDataProvider):
@@ -55,22 +55,22 @@ class on_off_court(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def overall(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def on_court(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
     def off_court(self):
-        return self.get_table_from_data(self.data_tables, 2)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
     def overall_summary(self):
-        return self.get_table_from_data(self.data_tables, 3)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
 
     def on_court_summary(self):
-        return self.get_table_from_data(self.data_tables, 4)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
 
     def off_court_summary(self):
-        return self.get_table_from_data(self.data_tables, 5)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
 
 
 class rebound_dashboard(goldsberry.masterclass.NbaDataProvider):
@@ -80,19 +80,19 @@ class rebound_dashboard(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def overall(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def shot_type(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
     def contesting_rebounders(self):
-        return self.get_table_from_data(self.data_tables, 2)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
     def shot_distance(self):
-        return self.get_table_from_data(self.data_tables, 3)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
 
     def rebound_distance(self):
-        return self.get_table_from_data(self.data_tables, 4)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
 
 
 class roster(goldsberry.masterclass.NbaDataProvider):
@@ -102,10 +102,10 @@ class roster(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def player(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def coaches(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
 
 class season_stats(goldsberry.masterclass.NbaDataProvider):
@@ -115,10 +115,10 @@ class season_stats(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def overall(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def player_totals(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
 
 class shot_dashboard(goldsberry.masterclass.NbaDataProvider):
@@ -128,25 +128,25 @@ class shot_dashboard(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def overall(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def general(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
     def shot_clock(self):
-        return self.get_table_from_data(self.data_tables, 2)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
     def dribble(self):
-        return self.get_table_from_data(self.data_tables, 3)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
 
     def closest_defender(self):
-        return self.get_table_from_data(self.data_tables, 4)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
 
     def closest_defender_10ft(self):
-        return self.get_table_from_data(self.data_tables, 5)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
 
     def touch_time(self):
-        return self.get_table_from_data(self.data_tables, 6)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 6)
 
 
 class shooting_splits(goldsberry.masterclass.NbaDataProvider):
@@ -156,25 +156,25 @@ class shooting_splits(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def overall(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def shot_5ft(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
     def shot_8ft(self):
-        return self.get_table_from_data(self.data_tables, 2)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
     def shot_area(self):
-        return self.get_table_from_data(self.data_tables, 3)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
 
     def assisted_shot(self):
-        return self.get_table_from_data(self.data_tables, 4)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
 
     def shot_type(self):
-        return self.get_table_from_data(self.data_tables, 5)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
 
     def assisted_by(self):
-        return self.get_table_from_data(self.data_tables, 6)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 6)
 
 
 class splits(goldsberry.masterclass.NbaDataProvider):
@@ -184,22 +184,22 @@ class splits(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def overall(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def location(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
     def wins_losses(self):
-        return self.get_table_from_data(self.data_tables, 2)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
     def month(self):
-        return self.get_table_from_data(self.data_tables, 3)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
 
     def pre_post_allstar(self):
-        return self.get_table_from_data(self.data_tables, 4)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
 
     def days_rest(self):
-        return self.get_table_from_data(self.data_tables, 5)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
 
 
 class team_info(goldsberry.masterclass.NbaDataProvider):
@@ -209,10 +209,10 @@ class team_info(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def info(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def season_ranks(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
 
 class year_by_year(goldsberry.masterclass.NbaDataProvider):
@@ -222,7 +222,7 @@ class year_by_year(goldsberry.masterclass.NbaDataProvider):
                                                         TeamID=team_id)
 
     def team_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 __all__ = ['defense_dashboard', 'game_logs', 'lineups', 'passing_dashboard',

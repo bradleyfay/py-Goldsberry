@@ -1,6 +1,7 @@
 from __future__ import print_function
 import requests as _requests
 import cgi
+import copy
 
 header_data = {
     'Accept-Encoding': 'gzip, deflate, sdch',
@@ -14,7 +15,7 @@ header_data = {
 }
 
 
-class NbaDataProvider(object):
+class ObjectManager(object):
     def __init__(self, url_modifier, default_params=None, **kwargs):
         if not default_params:
             default_params = {}
@@ -23,6 +24,12 @@ class NbaDataProvider(object):
         self.set_default_api_parameters(**default_params)
         self.set_default_api_parameters(**kwargs)
         self._set_class_data()
+        self._original_dict_ = copy.deepcopy(self.__dict__)
+
+    def restore_original_state(self):
+        original_dict = self._original_dict_
+        self.__dict__.clear()
+        self.__dict__.update(original_dict)
 
     def get_parameter_keys(self):
         return self.api_params.keys()
@@ -49,7 +56,7 @@ class NbaDataProvider(object):
             txt = [x.split(' is')[0] for x in txt]
             txt = [x.lstrip() for x in txt]
             raise ValueError("Please use the set_default_api_parameters method to set the following paramters",
-                            "\n".join(txt))
+                             "\n".join(txt))
 
     @staticmethod
     def get_table_from_data(nba_table, table_id):
@@ -85,6 +92,11 @@ class NbaDataProvider(object):
             self._set_class_data()
         except ValueError:
             self.api_params = original_api_params
+
+
+class NbaDataProvider(object):
+    def __init__(self, url_modifier, default_params=None, **kwargs):
+        self.object_manager = ObjectManager(url_modifier, default_params, **kwargs)
 
 
 class PlayTypeProvider(object):
