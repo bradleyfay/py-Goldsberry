@@ -102,7 +102,7 @@ class roster(goldsberry.masterclass.NbaDataProvider):
         goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base,
                                                         TeamID=team_id, season=season)
 
-    def player(self):
+    def players(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
     def coaches(self):

@@ -41,7 +41,7 @@ class ObjectManager(object):
 
     def _get_nba_data(self, api_params):
         base_url = 'http://stats.nba.com/stats/'
-        pull_url = cgi.urlparse.urljoin(base_url, self._url_modifier)
+        pull_url = cgi.urllib.parse.urljoin(base_url, self._url_modifier)
         self._response = _requests.get(pull_url, params=api_params,
                                        headers=header_data)
 

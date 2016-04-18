@@ -64,7 +64,7 @@ class league_leaders(NbaDataProvider):
 class lineups(NbaDataProvider):
     def __init__(self):
         url_modifier = 'leaguedashlineups'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_lineups)
 
     def lineups(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
