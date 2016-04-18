@@ -1,11 +1,13 @@
-from goldsberry.masterclass import NbaDataProvider
+import goldsberry.masterclass
 from goldsberry.apiparams import *
 
 
-class daily_scoreboard(NbaDataProvider):
-    def __init__(self, date):
+# BLOCKED BY NBA
+class daily_scoreboard(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, date, season=default_season):
         url_modifier = 'scoreboardV2'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_sb, gameDate=date)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_sb,
+                                                        gameDate=date, season=season)
 
     def game_header(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
@@ -38,10 +40,11 @@ class daily_scoreboard(NbaDataProvider):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 9)
 
 
-class franchise_history(NbaDataProvider):
-    def __init__(self):
+class franchise_history(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, season=default_season):
         url_modifier = 'franchisehistory'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_history)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier,
+                                                        default_params=p_league_history, season=season)
 
     def current_teams(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
@@ -52,29 +55,31 @@ class franchise_history(NbaDataProvider):
 
 # This one might not work because it's the key 'resultSet', not 'resultSets'
 # Confirmed does not work
-class league_leaders(NbaDataProvider):
-    def __init__(self):
+class league_leaders(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, season=default_season):
         url_modifier = 'leagueleaders'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_leaders)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier,
+                                                        default_params=p_league_leaders, season=season)
 
     def leaders(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
-class lineups(NbaDataProvider):
-    def __init__(self):
+class lineups(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, season=default_season):
         url_modifier = 'leaguedashlineups'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_lineups)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier,
+                                                        default_params=p_league_lineups, season=season)
 
     def lineups(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
 # Doubl Check Stem
-class playoff_picture(NbaDataProvider):
-    def __init__(self):
+class playoff_picture(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, season=default_season):
         url_modifier = 'playoffpicture'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids, season=season)
 
     def eastern_conf_playoff_picture(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
@@ -95,37 +100,40 @@ class playoff_picture(NbaDataProvider):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
 
 
-class team_stats_classic(NbaDataProvider):
-    def __init__(self):
+class team_stats_classic(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, season=default_season):
         url_modifier = 'leaguedashteamstats'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_classic)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier,
+                                                        default_params=p_league_classic, season=season)
 
     def stats(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
-class player_stats_classic(NbaDataProvider):
-    def __init__(self):
+class player_stats_classic(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, season=default_season):
         url_modifier = 'leaguedashplayerstats'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_classic)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier,
+                                                        default_params=p_league_classic, season=season)
 
     def stats(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
-class team_stats_clutch(NbaDataProvider):
-    def __init__(self):
+class team_stats_clutch(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, season=default_season):
         url_modifier = 'leaguedashteamclutch'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch, season=season)
 
     def clutch_stats(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
-class player_stats_clutch(NbaDataProvider):
-    def __init__(self):
+class player_stats_clutch(goldsberry.masterclass.NbaDataProvider):
+    def __init__(self, season=default_season):
         url_modifier = 'leaguedashplayerclutch'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch,
+                                                        season=season)
 
     def clutch_stats(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
@@ -192,6 +200,6 @@ class player_stats_clutch(NbaDataProvider):
 #         _values = self._pull.json()['resultSets']['rowSet']
 #         return [dict(zip(_headers, value)) for value in _values]
 
-__all__ = ['daily_scoreboard', 'franchise_history', 'playoff_picture',
+__all__ = ['franchise_history', 'playoff_picture',
            'team_stats_classic', 'player_stats_classic', 'lineups',
            'team_stats_clutch', 'player_stats_clutch', 'league_leaders']
