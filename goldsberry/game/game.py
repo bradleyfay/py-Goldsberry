@@ -8,10 +8,10 @@ class boxscore_advanced(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid, **kwargs)
 
     def player_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
     def team_stats(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self._get_table_from_data(self._data_tables, 1)
 
 
 class boxscore_fourfactors(NbaDataProvider):
@@ -20,10 +20,10 @@ class boxscore_fourfactors(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid, **kwargs)
 
     def player_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
     def team_stats(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self._get_table_from_data(self._data_tables, 1)
 
 
 class boxscore_miscellaneous(NbaDataProvider):
@@ -32,10 +32,10 @@ class boxscore_miscellaneous(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid, **kwargs)
 
     def player_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
     def team_stats(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self._get_table_from_data(self._data_tables, 1)
 
 
 class boxscore_scoring(NbaDataProvider):
@@ -44,10 +44,10 @@ class boxscore_scoring(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base, GameID=gameid, **kwargs)
 
     def player_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
     def team_stats(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self._get_table_from_data(self._data_tables, 1)
 
 
 class boxscore_summary(NbaDataProvider):
@@ -56,31 +56,31 @@ class boxscore_summary(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, GameID=gameid, **kwargs)
 
     def game_summary(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
     def other_stats(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self._get_table_from_data(self._data_tables, 1)
 
     def officials(self):
-        return self.get_table_from_data(self.data_tables, 2)
+        return self._get_table_from_data(self._data_tables, 2)
 
     def inactive_players(self):
-        return self.get_table_from_data(self.data_tables, 3)
+        return self._get_table_from_data(self._data_tables, 3)
 
     def game_info(self):
-        return self.get_table_from_data(self.data_tables, 4)
+        return self._get_table_from_data(self._data_tables, 4)
 
     def line_score(self):
-        return self.get_table_from_data(self.data_tables, 5)
+        return self._get_table_from_data(self._data_tables, 5)
 
     def last_meeting(self):
-        return self.get_table_from_data(self.data_tables, 6)
+        return self._get_table_from_data(self._data_tables, 6)
 
     def season_series(self):
-        return self.get_table_from_data(self.data_tables, 7)
+        return self._get_table_from_data(self._data_tables, 7)
 
     def _available_video(self):
-        return self.get_table_from_data(self.data_tables, 8)
+        return self._get_table_from_data(self._data_tables, 8)
 
 
 class boxscore_tracking(NbaDataProvider):
@@ -89,10 +89,10 @@ class boxscore_tracking(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, GameID=gameid, **kwargs)
 
     def player_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
     def team_stats(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self._get_table_from_data(self._data_tables, 1)
 
 
 class boxscore_traditional(NbaDataProvider):
@@ -101,10 +101,10 @@ class boxscore_traditional(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid, **kwargs)
 
     def player_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
     def team_stats(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self._get_table_from_data(self._data_tables, 1)
 
 
 class boxscore_usage(NbaDataProvider):
@@ -113,10 +113,10 @@ class boxscore_usage(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_bs, GameID=gameid, **kwargs)
 
     def player_stats(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
     def team_stats(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self._get_table_from_data(self._data_tables, 1)
 
 
 class play_by_play(NbaDataProvider):
@@ -125,10 +125,10 @@ class play_by_play(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_pbp, GameID=gameid, **kwargs)
 
     def player_info(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
     def _available_video(self):
-        return self.get_table_from_data(self.data_tables, 1)
+        return self._get_table_from_data(self._data_tables, 1)
 
 
 # Courtesy of daniel.silvis@gmail.com
@@ -138,7 +138,7 @@ class GameIDs(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids, **kwargs)
 
     def game_list(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
 
 __all__ = ['play_by_play', 'boxscore_summary', 'boxscore_traditional',

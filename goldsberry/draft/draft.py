@@ -8,7 +8,7 @@ class anthro(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
 
 class agility(NbaDataProvider):
@@ -17,7 +17,7 @@ class agility(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
 
 class non_stationary_shooting(NbaDataProvider):
@@ -26,7 +26,7 @@ class non_stationary_shooting(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
 
 class spot_up_shooting(NbaDataProvider):
@@ -35,7 +35,7 @@ class spot_up_shooting(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
 
 class combine(NbaDataProvider):
@@ -44,7 +44,7 @@ class combine(NbaDataProvider):
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
-        return self.get_table_from_data(self.data_tables, 0)
+        return self._get_table_from_data(self._data_tables, 0)
 
 
 __all__ = ['anthro', 'agility', 'non_stationary_shooting', 'spot_up_shooting',

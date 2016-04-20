@@ -1,6 +1,7 @@
 from __future__ import print_function
-import requests as _requests
 import cgi
+import requests as _requests
+
 
 header_data = {
     'Accept-Encoding': 'gzip, deflate, sdch',
@@ -17,25 +18,24 @@ header_data = {
 
 
 class NbaDataProvider(object):
+    """Primary Class"""
     def __init__(self, url_modifier, default_params=None, **kwargs):
         if not default_params:
             default_params = {}
+        self._response = None
         self.api_params = {}
         self._url_modifier = url_modifier
-        self.set_default_api_parameters(**default_params)
-        self.set_default_api_parameters(**kwargs)
+        self._set_api_parameters(**default_params)
+        self._set_api_parameters(**kwargs)
         self._set_class_data()
 
-    def get_parameter_keys(self):
-        return self.api_params.keys()
-
-    def get_parameter_values(self):
-        return self.api_params.values()
 
     def get_parameter_items(self):
+        '''Return a dict of paramters and values used in query'''
         return self.api_params
 
     def _get_nba_data(self, api_params):
+        '''Execute request to nba website and returns json formatted data'''
         base_url = 'http://stats.nba.com/stats/'
         pull_url = cgi.urlparse.urljoin(base_url, self._url_modifier)
         self._response = _requests.get(pull_url, params=api_params,
@@ -50,26 +50,22 @@ class NbaDataProvider(object):
             txt = [x.replace('The ', '') for x in txt]
             txt = [x.split(' is')[0] for x in txt]
             txt = [x.lstrip() for x in txt]
-            raise ValueError("Please use the set_default_api_parameters method to set the following paramters",
+            raise ValueError("Please use the set_api_parameters method to set the following parameters",
                              "\n".join(txt))
 
     @staticmethod
-    def get_table_from_data(nba_table, table_id):
+    def _get_table_from_data(nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values = nba_table['resultSets'][table_id]['rowSet']
         return [dict(zip(headers, value)) for value in values]
 
     def _set_class_data(self):
         nba_data_response = self._get_nba_data(self.api_params)
-        self.data_tables = nba_data_response
-
-    def set_default_api_parameters(self, **kwargs):
-        for k, v in kwargs.items():
-            self.api_params[k] = v
+        self._data_tables = nba_data_response
 
     def _set_api_parameters(self, **kwargs):
         wrong_parameters_names = []
-        for k, v in kwargs.items():
+        for k, _ in kwargs.items():
             if not self.api_params.has_key(k):
                 wrong_parameters_names.append(k)
         if wrong_parameters_names:
@@ -80,15 +76,18 @@ class NbaDataProvider(object):
         else:
             self.api_params.update(kwargs)
 
-    def reinitialize_data_with_new_parameters(self, **kwargs):
+    def get_new_data(self, **kwargs):
+        '''Re-runs query to NBA site with new kwarg parameters'''
         original_api_params = self.api_params
         try:
             self._set_api_parameters(**kwargs)
             self._set_class_data()
         except ValueError:
+            print("There was an error in your parameter update. No new data was collected")
             self.api_params = original_api_params
 
 class PlayTypeProvider(object):
+    """Class specific settings to query play type data"""
     def __init__(self, url_modifier, team=False):
         self._url_modifier = url_modifier
         self._get_nba_data(url_modifier, team)
@@ -104,7 +103,7 @@ class PlayTypeProvider(object):
                                        headers=header_data)
 
         if self._response.status_code == 200:
-            self._datatables = self._response.json()
+            self._data_tables = self._response.json()
         else:
             # Change this to Exception
             txt = self._response.text.split(';')
@@ -112,23 +111,29 @@ class PlayTypeProvider(object):
             txt = [x.replace('The ', '') for x in txt]
             txt = [x.split(' is')[0] for x in txt]
             txt = [x.lstrip() for x in txt]
-            print("Please use the set_default_api_parameters method to set the following paramters", "\n".join(txt))
+            print("Please use the set_api_parameters method to set the following paramters",
+                  "\n".join(txt))
 
-    def _get_table_from_data(self, nba_table, table_id):
+    @staticmethod
+    def _get_table_from_data(nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values = nba_table['resultSets'][table_id]['rowSet']
         return [dict(zip(headers, value)) for value in values]
 
     def offensive(self):
-        return self._get_table_from_data(self._datatables, 0)
+        '''Return Offensive data'''
+        return self._get_table_from_data(self._data_tables, 0)
 
     def defensive(self):
-        return self._get_table_from_data(self._datatables, 1)
+        '''Return Defensive data'''
+        return self._get_table_from_data(self._data_tables, 1)
 
     def season(self):
-        return self._datatables['parameters']['Season']
+        '''Return Season Summary data'''
+        return self._data_tables['parameters']['Season']
 
 class SportVuProvider(object):
+    """Class specific settings to query sportvu data"""
     def __init__(self, url_modifier, year=2015, team=False):
         self.year = year
         self.team = team
@@ -146,7 +151,7 @@ class SportVuProvider(object):
         self._response = _requests.get(pull_url,
                                        headers=header_data)
         if self._response.status_code == 200:
-            self._datatables = self._response.json()
+            self._data_tables = self._response.json()
         else:
             # Change this to Exception
             txt = self._response.text.split(';')
@@ -154,30 +159,18 @@ class SportVuProvider(object):
             txt = [x.replace('The ', '') for x in txt]
             txt = [x.split(' is')[0] for x in txt]
             txt = [x.lstrip() for x in txt]
-            print("Please use the set_default_api_parameters method to set the following paramters", "\n".join(txt))
+            print("Please use the set_api_parameters method to set the following paramters", "\n".join(txt))
 
-    def _get_table_from_data(self, nba_table, table_id):
+    @staticmethod
+    def _get_table_from_data(nba_table, table_id):
         headers = nba_table['resultSets'][table_id]['headers']
         values = nba_table['resultSets'][table_id]['rowSet']
         return [dict(zip(headers, value)) for value in values]
 
     def data(self):
-        return self._get_table_from_data(self._datatables, 0)
+        '''Return SportVU data'''
+        return self._get_table_from_data(self._data_tables, 0)
 
     def season(self):
-        return self._datatables['parameters']['Season']
-
-    def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier, self.year)
-
-    def SET_parameters(self, **kwargs):
-        if kwargs.has_key('year'):
-            self.year = kwargs['year']
-        elif kwargs.has_key('team'):
-            if isinstance(kwargs['team'], (bool)):
-                self.team = kwargs['team']
-            else:
-                self.team = False
-                print('Please use True/False for team parameter')
-        else:
-            pass
+        '''Return Season Summary SportVu Data'''
+        return self._data_tables['parameters']['Season']

@@ -2,7 +2,9 @@ from goldsberry.masterclass import SportVuProvider
 
 
 class catch_and_shoot(SportVuProvider):
-    _url_modifier = 'catchShoot'
+    def __init__(self, **kwargs):
+        url_modifier = 'catchShoot'
+        SportVuProvider.__init__(self, url_modifier=url_modifier,**kwargs)
 
 
 class defense(SportVuProvider):
