@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from goldsberry._apifunc import  *
+from goldsberry._apifunctions import  *
 
 test_data = [
 (_nbaLeague, 'NBA', '00'),
