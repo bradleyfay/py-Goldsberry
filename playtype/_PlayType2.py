@@ -1,70 +1,70 @@
-from goldsberry.masterclass import PlayTypeProvider
+import goldsberry.masterclass
 
 
-class transition(PlayTypeProvider):
-    def __init__(self):
+class transition(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'Transition'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class isolation(PlayTypeProvider):
-    def __init__(self):
+class isolation(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'Isolation'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class pick_and_roll_ball_handler(PlayTypeProvider):
-    def __init__(self):
+class pick_and_roll_ball_handler(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'PRBallHandler'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class pick_and_roll_man(PlayTypeProvider):
-    def __init__(self):
+class pick_and_roll_man(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'PRRollMan'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class postup(PlayTypeProvider):
-    def __init__(self):
+class postup(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'Postup'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class spotup(PlayTypeProvider):
-    def __init__(self):
+class spotup(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'Spotup'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class handoff(PlayTypeProvider):
-    def __init__(self):
+class handoff(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'Handoff'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class cut(PlayTypeProvider):
-    def __init__(self):
+class cut(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'Cut'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class offscreen(PlayTypeProvider):
-    def __init__(self):
-        url_modifier = 'Offscreen'
-        PlayTypeProvider.__init__(self, url_modifier)
+class offscreen(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
+        url_modifier = 'OffScreen'
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class offrebound(PlayTypeProvider):
-    def __init__(self):
+class offrebound(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'OffRebound'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
-class misc(PlayTypeProvider):
-    def __init__(self):
+class misc(goldsberry.masterclass.PlayTypeProvider):
+    def __init__(self, team=False):
         url_modifier = 'Misc'
-        PlayTypeProvider.__init__(self, url_modifier)
+        goldsberry.masterclass.PlayTypeProvider.__init__(self, url_modifier, team=team)
 
 
 __all__ = ['transition', 'isolation', 'pick_and_roll_ball_handler',

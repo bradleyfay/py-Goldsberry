@@ -1,8 +1,11 @@
 default_league_id = '00'
 default_season = '2015-16'
+default_season_id = '22015'
 default_season_type = 'Regular Season'
 default_pace_adjust = 'N'
 default_plus_minus = 'N'
+default_ahead_or_behind = 'Ahead or Behind'
+default_clutch_time = 'Last 5 Minutes'
 
 
 p_base = {
@@ -282,6 +285,11 @@ p_league_lineups = {
     'VsDivision': ''
 }
 
+p_playoff_picture = {
+    'LeagueID': default_league_id,
+    'SeasonID': default_season_id
+}
+
 p_league_classic = {
     'College': '',
     'Conference': '',
@@ -321,8 +329,8 @@ p_league_classic = {
 }
 
 p_league_clutch = {
-    'AheadBehind': '',
-    'ClutchTime': '',
+    'AheadBehind': default_ahead_or_behind,
+    'ClutchTime': default_clutch_time,
     'DateFrom': '',
     'DateTo': '',
     'Direction': 'DESC',
