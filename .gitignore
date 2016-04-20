@@ -58,5 +58,13 @@ _README.md
 
 #Jupyter Notebook Checkpoints
 *.checkpoint.ipynb
-
 docs/.ipynb_checkpoints/
+
+
+
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+
+
