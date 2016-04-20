@@ -51,7 +51,7 @@ session with the following command:
 
 .. code:: python
 
-    import goldsberry as gb
+    import goldsberry
     import pandas as pd
 
 The package is designed to work with `pandas`_ in that the output of
@@ -69,16 +69,19 @@ built-in to give you quick access to a list of players and numbers.
 .. code:: python
 
 
-    playersCurrent = pd.DataFrame(goldsberry.PlayerList(2014))
-    playersCurrent.head()
+    players2010 = goldsberry.PlayerList(Season='2010-11')
+    players2010 = pd.DataFrame(players2010.players())
+    players2010.head()
 
-If you want a list of every player in the history of the NBA, you can
-pass the ``AllTime=True`` argument:
+If you want a list of every game during the current season use the ``GameIDs()`` class:
 
 .. code:: python
 
-    playersAllTime = pd.DataFrame(goldsberry.PlayerList(AllTime=True))
-    playersAllTime.head()
+    games = goldsberry.GameIDs()
+    games = pd.DataFrame(games.game_list())
+    games.head()
+
+As you get started with ``py-goldsberry``, TAB completion in either Jupyter or IPython is going to be your best friend. I'm working on documetation, but there is a great deal of it to do and I don't have that much time. 
 
 .. _Kirk Goldsberry: http://twitter.com/kirkgoldsberry
 .. _here: https://www.youtube.com/watch?v=wLf2hLHlFI8
