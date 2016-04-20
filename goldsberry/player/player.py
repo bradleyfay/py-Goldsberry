@@ -150,9 +150,9 @@ class shot_chart(NbaDataProvider):
 
 
 class PlayerList(NbaDataProvider):
-    def __init__(self):
+    def __init__(self,  **kwargs):
         url_modifier = 'commonallplayers'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_list)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_list,  **kwargs)
 
     def players(self):
         return self._get_table_from_data(self._data_tables, 0)

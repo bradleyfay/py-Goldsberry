@@ -64,6 +64,10 @@ class NbaDataProvider(object):
         self._data_tables = nba_data_response
 
     def _set_api_parameters(self, **kwargs):
+        for k, v in kwargs.items():
+            self.api_params[k] = v
+
+    def _update_api_parameters(self, **kwargs):
         wrong_parameters_names = []
         for k, _ in kwargs.items():
             if not self.api_params.has_key(k):
@@ -80,7 +84,7 @@ class NbaDataProvider(object):
         '''Re-runs query to NBA site with new kwarg parameters'''
         original_api_params = self.api_params
         try:
-            self._set_api_parameters(**kwargs)
+            self._update_api_parameters(**kwargs)
             self._set_class_data()
         except ValueError:
             print("There was an error in your parameter update. No new data was collected")
