@@ -8,6 +8,7 @@ import retrying
 from future.standard_library import install_aliases
 install_aliases()
 # This library is different between python 2 and 3. This negates the difference
+# noinspection PyCompatibility
 from urllib.parse import urljoin
 
 header_data = {
