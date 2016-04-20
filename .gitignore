@@ -55,3 +55,6 @@ target/
 
 #Markdown README
 _README.md
+
+#Jupyter Notebook Checkpoints
+*.checkpoint.ipynb
