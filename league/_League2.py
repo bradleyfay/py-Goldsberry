@@ -75,11 +75,12 @@ class lineups(goldsberry.masterclass.NbaDataProvider):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
-# Doubl Check Stem
+# Double Check Stem
 class playoff_picture(goldsberry.masterclass.NbaDataProvider):
     def __init__(self, season=default_season):
         url_modifier = 'playoffpicture'
-        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_game_ids, season=season)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, season=season,
+                                                        default_params=p_playoff_picture)
 
     def eastern_conf_playoff_picture(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
@@ -123,7 +124,8 @@ class player_stats_classic(goldsberry.masterclass.NbaDataProvider):
 class team_stats_clutch(goldsberry.masterclass.NbaDataProvider):
     def __init__(self, season=default_season):
         url_modifier = 'leaguedashteamclutch'
-        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch, season=season)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch,
+                                                        season=season)
 
     def clutch_stats(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
