@@ -3,45 +3,45 @@ from goldsberry.apiparams import *
 
 
 class anthro(NbaDataProvider):
-    def __init__(self):
+    def __init__(self, **kwargs):
         url_modifier = 'draftcombineplayeranthro'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 
 class agility(NbaDataProvider):
-    def __init__(self):
+    def __init__(self, **kwargs):
         url_modifier = 'draftcombinedrillresults'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 
 class non_stationary_shooting(NbaDataProvider):
-    def __init__(self):
+    def __init__(self, **kwargs):
         url_modifier = 'draftcombinenonstationaryshooting'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 
 class spot_up_shooting(NbaDataProvider):
-    def __init__(self):
+    def __init__(self, **kwargs):
         url_modifier = 'draftcombinespotshooting'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
         return self.get_table_from_data(self.data_tables, 0)
 
 
 class combine(NbaDataProvider):
-    def __init__(self):
+    def __init__(self, **kwargs):
         url_modifier = 'draftcombinestats'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_draft, **kwargs)
 
     def data(self):
         return self.get_table_from_data(self.data_tables, 0)
