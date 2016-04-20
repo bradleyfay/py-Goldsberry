@@ -1,1 +1,1 @@
-from goldsberry.league._League2 import *
+from goldsberry.league.league import *

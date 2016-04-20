@@ -1,1 +1,1 @@
-from goldsberry.game._Game2 import *
+from goldsberry.game.game import *

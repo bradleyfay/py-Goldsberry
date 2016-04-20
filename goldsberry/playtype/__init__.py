@@ -1,1 +1,1 @@
-from goldsberry.playtype._PlayType2 import *
+from goldsberry.playtype.playtype import *

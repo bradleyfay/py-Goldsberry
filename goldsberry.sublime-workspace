@@ -1,0 +1,1157 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"teamid",
+				"teamid"
+			],
+			[
+				"Season",
+				"Season"
+			],
+			[
+				"Oppo",
+				"OpponentTeamID"
+			],
+			[
+				"_url",
+				"_url_modifier"
+			],
+			[
+				"data",
+				"_datatables"
+			],
+			[
+				"api_par",
+				"api_params_1"
+			],
+			[
+				"_Per",
+				"_PerModeMini"
+			],
+			[
+				"_nba",
+				"_nbaLeague"
+			],
+			[
+				"_G",
+				"_GameScope"
+			],
+			[
+				"_pl",
+				"_PlayerExperience"
+			],
+			[
+				"PerM",
+				"_PerMode"
+			],
+			[
+				"_P",
+				"_PaceAdjust"
+			],
+			[
+				"_Sea",
+				"_SeasonType"
+			],
+			[
+				"_Vs",
+				"_VsConference"
+			],
+			[
+				"_Seas",
+				"_SeasonSegment"
+			],
+			[
+				"date",
+				"datefrom"
+			],
+			[
+				"_va",
+				"_valiDate"
+			],
+			[
+				"PlayerRev",
+				"PlayerReboundLogSV"
+			],
+			[
+				"season",
+				"seasontype"
+			],
+			[
+				"Overall",
+				"Overall"
+			],
+			[
+				"vsd",
+				"vsdiv"
+			],
+			[
+				"vs",
+				"vsconf"
+			],
+			[
+				"_V",
+				"_VsDivision"
+			],
+			[
+				"_Player",
+				"_PlayerPosition"
+			],
+			[
+				"_Game",
+				"_GameSegment"
+			],
+			[
+				"seasont",
+				"seasontype"
+			],
+			[
+				"player",
+				"playerposition"
+			],
+			[
+				"vsc",
+				"vsconference"
+			],
+			[
+				"playerex",
+				"playerexperience"
+			],
+			[
+				"month",
+				"month"
+			],
+			[
+				"lastngames",
+				"lastngames"
+			],
+			[
+				"dat",
+				"dateto"
+			],
+			[
+				"Player",
+				"PlayerClutchStats"
+			],
+			[
+				"Lea",
+				"LeagueLeaders"
+			],
+			[
+				"Tra",
+				"TrackingBox"
+			],
+			[
+				"PlayerShot",
+				"PlayerShotLogSV"
+			],
+			[
+				"PlayerSho",
+				"PlayerShotDefSV"
+			],
+			[
+				"__nba",
+				"__nbaLeague"
+			],
+			[
+				"dateto",
+				"dateto"
+			],
+			[
+				"sta",
+				"statcategory"
+			],
+			[
+				"stat",
+				"StatCategory"
+			],
+			[
+				"seaso",
+				"seasonsegment"
+			],
+			[
+				"permod",
+				"permode"
+			],
+			[
+				"gamesegment",
+				"gamesegment"
+			],
+			[
+				"datefrom",
+				"datefrom"
+			],
+			[
+				"end",
+				"endrange"
+			],
+			[
+				"star",
+				"startrange"
+			],
+			[
+				"cont",
+				"contextfilter"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "goldsberry/_masterclass.py",
+			"settings":
+			{
+				"buffer_size": 6810,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "goldsberry/_apiparams.py",
+			"settings":
+			{
+				"buffer_size": 6968,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "goldsberry/__init__.py",
+			"settings":
+			{
+				"buffer_size": 353,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "goldsberry/player/_Player2.py",
+			"settings":
+			{
+				"buffer_size": 7267,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 383.0,
+		"last_filter": "orig",
+		"selected_items":
+		[
+			[
+				"orig",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"high",
+				"Trailing Spaces: Toggle Trailing Spaces Highlighting"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pyth",
+				"Set Syntax: Python"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: li",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"print",
+				"Print to HTML: print as HTML via browser"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"sub",
+				"Sublimerge: Compare to View..."
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git push",
+				"Git: Push Current Branch"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add Current File"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git com	",
+				"Git: Commit"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git b",
+				"Git: Pull Current Branch"
+			],
+			[
+				"git pus",
+				"Git: Push Current Branch"
+			],
+			[
+				"git stat",
+				"Git: Quick Status"
+			],
+			[
+				"git",
+				"Git: Commit"
+			],
+			[
+				"git cmm",
+				"Git: Commit"
+			],
+			[
+				"GIT add",
+				"Git: Add Current File"
+			],
+			[
+				"git check",
+				"Git: Checkout"
+			],
+			[
+				"git bran",
+				"Git: Push Current Branch"
+			],
+			[
+				"git branch",
+				"Git: Checkout New Branch"
+			],
+			[
+				"git pull",
+				"Git: Pull"
+			],
+			[
+				"git pu",
+				"Git: Pull"
+			],
+			[
+				"check",
+				"Git: Checkout"
+			],
+			[
+				"git push ",
+				"Git: Push Current Branch"
+			],
+			[
+				"insall",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 424.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/py-goldsberry-0.7.1",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/py-goldsberry-0.7.1/goldsberry"
+	],
+	"file_history":
+	[
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/draft/_Draft2.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/playtype/_PlayType2.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/_apiparams.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/player/_Player2.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/team/_Team2.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/league/_League2.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/league/_PlayType2.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/league/_Draft2.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/sportvu/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/draft/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/playtype/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/league/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/game/_Game2.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/README.rst",
+		"/C/Users/Bradley/github-ssh-fingerprint",
+		"/C/Users/Bradley/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Bradley/AppData/Roaming/Sublime Text 3/Packages/User/Python.sublime-settings",
+		"/C/Users/Bradley/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/C/Users/Bradley/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Default (Windows).sublime-keymap",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/MANIFEST.in",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/league/_Draft.py",
+		"/C/Users/Bradley/Desktop/_masterclass.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/league/_League.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/.git/MERGE_MSG",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/game/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/league/_SportVu2.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/player/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/team/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/league/_PlayType.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/_apiFunc.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/league/_SportVu.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/game/_Game.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/player/_Player.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/team/_Team.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/ssac-2016/trade_matrix.txt",
+		"/C/Users/Bradley/Downloads/ssac-2016-analysis.R",
+		"/C/Users/Bradley/Dropbox/_Personal/MathrasandSun/Documention/extra-instructions.md",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/CHANGELOG.rst",
+		"/C/Users/Bradley/AppData/Local/Temp/tmpru8b2k.html",
+		"/C/Users/Bradley/AppData/Local/Temp/tmpis0xlm.html",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/.git/rebase-merge/git-rebase-todo",
+		"/C/Users/Bradley/Desktop/PlaySight Parse.html",
+		"/C/Users/Bradley/Anaconda3/thinkbayes.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/_README.md",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/.gitignore",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/tests/test_goldsberry.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/.travis.yml",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/requirements.txt",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/setup.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/Game/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/Player/Player.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/setup.cfg",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/tests/tests_goldsberry.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/LICENSE",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/AUTHORS.rst",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/tests/__init__.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/League/League.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/README.md",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/Draft.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/Game.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/Team.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/League.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/Player.py",
+		"/C/Users/Bradley/Dropbox/amazonEC2/dataset-construction-ec2.R",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/CHANGES.txt",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/README.txt",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/Misc.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/docs/WorkFlow.md",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/boxscore.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/docs/databases.md",
+		"/C/Users/Bradley/Desktop/SUSE-r-install",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/draft.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/sportvu.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/player/shotchart.py",
+		"/C/Users/Bradley/Dropbox/_School/__Research/1_BF_Customer_Experience/D-backs/Projections/Forecasting Season Tickets.Rmd",
+		"/C/Users/Bradley/Google Drive/Open Source Conf/8_Open_Langugage_Processing.R",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/miscellaneous.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/gamelog.py",
+		"/C/Users/Bradley/Dropbox/_Cardinal/analyzing-basketball-data/py-Goldsberry/goldsberry/shotchart.py",
+		"/C/Users/Bradley/Dropbox/_School/__Research/1_BF_Customer_Experience/.git/COMMIT_EDITMSG"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"None",
+			"class",
+			"_api_params",
+			"&",
+			"'",
+			";",
+			"team",
+			"NBA_datapull",
+			"rookie",
+			"2014",
+			"iteritems",
+			"itervalues",
+			"print",
+			"_Permode",
+			"StarterBench",
+			"=",
+			"&",
+			"=",
+			"&",
+			"must match the regular expression",
+			";",
+			"requests",
+			"=",
+			":",
+			"=",
+			"&",
+			":",
+			"=",
+			"&",
+			"=",
+			"&",
+			"=",
+			"&",
+			"- [ ]",
+			"&",
+			"=",
+			":",
+			"- [ ]",
+			"| "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "goldsberry/_masterclass.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6810,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								602,
+								602
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true,
+							"wrap_width": 80
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "goldsberry/_apiparams.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6968,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1390,
+								1390
+							],
+							[
+								1408,
+								1408
+							],
+							[
+								1426,
+								1426
+							],
+							[
+								1449,
+								1449
+							],
+							[
+								1536,
+								1536
+							],
+							[
+								1623,
+								1623
+							],
+							[
+								1642,
+								1642
+							],
+							[
+								1796,
+								1796
+							],
+							[
+								1858,
+								1858
+							],
+							[
+								1882,
+								1882
+							],
+							[
+								1904,
+								1904
+							],
+							[
+								1942,
+								1942
+							],
+							[
+								1960,
+								1960
+							],
+							[
+								1983,
+								1983
+							],
+							[
+								2046,
+								2046
+							],
+							[
+								2133,
+								2133
+							],
+							[
+								2287,
+								2287
+							],
+							[
+								2347,
+								2347
+							],
+							[
+								2369,
+								2369
+							],
+							[
+								2408,
+								2408
+							],
+							[
+								2426,
+								2426
+							],
+							[
+								2489,
+								2489
+							],
+							[
+								2549,
+								2549
+							],
+							[
+								2624,
+								2624
+							],
+							[
+								2684,
+								2684
+							],
+							[
+								2706,
+								2706
+							],
+							[
+								2750,
+								2750
+							],
+							[
+								2768,
+								2768
+							],
+							[
+								2791,
+								2791
+							],
+							[
+								2854,
+								2854
+							],
+							[
+								2941,
+								2941
+							],
+							[
+								2960,
+								2960
+							],
+							[
+								3114,
+								3114
+							],
+							[
+								3176,
+								3176
+							],
+							[
+								3226,
+								3226
+							],
+							[
+								3248,
+								3248
+							],
+							[
+								3289,
+								3289
+							],
+							[
+								3307,
+								3307
+							],
+							[
+								3330,
+								3330
+							],
+							[
+								3393,
+								3393
+							],
+							[
+								3480,
+								3480
+							],
+							[
+								3499,
+								3499
+							],
+							[
+								3653,
+								3653
+							],
+							[
+								3715,
+								3715
+							],
+							[
+								3739,
+								3739
+							],
+							[
+								3761,
+								3761
+							],
+							[
+								3799,
+								3799
+							],
+							[
+								3817,
+								3817
+							],
+							[
+								3840,
+								3840
+							],
+							[
+								3903,
+								3903
+							],
+							[
+								3990,
+								3990
+							],
+							[
+								4009,
+								4009
+							],
+							[
+								4163,
+								4163
+							],
+							[
+								4225,
+								4225
+							],
+							[
+								4249,
+								4249
+							],
+							[
+								4271,
+								4271
+							],
+							[
+								4843,
+								4843
+							],
+							[
+								4921,
+								4921
+							],
+							[
+								4944,
+								4944
+							],
+							[
+								5031,
+								5031
+							],
+							[
+								5118,
+								5118
+							],
+							[
+								5137,
+								5137
+							],
+							[
+								5291,
+								5291
+							],
+							[
+								5353,
+								5353
+							],
+							[
+								5371,
+								5371
+							],
+							[
+								5395,
+								5395
+							],
+							[
+								5417,
+								5417
+							],
+							[
+								5459,
+								5459
+							],
+							[
+								5481,
+								5481
+							],
+							[
+								5500,
+								5500
+							],
+							[
+								5520,
+								5520
+							],
+							[
+								5538,
+								5538
+							],
+							[
+								5558,
+								5558
+							],
+							[
+								5579,
+								5579
+							],
+							[
+								5600,
+								5600
+							],
+							[
+								5621,
+								5621
+							],
+							[
+								5644,
+								5644
+							],
+							[
+								5662,
+								5662
+							],
+							[
+								5725,
+								5725
+							],
+							[
+								5812,
+								5812
+							],
+							[
+								5831,
+								5831
+							],
+							[
+								5924,
+								5924
+							],
+							[
+								5950,
+								5950
+							],
+							[
+								6039,
+								6039
+							],
+							[
+								6101,
+								6101
+							],
+							[
+								6125,
+								6125
+							],
+							[
+								6143,
+								6143
+							],
+							[
+								6167,
+								6167
+							],
+							[
+								6189,
+								6189
+							],
+							[
+								6207,
+								6207
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4969.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "goldsberry/__init__.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								85,
+								85
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "goldsberry/player/_Player2.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 7267,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 39.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.481780502043,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git-checkout":
+	{
+		"height": 100.0
+	},
+	"output.git-commit":
+	{
+		"height": 100.0
+	},
+	"output.git-pull":
+	{
+		"height": 100.0
+	},
+	"output.git-push":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "",
+	"project": "goldsberry.sublime-project",
+	"replace":
+	{
+		"height": 74.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 207.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
