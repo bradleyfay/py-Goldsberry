@@ -33,6 +33,10 @@ class ObjectManager(object):
         self.set_default_api_parameters(**kwargs)
         self._set_class_data()
 
+    @property
+    def base_url(self):
+        return 'http://stats.nba.com/stats/'
+
     def restore_class_dict(self, class_dict):
         self.__dict__.clear()
         self.__dict__.update(class_dict)
@@ -47,8 +51,7 @@ class ObjectManager(object):
         return self.api_params
 
     def _get_nba_data(self, api_params):
-        base_url = 'http://stats.nba.com/stats/'
-        pull_url = urljoin(base_url, self._url_modifier)
+        pull_url = urljoin(self.base_url, self._url_modifier)
         self._response = _requests.get(pull_url, params=api_params,
                                        headers=header_data)
 
