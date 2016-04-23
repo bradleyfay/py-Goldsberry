@@ -122,7 +122,7 @@ p_team_onoff = {
     'LastNGames': 0,
     'LeagueID': default_league_id,
     'Location': '',
-    'MeasureType': 'Base',
+    'MeasureType': 'Advanced',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
