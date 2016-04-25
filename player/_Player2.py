@@ -5,8 +5,7 @@ from goldsberry.apiparams import *
 class demographics(NbaDataProvider):
     def __init__(self, player_id, season=default_season):
         url_modifier = 'commonplayerinfo'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base, PlayerID=player_id,
-                                 Season=season)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_player_common, PlayerID=player_id)
 
     def player_info(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
@@ -18,8 +17,7 @@ class demographics(NbaDataProvider):
 class career_stats(NbaDataProvider):
     def __init__(self, player_id, season=default_season):
         url_modifier = 'playerprofilev2'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_career, PlayerID=player_id,
-                                 Season=season)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_career, PlayerID=player_id)
 
     def season_totals_regular(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)

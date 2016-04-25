@@ -6,27 +6,34 @@ default_pace_adjust = 'N'
 default_plus_minus = 'N'
 default_ahead_or_behind = 'Ahead or Behind'
 default_clutch_time = 'Last 5 Minutes'
+default_team_id = 0
+default_player_id = 0
 
 
-p_base = {
+p_player_common = {
+    'PlayerID': default_player_id
+}
+
+p_team_base = {
     'LeagueID': default_league_id,
-    'Season': default_season
+    'Season': default_season,
+    'TeamID': default_team_id
 }
 
 p_ply_career = {
-    'LeagueID': default_league_id,
-    'Season': default_season,
-    'PerMode': 'PerGame'
+    'PerMode': 'PerGame',
+    'PlayerID': default_player_id
 }
 
 p_team_year_by_year = {
     'LeagueID': default_league_id,
     'SeasonType': default_season_type,
+    'TeamID': default_team_id,
     'PerMode': 'PerGame'
 }
 
 p_ply_gamelogs = {
-    'LeagueID': default_league_id,
+    'PlayerID': default_player_id,
     'Season': default_season,
     'SeasonType': default_season_type
 }
@@ -42,10 +49,11 @@ p_ply_dashboard = {
     'Outcome': '',
     'Period': 0,
     'PerMode': 'PerGame',
+    'PlayerID': default_player_id,
     'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': default_season_type,
-    'TeamID': 0,
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': '',
     'LeagueID': default_league_id
@@ -54,6 +62,7 @@ p_ply_dashboard = {
 p_ply_list = {
     'IsOnlyCurrentSeason': '1',
     'LeagueID': default_league_id,
+    'PlayerID': default_player_id,
     'Season': default_season
 }
 
@@ -70,12 +79,13 @@ p_ply_shotchart = {
     'OpponentTeamID': 0,
     'Outcome': '',
     'Period': 0,
+    'PlayerID': default_player_id,
     'Position': '',
     'RookieYear': '',
     'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': default_season_type,
-    'TeamID': 0,
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''
 }
@@ -112,6 +122,7 @@ p_team_lineups = {
     'SeasonSegment': '',
     'SeasonType': default_season_type,
     'ShotClockRange': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
@@ -134,6 +145,7 @@ p_team_onoff = {
     'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': default_season_type,
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
@@ -152,8 +164,16 @@ p_team_dashbd = {
     'Season': default_season,
     'SeasonSegment': '',
     'SeasonType': default_season_type,
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''
+}
+
+p_team_gamelogs = {
+    'LeagueID': default_league_id,
+    'Season': default_season,
+    'SeasonType': default_season_type,
+    'TeamID': default_team_id
 }
 
 p_team_season = {
@@ -177,7 +197,7 @@ p_team_season = {
     'SeasonSegment': '',
     'SeasonType': default_season_type,
     'ShotClockRange': '',
-    'TeamID': 1610612758,
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
@@ -202,6 +222,7 @@ p_team_shooting = {
     'SeasonSegment': '',
     'SeasonType': default_season_type,
     'ShotClockRange': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
@@ -226,13 +247,15 @@ p_team_split = {
     'SeasonSegment': '',
     'SeasonType': default_season_type,
     'ShotClockRange': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
 p_team_info = {
     'LeagueID': default_league_id,
     'Season': default_season,
-    'SeasonType': default_season_type
+    'SeasonType': default_season_type,
+    'TeamID': default_team_id
 }
 
 p_game_bs = {
@@ -280,7 +303,7 @@ p_league_lineups = {
     'SeasonSegment': '',
     'SeasonType': default_season_type,
     'ShotClockRange': '',
-    'TeamID': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''
 }
@@ -322,7 +345,7 @@ p_league_classic = {
     'SeasonType': default_season_type,
     'ShotClockRange': '',
     'StarterBench': '',
-    'TeamID': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': '',
     'Weight': ''

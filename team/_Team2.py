@@ -16,7 +16,7 @@ class defense_dashboard(goldsberry.masterclass.NbaDataProvider):
 class game_logs(goldsberry.masterclass.NbaDataProvider):
     def __init__(self, team_id, season=default_season):
         url_modifier = 'teamgamelog'
-        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_gamelogs,
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_gamelogs,
                                                         TeamID=team_id, Season=season)
 
     def logs(self):
@@ -99,7 +99,7 @@ class rebound_dashboard(goldsberry.masterclass.NbaDataProvider):
 class roster(goldsberry.masterclass.NbaDataProvider):
     def __init__(self, team_id, season=default_season):
         url_modifier = 'commonteamroster'
-        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_base,
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_base,
                                                         TeamID=team_id, Season=season)
 
     def players(self):
@@ -220,7 +220,7 @@ class year_by_year(goldsberry.masterclass.NbaDataProvider):
     def __init__(self, team_id, season=default_season):
         url_modifier = 'teamyearbyyearstats'
         goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, TeamID=team_id,
-                                                        default_params=p_team_year_by_year, Season=season)
+                                                        default_params=p_team_year_by_year)
 
     def team_stats(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
