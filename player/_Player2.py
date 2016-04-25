@@ -158,9 +158,10 @@ class shot_chart(NbaDataProvider):
 
 
 class PlayerList(NbaDataProvider):
-    def __init__(self):
+    def __init__(self, season=default_season, is_only_current_season=1):
         url_modifier = 'commonallplayers'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_list)
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_list, Season=season,
+                                 IsOnlyCurrentSeason=is_only_current_season)
 
     def players(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
