@@ -30,7 +30,7 @@ class ObjectManager(object):
         self.api_params = {}
         self._url_modifier = url_modifier
         self.set_default_api_parameters(**default_params)
-        self.set_default_api_parameters(**kwargs)
+        self.set_api_parameters(**kwargs)
         self._set_class_data()
 
     @property
@@ -78,6 +78,14 @@ class ObjectManager(object):
     def _set_class_data(self):
         nba_data_response = self._get_nba_data(self.api_params)
         self.data_tables = nba_data_response
+
+    def set_api_parameters(self, **kwargs):
+        for k, v in kwargs.items():
+            if k not in self.api_params:
+                raise Exception("Bad param '%s'" % k)
+            else:
+                if v is not None:
+                    self.api_params[k] = v
 
     def set_default_api_parameters(self, **kwargs):
         for k, v in kwargs.items():
