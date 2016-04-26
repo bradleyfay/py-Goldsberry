@@ -50,6 +50,8 @@ class ObjectManager(object):
     def get_parameter_items(self):
         return self.api_params
 
+    @retrying.retry(stop_max_attempt_number=3, wait_fixed=1000,
+                    retry_on_exception=lambda exception: isinstance(exception, _requests.ConnectionError))
     def _get_nba_data(self, api_params):
         pull_url = urljoin(self.base_url, self._url_modifier)
         self._response = _requests.get(pull_url, params=api_params,
@@ -73,8 +75,6 @@ class ObjectManager(object):
         values = nba_table['resultSets'][table_id]['rowSet']
         return [dict(zip(headers, value)) for value in values]
 
-    @retrying.retry(stop_max_attempt_number=3, wait_fixed=5000,
-                    retry_on_exception=lambda exception: isinstance(exception, _requests.ConnectionError))
     def _set_class_data(self):
         nba_data_response = self._get_nba_data(self.api_params)
         self.data_tables = nba_data_response
