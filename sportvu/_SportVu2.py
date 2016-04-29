@@ -1,40 +1,58 @@
-from goldsberry.masterclass import SportVuProvider
+import goldsberry
 
 
-class catch_and_shoot(SportVuProvider):
-    _url_modifier = 'catchShoot'
+class catch_and_shoot(goldsberry.masterclass.NbaDataProviderSportVu):
+    def __init__(self, season=goldsberry.apiparams.default_season, team=False):
+        url_modifier = 'catchShoot'
+        goldsberry.masterclass.NbaDataProviderSportVu.__init__(self, url_modifier, year=season, team=team)
 
 
-class defense(SportVuProvider):
-    _url_modifier = 'defense'
+class defense(goldsberry.masterclass.NbaDataProviderSportVu):
+    def __init__(self, season=goldsberry.apiparams.default_season, team=False):
+        url_modifier = 'defense'
+        goldsberry.masterclass.NbaDataProviderSportVu.__init__(self, url_modifier, year=season, team=team)
 
 
-class drives(SportVuProvider):
-    _url_modifier = 'drives'
+class drives(goldsberry.masterclass.NbaDataProviderSportVu):
+    def __init__(self, season=goldsberry.apiparams.default_season, team=False):
+        url_modifier = 'drives'
+        goldsberry.masterclass.NbaDataProviderSportVu.__init__(self, url_modifier, year=season, team=team)
 
 
-class passing(SportVuProvider):
-    _url_modifier = 'passing'
+class passing(goldsberry.masterclass.NbaDataProviderSportVu):
+    def __init__(self, season=goldsberry.apiparams.default_season, team=False):
+        url_modifier = 'passing'
+        goldsberry.masterclass.NbaDataProviderSportVu.__init__(self, url_modifier, year=season, team=team)
 
 
-class touches(SportVuProvider):
-    _url_modifier = 'touches'
+class touches(goldsberry.masterclass.NbaDataProviderSportVu):
+    def __init__(self, season=goldsberry.apiparams.default_season, team=False):
+        url_modifier = 'touches'
+        goldsberry.masterclass.NbaDataProviderSportVu.__init__(self, url_modifier, year=season, team=team)
 
 
-class pull_up_shooting(SportVuProvider):
-    _url_modifier = 'pullUpShoot'
+class pull_up_shooting(goldsberry.masterclass.NbaDataProviderSportVu):
+    def __init__(self, season=goldsberry.apiparams.default_season, team=False):
+        url_modifier = 'pullUpShoot'
+        goldsberry.masterclass.NbaDataProviderSportVu.__init__(self, url_modifier, year=season, team=team)
 
 
-class rebounding(SportVuProvider):
-    _url_modifier = 'rebounding'
+class rebounding(goldsberry.masterclass.NbaDataProviderSportVu):
+    def __init__(self, season=goldsberry.apiparams.default_season, team=False):
+        url_modifier = 'rebounding'
+        goldsberry.masterclass.NbaDataProviderSportVu.__init__(self, url_modifier, year=season, team=team)
 
 
-class shooting(SportVuProvider):
-    _url_modifier = 'shooting'
+class shooting(goldsberry.masterclass.NbaDataProviderSportVu):
+    def __init__(self, season=goldsberry.apiparams.default_season, team=False):
+        url_modifier = 'shooting'
+        goldsberry.masterclass.NbaDataProviderSportVu.__init__(self, url_modifier, year=season, team=team)
 
 
-class speed(SportVuProvider):
-    _url_modifier = 'speed'
+class speed(goldsberry.masterclass.NbaDataProviderSportVu):
+    def __init__(self, season=goldsberry.apiparams.default_season, team=False):
+        url_modifier = 'speed'
+        goldsberry.masterclass.NbaDataProviderSportVu.__init__(self, url_modifier, year=season, team=team)
 
 
 __all__ = ['catch_and_shoot', 'defense', 'drives', 'passing',

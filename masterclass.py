@@ -1,11 +1,12 @@
 from __future__ import print_function
+
 import requests as _requests
 import copy
 from contextlib import contextmanager
 import retrying
 
-
 from future.standard_library import install_aliases
+
 install_aliases()
 # This library is different between python 2 and 3. This negates the difference
 # noinspection PyCompatibility
@@ -24,9 +25,10 @@ header_data = {
 
 
 class ObjectManager(object):
-    def __init__(self, url_modifier, default_params=None, **kwargs):
+    def __init__(self, base_url, url_modifier, default_params=None, **kwargs):
         if not default_params:
             default_params = {}
+        self.base_url = base_url
         self.api_params = {}
         self._url_modifier = url_modifier
         self.set_default_api_parameters(**default_params)
@@ -34,8 +36,8 @@ class ObjectManager(object):
         self._set_class_data()
 
     @property
-    def base_url(self):
-        return 'http://stats.nba.com/stats/'
+    def target_url(self):
+        return urljoin(self.base_url, self._url_modifier)
 
     def restore_class_dict(self, class_dict):
         self.__dict__.clear()
@@ -53,7 +55,7 @@ class ObjectManager(object):
     @retrying.retry(stop_max_attempt_number=3, wait_fixed=1000,
                     retry_on_exception=lambda exception: isinstance(exception, _requests.ConnectionError))
     def _get_nba_data(self, api_params):
-        pull_url = urljoin(self.base_url, self._url_modifier)
+        pull_url = self.target_url
         self._response = _requests.get(pull_url, params=api_params,
                                        headers=header_data)
 
@@ -118,104 +120,56 @@ class ObjectManager(object):
         self.restore_class_dict(original_dict)
 
 
+class ObjectManagerForPlayType(ObjectManager):
+    def __init__(self, base_url, url_modifier, team, default_params=None, **kwargs):
+        self.scope = 'team_' if team else 'player_'
+        ObjectManager.__init__(self, base_url, url_modifier, default_params, **kwargs)
+
+    @property
+    def target_url(self):
+        return urljoin(self.base_url,
+                       "{scope}{url_modifier}.js".format(scope=self.scope, url_modifier=self._url_modifier))
+
+
+class ObjectManagerForSportVu(ObjectManager):
+    def __init__(self, base_url, url_modifier, year, team, default_params=None, **kwargs):
+        self.scope = 'Team' if team else ''
+        self.year = int(year[:4])
+        ObjectManager.__init__(self, base_url, url_modifier, default_params, **kwargs)
+
+    @property
+    def target_url(self):
+        return urljoin(urljoin(self.base_url, "%s/" % self.year),
+                       "{url_modifier}{scope}Data.json".format(url_modifier=self._url_modifier, scope=self.scope))
+
+
 class NbaDataProvider(object):
     def __init__(self, url_modifier, default_params=None, **kwargs):
-        self.object_manager = ObjectManager(url_modifier, default_params, **kwargs)
+        base_url = 'http://stats.nba.com/stats/'
+        self.object_manager = ObjectManager(base_url, url_modifier, default_params, **kwargs)
 
 
-class PlayTypeProvider(object):
-    def __init__(self, url_modifier, team=False):
-        self._url_modifier = url_modifier
-        self._get_nba_data(url_modifier, team)
-
-    def _get_nba_data(self, url_modifier, team):
+class NbaDataProviderPlayType(object):
+    def __init__(self, url_modifier, team=False, default_params=None, **kwargs):
         base_url = "http://stats.nba.com/js/data/playtype/"
-        if team:
-            scope = 'team_'
-        else:
-            scope = 'player_'
-        pull_url = "{0}{1}{2}.js".format(base_url, scope, url_modifier)
-        self._response = _requests.get(pull_url,
-                                       headers=header_data)
-
-        if self._response.status_code == 200:
-            self._datatables = self._response.json()
-        else:
-            # Change this to Exception
-            txt = self._response.text.split(';')
-            txt = [x.replace(' property', '') for x in txt]
-            txt = [x.replace('The ', '') for x in txt]
-            txt = [x.split(' is')[0] for x in txt]
-            txt = [x.lstrip() for x in txt]
-            print("Please use the set_default_api_parameters method to set the following paramters", "\n".join(txt))
-
-    @staticmethod
-    def _get_table_from_data(nba_table, table_id):
-        headers = nba_table['resultSets'][table_id]['headers']
-        values = nba_table['resultSets'][table_id]['rowSet']
-        return [dict(zip(headers, value)) for value in values]
-
-    def offensive(self):
-        return self._get_table_from_data(self._datatables, 0)
-
-    def defensive(self):
-        return self._get_table_from_data(self._datatables, 1)
-
-    def season(self):
-        return self._datatables['parameters']['Season']
-
-
-class SportVuProvider(object):
-    def __init__(self, url_modifier, year=2015, team=False):
-        self.year = year
-        self.team = team
-        self._url_modifier = url_modifier
-        self._get_nba_data(url_modifier, self.year, self.team)
-
-    def _get_nba_data(self, url_modifier, year, team):
-        base_url = 'http://stats.nba.com/js/data/sportvu/'
-        if team:
-            team = 'Team'
-        else:
-            team = ''
-        pull_url = "{0}{1}/{2}{3}Data.json".format(base_url,
-                                                   year, url_modifier, team)
-        self._response = _requests.get(pull_url,
-                                       headers=header_data)
-        if self._response.status_code == 200:
-            self._datatables = self._response.json()
-        else:
-            # Change this to Exception
-            txt = self._response.text.split(';')
-            txt = [x.replace(' property', '') for x in txt]
-            txt = [x.replace('The ', '') for x in txt]
-            txt = [x.split(' is')[0] for x in txt]
-            txt = [x.lstrip() for x in txt]
-            print("Please use the set_default_api_parameters method to set the following paramters", "\n".join(txt))
-
-    @staticmethod
-    def _get_table_from_data(nba_table, table_id):
-        headers = nba_table['resultSets'][table_id]['headers']
-        values = nba_table['resultSets'][table_id]['rowSet']
-        return [dict(zip(headers, value)) for value in values]
+        self.object_manager = ObjectManagerForPlayType(base_url, url_modifier, team, default_params, **kwargs)
 
     def data(self):
-        return self._get_table_from_data(self._datatables, 0)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
+    @property
     def season(self):
-        return self._datatables['parameters']['Season']
+        return self.object_manager.data_tables['parameters']['Season']
 
-    def GET_raw_data(self):
-        self._get_nba_data(self._url_modifier, self.year)
 
-    def SET_parameters(self, **kwargs):
-        if kwargs.has_key('year'):
-            self.year = kwargs['year']
-        elif kwargs.has_key('team'):
-            if isinstance(kwargs['team'], (bool)):
-                self.team = kwargs['team']
-            else:
-                self.team = False
-                print('Please use True/False for team parameter')
-        else:
-            pass
+class NbaDataProviderSportVu(object):
+    def __init__(self, url_modifier, year, team=False, default_params=None, **kwargs):
+        base_url = 'http://stats.nba.com/js/data/sportvu/'
+        self.object_manager = ObjectManagerForSportVu(base_url, url_modifier, year, team, default_params, **kwargs)
+
+    def data(self):
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
+
+    @property
+    def season(self):
+        return self.object_manager.data_tables['parameters']['Season']
