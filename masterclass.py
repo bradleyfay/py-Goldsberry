@@ -154,8 +154,11 @@ class NbaDataProviderPlayType(object):
         base_url = "http://stats.nba.com/js/data/playtype/"
         self.object_manager = ObjectManagerForPlayType(base_url, url_modifier, team, default_params, **kwargs)
 
-    def data(self):
+    def offensive(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
+
+    def defensive(self):
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
     @property
     def season(self):
