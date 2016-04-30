@@ -64,15 +64,6 @@ class on_off_court(goldsberry.masterclass.NbaDataProvider):
     def off_court(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
-    def overall_summary(self):
-        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
-
-    def on_court_summary(self):
-        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
-
-    def off_court_summary(self):
-        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
-
 
 class rebound_dashboard(goldsberry.masterclass.NbaDataProvider):
     def __init__(self, team_id, season=default_season):
@@ -128,26 +119,23 @@ class shot_dashboard(goldsberry.masterclass.NbaDataProvider):
         goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_team_dashbd,
                                                         TeamID=team_id, Season=season)
 
-    def overall(self):
+    def general(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
-    def general(self):
+    def shot_clock(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
-    def shot_clock(self):
+    def dribble(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
-    def dribble(self):
+    def closest_defender(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
 
-    def closest_defender(self):
+    def closest_defender_10ft(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
 
-    def closest_defender_10ft(self):
-        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
-
     def touch_time(self):
-        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 6)
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
 
 
 class shooting_splits(goldsberry.masterclass.NbaDataProvider):
