@@ -124,8 +124,8 @@ class player_stats_classic(goldsberry.masterclass.NbaDataProvider):
 class team_stats_clutch(goldsberry.masterclass.NbaDataProvider):
     def __init__(self, season=default_season):
         url_modifier = 'leaguedashteamclutch'
-        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch,
-                                                        Season=season)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier,
+                                                        default_params=p_league_team_clutch, Season=season)
 
     def clutch_stats(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
@@ -134,10 +134,10 @@ class team_stats_clutch(goldsberry.masterclass.NbaDataProvider):
 class player_stats_clutch(goldsberry.masterclass.NbaDataProvider):
     def __init__(self, season=default_season):
         url_modifier = 'leaguedashplayerclutch'
-        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_clutch,
-                                                        Season=season)
+        goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier,
+                                                        default_params=p_league_player_clutch, Season=season)
 
-    def clutch_stats(self):
+    def clutch_stats_per_36(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
