@@ -8,6 +8,7 @@ default_ahead_or_behind = 'Ahead or Behind'
 default_clutch_time = 'Last 5 Minutes'
 default_team_id = 0
 default_player_id = 0
+default_game_id = 0
 
 
 p_player_common = {
@@ -29,7 +30,7 @@ p_team_year_by_year = {
     'LeagueID': default_league_id,
     'SeasonType': default_season_type,
     'TeamID': default_team_id,
-    'PerMode': 'PerGame'
+    'PerMode': 'Totals'
 }
 
 p_ply_gamelogs = {
@@ -267,6 +268,8 @@ p_game_bs = {
 
 p_game_pbp = {'EndPeriod': 0, 'StartPeriod': 0}
 
+p_game_base = {'GameID': default_game_id}
+
 p_league_sb = {'DayOffset': '0', 'LeagueID': default_league_id}
 
 p_league_history = {'LeagueID': default_league_id}
@@ -351,7 +354,40 @@ p_league_classic = {
     'Weight': ''
 }
 
-p_league_clutch = {
+p_league_team_clutch = {
+    'AheadBehind': default_ahead_or_behind,
+    'ClutchTime': default_clutch_time,
+    'DateFrom': '',
+    'DateTo': '',
+    'Direction': 'DESC',
+    'GameScope': '',
+    'GameSegment': '',
+    'LastNGames': 0,
+    'LeagueID': default_league_id,
+    'Location': '',
+    'MeasureType': 'Advanced',
+    'Month': 0,
+    'OpponentTeamID': 0,
+    'Outcome': '',
+    'PaceAdjust': default_pace_adjust,
+    'PerMode': 'Totals',
+    'Period': 0,
+    'PlayerExperience': '',
+    'PlayerOrTeam': 'T',
+    'PlayerPosition': '',
+    'PlusMinus': default_plus_minus,
+    'PointDiff': 0,
+    'Rank': 'Y',
+    'Season': default_season,
+    'SeasonSegment': '',
+    'SeasonType': default_season_type,
+    'Sorter': 'FGM',
+    'StarterBench': '',
+    'VsConference': '',
+    'VsDivision': ''
+}
+
+p_league_player_clutch = {
     'AheadBehind': default_ahead_or_behind,
     'ClutchTime': default_clutch_time,
     'DateFrom': '',
@@ -367,7 +403,7 @@ p_league_clutch = {
     'OpponentTeamID': 0,
     'Outcome': '',
     'PaceAdjust': default_pace_adjust,
-    'PerMode': 'Totals',
+    'PerMode': 'Per36',
     'Period': 0,
     'PlayerExperience': '',
     'PlayerOrTeam': 'T',
