@@ -55,8 +55,12 @@ class NbaDataProvider(object):
 
     @staticmethod
     def _get_table_from_data(nba_table, table_id):
-        headers = nba_table['resultSets'][table_id]['headers']
-        values = nba_table['resultSets'][table_id]['rowSet']
+        try:
+            headers = nba_table['resultSets'][table_id]['headers']
+            values = nba_table['resultSets'][table_id]['rowSet']
+        except:
+            headers = nba_table['resultSet'][table_id]['headers']
+            values = nba_table['resultSet'][table_id]['rowSet']
         return [dict(zip(headers, value)) for value in values]
 
     def _set_class_data(self):

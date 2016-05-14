@@ -157,7 +157,6 @@ class PlayerList(NbaDataProvider):
     def players(self):
         return self._get_table_from_data(self._data_tables, 0)
 
-
 # BLOCKED BY NBA
 class shot_log(NbaDataProvider):
     def __init__(self, player_id, **kwargs):
