@@ -19,40 +19,40 @@ class career_stats(NbaDataProvider):
         url_modifier = 'playerprofilev2'
         NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_ply_career, PlayerID=player_id)
 
-    def season_totals_regular(self):
+    def seasons_regular(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
-    def career_totals_regular(self):
+    def career_regular(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 1)
 
-    def season_totals_post(self):
+    def seasons_post(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 2)
 
-    def career_totals_post(self):
+    def career_post(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 3)
 
-    def season_totals_allstar(self):
+    def seasons_allstar(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 4)
 
-    def career_totals_allstar(self):
+    def career_allstar(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 5)
 
-    def season_totals_college(self):
+    def seasons_college(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 6)
 
-    def career_totals_college(self):
+    def career_college(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 7)
 
-    def season_rankings_regular(self):
+    def seasons_rankings_regular(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 8)
 
-    def season_rankings_post(self):
+    def seasons_rankings_post(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 9)
 
-    def season_high(self):
+    def season_high_post(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 10)
 
-    def career_high(self):
+    def career_high_post(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 11)
 
     def next_game(self):

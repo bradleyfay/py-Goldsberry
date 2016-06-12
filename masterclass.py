@@ -39,10 +39,6 @@ class ObjectManager(object):
     def target_url(self):
         return urljoin(self.base_url, self._url_modifier)
 
-    def restore_class_dict(self, class_dict):
-        self.__dict__.clear()
-        self.__dict__.update(class_dict)
-
     def get_parameter_keys(self):
         return self.api_params.keys()
 
@@ -106,6 +102,10 @@ class ObjectManager(object):
                 '\nDoes not exist for this class. Please set only existing parameters')
         else:
             self.api_params.update(kwargs)
+
+    def restore_class_dict(self, class_dict):
+        self.__dict__.clear()
+        self.__dict__.update(class_dict)
 
     @contextmanager
     def reinitialize_data_with_new_parameters(self, **kwargs):

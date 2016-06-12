@@ -6,6 +6,7 @@ default_pace_adjust = 'N'
 default_plus_minus = 'N'
 default_ahead_or_behind = 'Ahead or Behind'
 default_clutch_time = 'Last 5 Minutes'
+default_points_diff = 5
 default_team_id = 0
 default_player_id = 0
 default_game_id = 0
@@ -22,7 +23,7 @@ p_team_base = {
 }
 
 p_ply_career = {
-    'PerMode': 'PerGame',
+    'PerMode': 'Totals',
     'PlayerID': default_player_id
 }
 
@@ -49,7 +50,7 @@ p_ply_dashboard = {
     'OpponentTeamID': 0,
     'Outcome': '',
     'Period': 0,
-    'PerMode': 'PerGame',
+    'PerMode': 'Totals',
     'PlayerID': default_player_id,
     'Season': default_season,
     'SeasonSegment': '',
@@ -260,15 +261,14 @@ p_team_info = {
 }
 
 p_game_bs = {
+    'GameID': default_game_id,
     'EndPeriod': 0,
     'EndRange': 0,
     'RangeType': 0,
     'StartPeriod': 0,
     'StartRange': 0}
 
-p_game_pbp = {'EndPeriod': 0, 'StartPeriod': 0}
-
-p_game_base = {'GameID': default_game_id}
+p_game_pbp = {'GameID': default_game_id, 'EndPeriod': 0, 'StartPeriod': 0}
 
 p_league_sb = {'DayOffset': '0', 'LeagueID': default_league_id}
 
@@ -376,7 +376,7 @@ p_league_team_clutch = {
     'PlayerOrTeam': 'T',
     'PlayerPosition': '',
     'PlusMinus': default_plus_minus,
-    'PointDiff': 0,
+    'PointDiff': default_points_diff,
     'Rank': 'Y',
     'Season': default_season,
     'SeasonSegment': '',
@@ -406,10 +406,10 @@ p_league_player_clutch = {
     'PerMode': 'Per36',
     'Period': 0,
     'PlayerExperience': '',
-    'PlayerOrTeam': 'T',
+    'PlayerOrTeam': 'P',
     'PlayerPosition': '',
     'PlusMinus': default_plus_minus,
-    'PointDiff': 0,
+    'PointDiff': default_points_diff,
     'Rank': 'Y',
     'Season': default_season,
     'SeasonSegment': '',
