@@ -1,3 +1,6 @@
+"""
+API default param for all of the get functions
+"""
 default_league_id = '00'
 default_season = '2015-16'
 default_season_id = '22015'
@@ -90,15 +93,6 @@ p_ply_shotchart = {
     'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''
-}
-
-p_game_ids = {
-    'LeagueID': default_league_id,
-    'Season': default_season,
-    'PlayerOrTeam': 'T',
-    'Direction': 'DESC',
-    'SeasonType': default_season_type,
-    'Sorter': 'FGM'
 }
 
 p_team_lineups = {
@@ -267,8 +261,18 @@ p_game_bs = {
     'RangeType': 0,
     'StartPeriod': 0,
     'StartRange': 0}
+# Range is in seconds from start of the game
 
 p_game_pbp = {'GameID': default_game_id, 'EndPeriod': 0, 'StartPeriod': 0}
+
+p_game_ids = {
+    'LeagueID': default_league_id,
+    'Season': default_season,
+    'PlayerOrTeam': 'T',
+    'Direction': 'DESC',
+    'SeasonType': default_season_type,
+    'Sorter': 'FGM'
+}
 
 p_league_sb = {'DayOffset': '0', 'LeagueID': default_league_id}
 
