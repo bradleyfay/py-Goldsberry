@@ -47,5 +47,14 @@ class combine(NbaDataProvider):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
 
 
+class draft_history(NbaDataProvider):
+    def __init__(self):
+        url_modifier = 'drafthistory'
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_only)
+
+    def data(self):
+        return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
+
+
 __all__ = ['anthro', 'agility', 'non_stationary_shooting', 'spot_up_shooting',
-           'combine']
+           'combine', 'draft_history']

@@ -44,7 +44,7 @@ class franchise_history(goldsberry.masterclass.NbaDataProvider):
     def __init__(self, season=default_season):
         url_modifier = 'franchisehistory'
         goldsberry.masterclass.NbaDataProvider.__init__(self, url_modifier=url_modifier,
-                                                        default_params=p_league_history)
+                                                        default_params=p_league_only)
 
     def current_teams(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)

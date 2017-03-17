@@ -276,7 +276,7 @@ p_game_ids = {
 
 p_league_sb = {'DayOffset': '0', 'LeagueID': default_league_id}
 
-p_league_history = {'LeagueID': default_league_id}
+p_league_only = {'LeagueID': default_league_id}
 
 p_league_leaders = {
     'LeagueID': default_league_id,
