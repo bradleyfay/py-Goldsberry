@@ -121,8 +121,11 @@ class ObjectManager(object):
 
 
 class ObjectManagerForPlayType(ObjectManager):
-    def __init__(self, base_url, url_modifier, team, default_params=None, **kwargs):
+    def __init__(self, base_url, url_modifier, year, team, default_params=None, **kwargs):
         self.scope = 'team_' if team else 'player_'
+        self.year = int(year[:4])
+        if not self.year == 2015:
+            raise ValueError('Playtype data stats only available for 2015')
         ObjectManager.__init__(self, base_url, url_modifier, default_params, **kwargs)
 
     @property
@@ -135,6 +138,8 @@ class ObjectManagerForSportVu(ObjectManager):
     def __init__(self, base_url, url_modifier, year, team, default_params=None, **kwargs):
         self.scope = 'Team' if team else ''
         self.year = int(year[:4])
+        if not 2013 <= self.year <= 2015:
+            raise ValueError('SportVU data stats only available for 2013-2015')
         ObjectManager.__init__(self, base_url, url_modifier, default_params, **kwargs)
 
     @property
@@ -150,9 +155,9 @@ class NbaDataProvider(object):
 
 
 class NbaDataProviderPlayType(object):
-    def __init__(self, url_modifier, team=False, default_params=None, **kwargs):
+    def __init__(self, url_modifier, year, team=False, default_params=None, **kwargs):
         base_url = "http://stats.nba.com/js/data/playtype/"
-        self.object_manager = ObjectManagerForPlayType(base_url, url_modifier, team, default_params, **kwargs)
+        self.object_manager = ObjectManagerForPlayType(base_url, url_modifier, year, team, default_params, **kwargs)
 
     def offensive(self):
         return self.object_manager.get_table_from_data(self.object_manager.data_tables, 0)
