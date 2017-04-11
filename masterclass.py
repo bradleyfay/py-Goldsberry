@@ -113,11 +113,11 @@ class ObjectManager(object):
         try:
             self._set_api_parameters(**kwargs)
             self._set_class_data()
-        except ValueError as e:
-            self.restore_class_dict(original_dict)
+            yield
+        except Exception as e:
             raise e
-        yield
-        self.restore_class_dict(original_dict)
+        finally:
+            self.restore_class_dict(original_dict)
 
 
 class ObjectManagerForPlayType(ObjectManager):
