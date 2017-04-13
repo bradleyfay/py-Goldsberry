@@ -179,7 +179,7 @@ p_team_season = {
     'LastNGames': 0,
     'LeagueID': default_league_id,
     'Location': '',
-    'MeasureType': 'Base',
+    'MeasureType': 'Advanced',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
