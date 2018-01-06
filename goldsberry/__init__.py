@@ -9,7 +9,7 @@ import goldsberry.team
 import goldsberry.draft
 import goldsberry.playtype
 import goldsberry.sportvu
-import goldsberry.apiconvertor
+import goldsberry._apiFunc
 import goldsberry.apiparams
 import goldsberry.masterclass
 from goldsberry.player._Player2 import PlayerList

@@ -1,5 +1,5 @@
 import requests as _requests
-from goldsberry.apiconvertor import *
+from goldsberry._apiFunc import *
 
 class play_by_play:
     def __init__(self, gameid, startperiod=1, endperiod=10):

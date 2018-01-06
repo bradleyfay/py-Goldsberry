@@ -1,5 +1,5 @@
 import requests as _requests
-from goldsberry.apiconvertor import *
+from goldsberry._apiFunc import *
 
 
 class Demographics:
