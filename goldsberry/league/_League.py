@@ -1,5 +1,5 @@
 import requests as _requests
-from goldsberry._apiFunc import *
+from goldsberry.apiconvertor import *
 
 class daily_scoreboard:
     def __init__(self, date, league="NBA", dayoffset=0):

@@ -1,5 +1,5 @@
 import requests as _requests
-from goldsberry._apiFunc import *
+from goldsberry.apiconvertor import *
 
 class anthro:
     def __init__(self, season='2014', league='NBA'):

@@ -1,5 +1,5 @@
 import requests as _requests
-from goldsberry._apiFunc import *
+from goldsberry.apiconvertor import *
 
 class team_info:
     def __init__(self, teamid, season='2015',league='NBA', seasontype=1):

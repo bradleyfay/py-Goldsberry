@@ -1,5 +1,5 @@
 import requests as _requests
-from goldsberry._apiFunc import *
+from goldsberry.apiconvertor import *
 
 class catch_and_shoot:
     def __init__(self, year=2015, team=False):
