@@ -2,7 +2,7 @@
 API default param for all of the get functions
 """
 default_league_id = '00'
-default_season = '2017-18'
+default_season = '2018-19'
 default_season_id = '22015'
 default_season_type = 'Regular Season'
 default_pace_adjust = 'N'
