@@ -1,2 +1,4 @@
+retrying
 python-dateutil
 requests
+future

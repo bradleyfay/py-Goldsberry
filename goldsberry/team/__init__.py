@@ -1,1 +1,1 @@
-from goldsberry.team.team import *
+from goldsberry.team._Team2 import *

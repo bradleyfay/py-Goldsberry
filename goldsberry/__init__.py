@@ -9,5 +9,8 @@ import goldsberry.team
 import goldsberry.draft
 import goldsberry.playtype
 import goldsberry.sportvu
-from goldsberry.player.player import PlayerList
-from goldsberry.game.game import GameIDs
+import goldsberry.apiconvertor
+import goldsberry.apiparams
+import goldsberry.masterclass
+from goldsberry.player._Player2 import PlayerList
+from goldsberry.game._Game2 import GameIDs
