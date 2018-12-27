@@ -1,45 +1,74 @@
-p_base = {
-    'LeagueID':'00',
-    'Season':'2015-16'
+"""
+API default param for all of the get functions
+"""
+default_league_id = '00'
+default_season = '2018-19'
+default_season_id = '22015'
+default_season_type = 'Regular Season'
+default_pace_adjust = 'N'
+default_plus_minus = 'N'
+default_ahead_or_behind = 'Ahead or Behind'
+default_clutch_time = 'Last 5 Minutes'
+default_points_diff = 5
+default_team_id = 0
+default_player_id = 0
+default_game_id = 0
+
+
+p_player_common = {
+    'PlayerID': default_player_id
 }
 
+p_team_base = {
+    'LeagueID': default_league_id,
+    'Season': default_season,
+    'TeamID': default_team_id
+}
 
 p_ply_career = {
-    'LeagueID':'00',
-    'Season':'2015-16',
-    'PerMode':'PerGame'
+    'PerMode': 'Totals',
+    'PlayerID': default_player_id
+}
+
+p_team_year_by_year = {
+    'LeagueID': default_league_id,
+    'SeasonType': default_season_type,
+    'TeamID': default_team_id,
+    'PerMode': 'Totals'
 }
 
 p_ply_gamelogs = {
-    'LeagueID':'00',
-    'Season':'2015-16',
-    'SeasonType':'Regular Season'
+    'PlayerID': default_player_id,
+    'Season': default_season,
+    'SeasonType': default_season_type
 }
 
 p_ply_dashboard = {
-    'DateFrom':'',
-    'DateTo':'',
-    'GameSegment':'',
-    'LastNGames':0,
-    'Location':'',
-    'Month':0,
-    'OpponentTeamID':0,
-    'Outcome':'',
-    'Period':0,
-    'PerMode':'PerGame',
-    'Season':'2015-16',
-    'SeasonSegment':'',
-    'SeasonType':'Regular Season',
-    'TeamID':0,
-    'VsConference':'',
-    'VsDivision':'',
-    'LeagueID':'00'
+    'DateFrom': '',
+    'DateTo': '',
+    'GameSegment': '',
+    'LastNGames': 0,
+    'Location': '',
+    'Month': 0,
+    'OpponentTeamID': 0,
+    'Outcome': '',
+    'Period': 0,
+    'PerMode': 'Totals',
+    'PlayerID': default_player_id,
+    'Season': default_season,
+    'SeasonSegment': '',
+    'SeasonType': default_season_type,
+    'TeamID': default_team_id,
+    'VsConference': '',
+    'VsDivision': '',
+    'LeagueID': default_league_id
 }
 
 p_ply_list = {
-    'IsOnlyCurrentSeason':'1',
-    'LeagueID':'00',
-    'Season':'2015-16'
+    'IsOnlyCurrentSeason': '1',
+    'LeagueID': default_league_id,
+    'PlayerID': default_player_id,
+    'Season': default_season
 }
 
 p_ply_shotchart = {
@@ -49,29 +78,21 @@ p_ply_shotchart = {
     'GameID': '',
     'GameSegment': '',
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
     'Period': 0,
-    'Position': '',
+    'PlayerID': default_player_id,
+    'PlayerPosition': '',
     'RookieYear': '',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
-    'TeamID': 0,
+    'SeasonType': default_season_type,
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''
-    }
-
-p_game_ids = {
-    'LeagueID':'00',
-    'Season':'2015-16',
-    'PlayerOrTeam':'T',
-    'Direction':'DESC',
-    'SeasonType':'Regular Season',
-    'Sorter':'FGM'
 }
 
 p_team_lineups = {
@@ -81,22 +102,23 @@ p_team_lineups = {
     'GameSegment': '',
     'GroupQuantity': 5,
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
-    'MeasureType': 'Base',
+    'MeasureType': 'Advanced',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
     'PORound': '',
-    'PaceAdjust': 'Y',
+    'PaceAdjust': default_pace_adjust,
     'PerMode': 'Totals',
     'Period': 0,
-    'PlusMinus': 'Y',
+    'PlusMinus': default_plus_minus,
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
+    'SeasonType': default_season_type,
     'ShotClockRange': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
@@ -105,62 +127,73 @@ p_team_onoff = {
     'DateTo': '',
     'GameSegment': '',
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
-    'MeasureType': 'Base',
+    'MeasureType': 'Advanced',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
-    'PaceAdjust': 'Y',
+    'PaceAdjust': default_pace_adjust,
     'PerMode': 'Totals',
     'Period': 0,
-    'PlusMinus': 'Y',
+    'PlusMinus': default_plus_minus,
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
+    'SeasonType': default_season_type,
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
 p_team_dashbd = {
     'DateFrom': '',
     'DateTo': '',
+    'GameSegment': '',
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
+    'Period': 0,
     'PerMode': 'Totals',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
+    'SeasonType': default_season_type,
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''
-    }
+}
+
+p_team_gamelogs = {
+    'LeagueID': default_league_id,
+    'Season': default_season,
+    'SeasonType': default_season_type,
+    'TeamID': default_team_id
+}
 
 p_team_season = {
     'DateFrom': '',
     'DateTo': '',
     'GameSegment': '',
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
-    'MeasureType': 'Base',
+    'MeasureType': 'Advanced',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
     'PORound': '',
-    'PaceAdjust': 'Y',
+    'PaceAdjust': default_pace_adjust,
     'PerMode': 'Totals',
     'Period': 0,
-    'PlusMinus': 'Y',
-    'Rank': 'Y',
-    'Season': '2015-16',
+    'PlusMinus': default_plus_minus,
+    'Rank': 'N',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
+    'SeasonType': default_season_type,
     'ShotClockRange': '',
-    'TeamID': 1610612758,
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
@@ -169,22 +202,23 @@ p_team_shooting = {
     'DateTo': '',
     'GameSegment': '',
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
     'MeasureType': 'Base',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
     'PORound': '',
-    'PaceAdjust': 'Y',
+    'PaceAdjust': default_pace_adjust,
     'PerMode': 'Totals',
     'Period': 0,
-    'PlusMinus': 'Y',
+    'PlusMinus': default_plus_minus,
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
+    'SeasonType': default_season_type,
     'ShotClockRange': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
@@ -193,79 +227,97 @@ p_team_split = {
     'DateTo': '',
     'GameSegment': '',
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
-    'MeasureType': 'Base',
+    'MeasureType': 'Advanced',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
     'PORound': '',
-    'PaceAdjust': 'Y',
+    'PaceAdjust': default_pace_adjust,
     'PerMode': 'Totals',
     'Period': 0,
-    'PlusMinus': 'Y',
+    'PlusMinus': default_plus_minus,
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
+    'SeasonType': default_season_type,
     'ShotClockRange': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''}
 
 p_team_info = {
-    'LeagueID':'00',
-    'Season': '2015-16',
-    'SeasonType': 'Pre Season'
-    }
+    'LeagueID': default_league_id,
+    'Season': default_season,
+    'SeasonType': default_season_type,
+    'TeamID': default_team_id
+}
 
 p_game_bs = {
+    'GameID': default_game_id,
     'EndPeriod': 0,
     'EndRange': 0,
     'RangeType': 0,
     'StartPeriod': 0,
     'StartRange': 0}
+# Range is in seconds from start of the game
 
-p_game_pbp = {'EndPeriod': 0, 'StartPeriod': 0}
+p_game_pbp = {'GameID': default_game_id, 'EndPeriod': 0, 'StartPeriod': 0}
 
-p_league_sb = {'DayOffset': '0', 'LeagueID': '00'}
+p_game_ids = {
+    'LeagueID': default_league_id,
+    'Season': default_season,
+    'PlayerOrTeam': 'T',
+    'Direction': 'DESC',
+    'SeasonType': default_season_type,
+    'Sorter': 'FGM'
+}
 
-p_league_history = {'LeagueID': '00'}
+p_league_sb = {'DayOffset': '0', 'LeagueID': default_league_id}
+
+p_league_only = {'LeagueID': default_league_id}
 
 p_league_leaders = {
-    'LeagueID':'00',
-    'PerMode':'PerGame',
-    'Scope':'RS',
-    'Season':'2015-16',
-    'SeasonType':'Regular Season',
-    'StatCategory':'PTS'}
+    'LeagueID': default_league_id,
+    'PerMode': 'PerGame',
+    'Scope': 'RS',
+    'Season': default_season,
+    'SeasonType': default_season_type,
+    'StatCategory': 'PTS'}
 
 p_league_lineups = {
     'Conference': '',
-    'DateFrom': '2016-01-02',
-    'DateTo': '2016-01-01',
+    'DateFrom': '',
+    'DateTo': '',
     'Division': '',
     'GameSegment': '',
-    'GroupQuantity': 2,
+    'GroupQuantity': 5,
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
-    'MeasureType': 'Base',
+    'MeasureType': 'Advanced',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
     'PORound': '',
-    'PaceAdjust': 'Y',
+    'PaceAdjust': default_pace_adjust,
     'PerMode': 'Totals',
     'Period': 0,
-    'PlusMinus': 'Y',
-    'Rank': 'Y',
-    'Season': '2015-16',
+    'PlusMinus': default_plus_minus,
+    'Rank': 'N',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
+    'SeasonType': default_season_type,
     'ShotClockRange': '',
-    'TeamID': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': ''
+}
+
+p_playoff_picture = {
+    'LeagueID': default_league_id,
+    'SeasonID': default_season_id
 }
 
 p_league_classic = {
@@ -281,62 +333,95 @@ p_league_classic = {
     'GameSegment': '',
     'Height': '',
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
     'MeasureType': 'Base',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
     'PORound': '',
-    'PaceAdjust': 'Y',
+    'PaceAdjust': default_pace_adjust,
     'PerMode': 'Totals',
     'Period': 0,
     'PlayerExperience': '',
     'PlayerPosition': '',
-    'PlusMinus': 'Y',
+    'PlusMinus': default_plus_minus,
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
+    'SeasonType': default_season_type,
     'ShotClockRange': '',
     'StarterBench': '',
-    'TeamID': '',
+    'TeamID': default_team_id,
     'VsConference': '',
     'VsDivision': '',
     'Weight': ''
 }
 
-p_league_clutch = {
-    'AheadBehind': '',
-    'ClutchTime': '',
+p_league_team_clutch = {
+    'AheadBehind': default_ahead_or_behind,
+    'ClutchTime': default_clutch_time,
     'DateFrom': '',
     'DateTo': '',
     'Direction': 'DESC',
     'GameScope': '',
     'GameSegment': '',
     'LastNGames': 0,
-    'LeagueID': '00',
+    'LeagueID': default_league_id,
     'Location': '',
-    'MeasureType': 'Base',
+    'MeasureType': 'Advanced',
     'Month': 0,
     'OpponentTeamID': 0,
     'Outcome': '',
-    'PaceAdjust': 'Y',
+    'PaceAdjust': default_pace_adjust,
     'PerMode': 'Totals',
     'Period': 0,
     'PlayerExperience': '',
     'PlayerOrTeam': 'T',
     'PlayerPosition': '',
-    'PlusMinus': 'Y',
-    'PointDiff': 0,
+    'PlusMinus': default_plus_minus,
+    'PointDiff': default_points_diff,
     'Rank': 'Y',
-    'Season': '2015-16',
+    'Season': default_season,
     'SeasonSegment': '',
-    'SeasonType': 'Regular Season',
+    'SeasonType': default_season_type,
     'Sorter': 'FGM',
     'StarterBench': '',
     'VsConference': '',
     'VsDivision': ''
 }
 
-p_draft = {'LeagueID': '00', 'SeasonYear': '2015-16'}
+p_league_player_clutch = {
+    'AheadBehind': default_ahead_or_behind,
+    'ClutchTime': default_clutch_time,
+    'DateFrom': '',
+    'DateTo': '',
+    'Direction': 'DESC',
+    'GameScope': '',
+    'GameSegment': '',
+    'LastNGames': 0,
+    'LeagueID': default_league_id,
+    'Location': '',
+    'MeasureType': 'Base',
+    'Month': 0,
+    'OpponentTeamID': 0,
+    'Outcome': '',
+    'PaceAdjust': default_pace_adjust,
+    'PerMode': 'Per36',
+    'Period': 0,
+    'PlayerExperience': '',
+    'PlayerOrTeam': 'P',
+    'PlayerPosition': '',
+    'PlusMinus': default_plus_minus,
+    'PointDiff': default_points_diff,
+    'Rank': 'N',
+    'Season': default_season,
+    'SeasonSegment': '',
+    'SeasonType': default_season_type,
+    'Sorter': 'FGM',
+    'StarterBench': '',
+    'VsConference': '',
+    'VsDivision': ''
+}
+
+p_draft = {'LeagueID': default_league_id, 'SeasonYear': default_season}
