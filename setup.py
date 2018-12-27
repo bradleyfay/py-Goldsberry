@@ -45,7 +45,7 @@ setup(
       author='Bradley Fay',
       author_email='bradley.fay@gmail.com',
       tests_require=['pytest'],
-      install_requires=['requests>=2.7'],
+      install_requires=['requests', 'retrying', 'python-dateutil', 'future'],
       description='API interface for stats.nba.com',
       long_description=readme, #+ '\n\n' + changelog,
       packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
@@ -59,10 +59,7 @@ setup(
       'Programming Language :: Python :: 2',
       'Programming Language :: Python :: 2.6',
       'Programming Language :: Python :: 2.7',
-      'Programming Language :: Python :: 3',
-      'Programming Language :: Python :: 3.2',
-      'Programming Language :: Python :: 3.3',
-      'Programming Language :: Python :: 3.4'
+      'Programming Language :: Python :: 3'
       ]
       )
 

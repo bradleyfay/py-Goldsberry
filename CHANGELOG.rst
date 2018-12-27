@@ -1,3 +1,9 @@
+Version 1.1
+===========
+
+Major overhaul of source code
+* Python 3 Compatibility
+
 Version 0.6.3
 ============
 
