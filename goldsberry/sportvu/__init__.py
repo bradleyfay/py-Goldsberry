@@ -1,1 +1,1 @@
-from goldsberry.sportvu.sportvu import *
+from goldsberry.sportvu._SportVu2 import *
