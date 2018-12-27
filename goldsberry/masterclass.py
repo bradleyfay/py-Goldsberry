@@ -11,7 +11,10 @@ install_aliases()
 # This library is different between python 2 and 3. This negates the difference
 # noinspection PyCompatibility
 from urllib.parse import urljoin
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 
 header_data = {
     'Accept-Encoding': 'gzip, deflate, sdch',
@@ -52,7 +55,10 @@ class ObjectManager(object):
     @retrying.retry(stop_max_attempt_number=3, wait_fixed=1000,
                     retry_on_exception=lambda exception: isinstance(exception, _requests.ConnectionError))
     def _get_nba_data(self, api_params):
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
         pull_url = self.target_url
         self._response = _requests.get(pull_url, params=api_params,
                                        headers=header_data)
@@ -71,8 +77,12 @@ class ObjectManager(object):
 
     @staticmethod
     def _get_table_from_data(nba_table, table_id):
-        headers = nba_table['resultSets'][table_id]['headers']
-        values = nba_table['resultSets'][table_id]['rowSet']
+        try:
+            headers = nba_table['resultSets'][table_id]['headers']
+            values = nba_table['resultSets'][table_id]['rowSet']
+        except:
+            headers = nba_table['resultSet'][table_id]['headers']
+            values = nba_table['resultSet'][table_id]['rowSet']
         return [dict(zip(headers, value)) for value in values]
 
     def _set_class_data(self):

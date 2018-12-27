@@ -70,7 +70,7 @@ class lineups(NbaDataProvider):
         return self._get_table_from_data(self._data_tables, 0)
 
 
-# Doubl Check Stem
+# Double Check Stem
 class playoff_picture(NbaDataProvider):
     def __init__(self, **kwargs):
         url_modifier = 'playoffpicture'
@@ -130,6 +130,22 @@ class player_stats_clutch(NbaDataProvider):
     def clutch_stats(self):
         return self._get_table_from_data(self._data_tables, 0)
 
+class player_stats_hustle(NbaDataProvider):
+    def __init__(self, **kwargs):
+        url_modifier = 'leaguehustlestatsplayer'
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_leaders, **kwargs)
+
+    def hustle_stats(self):
+        return self._get_table_from_data(self._data_tables,0)
+
+
+class team_stats_hustle(NbaDataProvider):
+    def __init__(self, **kwargs):
+        url_modifier = 'leaguehustlestatsteam'
+        NbaDataProvider.__init__(self, url_modifier=url_modifier, default_params=p_league_leaders, **kwargs)
+
+    def hustle_stats(self):
+        return self._get_table_from_data(self._data_tables,0)
 
 # class transactions(BASE):
 #     _pull_url = "http://stats.nba.com/feeds/NBAPlayerTransactions-559107/json.js"
