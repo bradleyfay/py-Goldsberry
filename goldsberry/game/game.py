@@ -26,18 +26,6 @@ class boxscore_fourfactors(NbaDataProvider):
         return self._get_table_from_data(self._data_tables, 1)
 
 
-class boxscore_hustle(NbaDataProvider):
-    def __init__(self, gameid, **kwargs):
-        url_modifier = 'hustlestatsboxscore'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, GameID=gameid, **kwargs)
-
-    def player_stats(self):
-        return self._get_table_from_data(self._data_tables, 0)
-
-    def team_stats(self):
-        return self._get_table_from_data(self._data_tables, 1)
-
-
 class boxscore_miscellaneous(NbaDataProvider):
     def __init__(self, gameid, **kwargs):
         url_modifier = 'boxscoremiscv2'
@@ -141,24 +129,6 @@ class play_by_play(NbaDataProvider):
 
     def _available_video(self):
         return self._get_table_from_data(self._data_tables, 1)
-
-
-class win_probability(NbaDataProvider):
-    def __init__(self, gameid, **kwargs):
-        url_modifier = 'winprobabilitypbp'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, GameID=gameid, RunType='each+second', **kwargs)
-
-    def win_probability(self):
-        return self._get_table_from_data(self._data_tables, 0)
-
-
-class fan_duel_scores(NbaDataProvider):
-    def __init__(self, gameid, **kwargs):
-        url_modifier = 'infographicfanduelplayer'
-        NbaDataProvider.__init__(self, url_modifier=url_modifier, GameID=gameid, RunType='each+second', **kwargs)
-
-    def daily_fantasy(self):
-        return self._get_table_from_data(self._data_tables, 0)
 
 
 # Courtesy of daniel.silvis@gmail.com
