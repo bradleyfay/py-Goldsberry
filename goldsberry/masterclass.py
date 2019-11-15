@@ -23,12 +23,14 @@ header_data = {
     'Connection': 'keep-alive'
 }
 
+
 class ObjectManager(object):
     def __init__(self, base_url, url_modifier, default_params=None, **kwargs):
         if not default_params:
             default_params = {}
         self.base_url = base_url
         self.api_params = {}
+        self.data_tables = {}
         self._url_modifier = url_modifier
         self.set_default_api_parameters(**default_params)
         self.set_api_parameters(**kwargs)
@@ -68,7 +70,7 @@ class ObjectManager(object):
                              "\n".join(txt))
 
     @staticmethod
-    def _get_table_from_data(nba_table, table_id):
+    def get_table_from_data(nba_table, table_id):
         try:
             headers = nba_table['resultSets'][table_id]['headers']
             values = nba_table['resultSets'][table_id]['rowSet']
@@ -79,7 +81,7 @@ class ObjectManager(object):
 
     def _set_class_data(self):
         nba_data_response = self._get_nba_data(self.api_params)
-        self._data_tables = nba_data_response
+        self.data_tables = nba_data_response
 
     def set_api_parameters(self, **kwargs):
         for k, v in kwargs.items():
