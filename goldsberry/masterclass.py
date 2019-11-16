@@ -51,11 +51,12 @@ class ObjectManager(object):
         return self.api_params
 
     @retrying.retry(stop_max_attempt_number=3, wait_fixed=1000,
-                    retry_on_exception=lambda exception: isinstance(exception, _requests.ConnectionError))
+                    retry_on_exception=lambda exception: isinstance(exception, (_requests.ConnectionError,
+                                                                                _requests.exceptions.ReadTimeout)))
     def _get_nba_data(self, api_params):
         pull_url = self.target_url
         self._response = _requests.get(pull_url, params=api_params,
-                                       headers=header_data)
+                                       headers=header_data, timeout=60)
 
         if self._response.status_code == 200:
             return self._response.json()
