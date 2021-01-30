@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+import time
+
 import requests as _requests
 import copy
 from contextlib import contextmanager
@@ -21,6 +23,9 @@ header_data = {
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'en-US,en;q=0.9',
     }
+
+last_request_time = time.time()
+minimal_time_between_requests_in_seconds = 0.6
 
 
 class ObjectManager(object):
@@ -54,6 +59,14 @@ class ObjectManager(object):
                                                                                 _requests.exceptions.ReadTimeout)))
     def _get_nba_data(self, api_params):
         pull_url = self.target_url
+
+        # If you send nba.com too many requests, it blocks you for 10 minutes. So we set sleeps to not pass that limit.
+        global last_request_time
+        time_from_last_request = time.time() - last_request_time
+        if time_from_last_request < minimal_time_between_requests_in_seconds:
+            time.sleep(minimal_time_between_requests_in_seconds - time_from_last_request)
+
+        last_request_time = time.time()
         self._response = _requests.get(pull_url, params=api_params,
                                        headers=header_data, timeout=60)
 
