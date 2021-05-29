@@ -55,7 +55,7 @@ class ObjectManager(object):
         return self.api_params
 
     @retrying.retry(stop_max_attempt_number=3, wait_fixed=1000,
-                    retry_on_exception=lambda exception: isinstance(exception, _requests.ConnectionError))
+                    retry_on_exception=lambda exception: isinstance(exception, _requests.RequestException))
     def _get_nba_data(self, api_params):
         pull_url = self.target_url
 
