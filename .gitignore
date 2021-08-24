@@ -55,9 +55,6 @@ target/
 
 #Markdown README
 _README.md
-<<<<<<< HEAD
-/.idea
-=======
 #Jupyter Notebook Checkpoints
 *.checkpoint.ipynb
 docs/.ipynb_checkpoints/
@@ -65,9 +62,5 @@ docs/.ipynb_checkpoints/
 
 
 .idea/
-*.sublime-project
-*.sublime-workspace
-
-
-
->>>>>>> master
+*.code-workspace
+.python-version
