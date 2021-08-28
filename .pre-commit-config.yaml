@@ -12,3 +12,8 @@ repos:
     rev: 'v1.5.7'  # Use the sha / tag you want to point at
     hooks:
     -   id: autopep8
+-   repo: https://github.com/pycqa/isort
+    rev: 5.8.0
+    hooks:
+      - id: isort
+        name: isort (python)
