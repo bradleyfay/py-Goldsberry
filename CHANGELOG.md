@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **CareerStats endpoint** (playercareerstats) with season-by-season and career totals
+- **GameLogs endpoint** (playergamelog) with game-by-game player statistics
 
 ## [2.0.0-alpha.1] - 2025-11-06
 
