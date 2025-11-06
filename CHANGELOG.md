@@ -8,8 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **LeagueTeamStats endpoint** (leaguedashteamstats) with league-wide team statistics, conference/division filtering, and sorting capabilities (Endpoint #10)
+- **LeaguePlayerStats endpoint** (leaguedashplayerstats) with league-wide player statistics and filtering capabilities (Endpoint #9)
+- **BoxscoreAdvanced endpoint** (boxscoreadvancedv2) with advanced metrics including offensive/defensive ratings, usage percentage, true shooting, PIE, and efficiency stats (Endpoint #8)
 - **CareerStats endpoint** (playercareerstats) with season-by-season and career totals
 - **GameLogs endpoint** (playergamelog) with game-by-game player statistics
+- **TeamSeasonStats endpoint** (leaguedashteamstats) with league-wide team statistics
+- **TeamGameLogs endpoint** (teamgamelog) with game-by-game team statistics
+- **TeamRoster endpoint** (commonteamroster) with players and coaching staff
+- **BoxscoreTraditional endpoint** (boxscoretraditionalv2) with player and team game statistics
+
+### Changed
+- Version metadata now read from package using `importlib.metadata` (single source of truth in pyproject.toml)
 
 ## [2.0.0-alpha.1] - 2025-11-06
 

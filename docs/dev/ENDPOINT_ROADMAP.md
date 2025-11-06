@@ -1,7 +1,7 @@
 # Endpoint Implementation Roadmap
 
 > **Last Updated**: 2025-11-06
-> **Progress**: 3 of 42 endpoints complete (7.1%)
+> **Progress**: 10 of 42 endpoints complete (23.8%)
 
 ## Overview
 
@@ -19,13 +19,13 @@ This document tracks all 42 endpoints from the legacy v1.x package and their imp
 | Category | Complete | In Progress | Not Started | Blocked | Total |
 |----------|----------|-------------|-------------|---------|-------|
 | Player   | 3        | 0           | 6           | 3       | 12    |
-| Team     | 0        | 0           | 12          | 1       | 13    |
-| Game     | 0        | 0           | 9           | 0       | 9     |
-| League   | 0        | 0           | 6           | 2       | 8     |
+| Team     | 3        | 0           | 9           | 1       | 13    |
+| Game     | 2        | 0           | 7           | 0       | 9     |
+| League   | 2        | 0           | 4           | 2       | 8     |
 | SportVU  | 0        | 0           | 9           | 0       | 9     |
 | PlayType | 0        | 0           | 11          | 0       | 11    |
 | Draft    | 0        | 0           | 5           | 0       | 5     |
-| **Total**| **3**    | **0**       | **58**      | **6**   | **67**|
+| **Total**| **10**   | **0**       | **51**      | **6**   | **67**|
 
 Note: Total is 67 because some endpoints appear in multiple categories or have variants.
 
@@ -46,25 +46,25 @@ Must-have endpoints for basic functionality. Target for Phase 2.
 
 | Status | Endpoint | NBA API | Model File | Endpoint File | Test File | Priority | Notes |
 |--------|----------|---------|------------|---------------|-----------|----------|-------|
-| ❌ | season_stats | leaguedashteamstats | - | - | - | HIGH | Season team statistics |
-| ❌ | game_logs | teamgamelogs | - | - | - | HIGH | Game-by-game team stats |
-| ❌ | roster | commonteamroster | - | - | - | MEDIUM | Current team roster |
+| ✅ | season_stats | leaguedashteamstats | models/team/season_stats.py | endpoints/team/season_stats.py | test_season_stats.py | HIGH | ✅ Complete |
+| ✅ | game_logs | teamgamelog | models/team/game_logs.py | endpoints/team/game_logs.py | test_game_logs.py | HIGH | ✅ Complete |
+| ✅ | roster | commonteamroster | models/team/roster.py | endpoints/team/roster.py | test_roster.py | MEDIUM | ✅ Complete |
 
 ### Game Endpoints
 
 | Status | Endpoint | NBA API | Model File | Endpoint File | Test File | Priority | Notes |
 |--------|----------|---------|------------|---------------|-----------|----------|-------|
-| ❌ | boxscore_traditional | boxscoretraditionalv2 | - | - | - | HIGH | Traditional box score |
-| ❌ | boxscore_advanced | boxscoreadvancedv2 | - | - | - | MEDIUM | Advanced box score |
+| ✅ | boxscore_traditional | boxscoretraditionalv2 | models/game/boxscore_traditional.py | endpoints/game/boxscore_traditional.py | test_boxscore_traditional.py | HIGH | ✅ Complete |
+| ✅ | boxscore_advanced | boxscoreadvancedv2 | models/game/boxscore_advanced.py | endpoints/game/boxscore_advanced.py | test_boxscore_advanced.py | MEDIUM | ✅ Complete |
 
 ### League Endpoints
 
 | Status | Endpoint | NBA API | Model File | Endpoint File | Test File | Priority | Notes |
 |--------|----------|---------|------------|---------------|-----------|----------|-------|
-| ❌ | player_stats_classic | leaguedashplayerstats | - | - | - | HIGH | League-wide player stats |
-| ❌ | team_stats_classic | leaguedashteamstats | - | - | - | MEDIUM | League-wide team stats |
+| ✅ | player_stats_classic | leaguedashplayerstats | models/league/player_stats.py | endpoints/league/player_stats.py | test_player_stats.py | HIGH | ✅ Complete |
+| ✅ | team_stats_classic | leaguedashteamstats | models/league/team_stats.py | endpoints/league/team_stats.py | test_team_stats.py | MEDIUM | ✅ Complete |
 
-**Tier 1 Progress**: 3 of 10 complete (30%)
+**Tier 1 Progress**: 10 of 10 complete (100%)
 
 ---
 
