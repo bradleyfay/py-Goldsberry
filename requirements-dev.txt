@@ -1,5 +1,0 @@
-pytest
-# python3.2 does not support coverage
-# See https://github.com/travis-ci/travis-ci/issues/4866
-coverage<4
-pytest-cov

@@ -1,0 +1,132 @@
+{
+  "resource": "commonteamroster",
+  "parameters": {
+    "TeamID": 1610612738,
+    "Season": "2024-25",
+    "LeagueID": "00"
+  },
+  "resultSets": [
+    {
+      "name": "CommonTeamRoster",
+      "headers": [
+        "TeamID",
+        "SEASON",
+        "LeagueID",
+        "PLAYER_ID",
+        "PLAYER",
+        "NUM",
+        "POSITION",
+        "HEIGHT",
+        "WEIGHT",
+        "BIRTH_DATE",
+        "AGE",
+        "EXP",
+        "SCHOOL",
+        "HOW_ACQUIRED"
+      ],
+      "rowSet": [
+        [
+          1610612738,
+          "2024-25",
+          "00",
+          1630162,
+          "Payton Pritchard",
+          "11",
+          "G",
+          "6-1",
+          "195",
+          "1998-01-28T00:00:00",
+          26.0,
+          "4",
+          "Oregon",
+          "Draft"
+        ],
+        [
+          1610612738,
+          "2024-25",
+          "00",
+          1628369,
+          "Jayson Tatum",
+          "0",
+          "F-G",
+          "6-8",
+          "210",
+          "1998-03-03T00:00:00",
+          26.0,
+          "7",
+          "Duke",
+          "Draft"
+        ],
+        [
+          1610612738,
+          "2024-25",
+          "00",
+          1627759,
+          "Jaylen Brown",
+          "7",
+          "G-F",
+          "6-6",
+          "223",
+          "1996-10-24T00:00:00",
+          28.0,
+          "8",
+          "California",
+          "Draft"
+        ]
+      ]
+    },
+    {
+      "name": "Coaches",
+      "headers": [
+        "TEAM_ID",
+        "SEASON",
+        "COACH_ID",
+        "FIRST_NAME",
+        "LAST_NAME",
+        "COACH_NAME",
+        "COACH_TYPE",
+        "IS_ASSISTANT",
+        "SCHOOL",
+        "SORT_SEQUENCE"
+      ],
+      "rowSet": [
+        [
+          1610612738,
+          "2024-25",
+          "203099",
+          "Joe",
+          "Mazzulla",
+          "Joe Mazzulla",
+          "Head Coach",
+          0,
+          "West Virginia",
+          1
+        ],
+        [
+          1610612738,
+          "2024-25",
+          "203098",
+          "Sam",
+          "Cassell",
+          "Sam Cassell",
+          "Assistant Coach",
+          1,
+          "Florida State",
+          2
+        ],
+        [
+          1610612738,
+          "2024-25",
+          "203097",
+          "Charles",
+          "Lee",
+          "Charles Lee",
+          "Assistant Coach",
+          1,
+          "Bucknell",
+          3
+        ]
+      ]
+    }
+  ]
+}
