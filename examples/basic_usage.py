@@ -10,10 +10,10 @@ Demonstrates:
 """
 
 import asyncio
-from nba_api.client.base import BaseClient
-from nba_api.client.exceptions import NBAAPIError, TimeoutError
-from nba_api.endpoints.player import PlayerListEndpoint, get_players
-from nba_api.enums.common import IsOnlyCurrentSeason, Season
+from goldsberry.client.base import BaseClient
+from goldsberry.client.exceptions import NBAAPIError, TimeoutError
+from goldsberry.endpoints.player import PlayerListEndpoint, get_players
+from goldsberry.enums.common import IsOnlyCurrentSeason, Season
 
 
 def example_1_quick_start():

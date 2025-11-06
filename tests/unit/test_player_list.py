@@ -2,10 +2,10 @@
 
 import pytest
 
-from nba_api.client.base import BaseClient
-from nba_api.endpoints.player import PlayerListEndpoint, get_players
-from nba_api.enums.common import IsOnlyCurrentSeason, LeagueID, Season
-from nba_api.models.player import PlayerInfo
+from goldsberry.client.base import BaseClient
+from goldsberry.endpoints.player import PlayerListEndpoint, get_players
+from goldsberry.enums.common import IsOnlyCurrentSeason, LeagueID, Season
+from goldsberry.models.player import PlayerInfo
 
 
 @pytest.fixture

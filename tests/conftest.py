@@ -55,7 +55,7 @@ def mock_client_response(monkeypatch):
         Args:
             response_data: Data to return from mocked client
         """
-        from nba_api.client.base import BaseClient
+        from goldsberry.client.base import BaseClient
 
         def mock_get(self, endpoint: str, params=None):
             return response_data
