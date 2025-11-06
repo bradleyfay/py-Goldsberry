@@ -1,7 +1,7 @@
 # Endpoint Implementation Roadmap
 
 > **Last Updated**: 2025-11-06
-> **Progress**: 1 of 42 endpoints complete (2.4%)
+> **Progress**: 2 of 42 endpoints complete (4.8%)
 
 ## Overview
 
@@ -18,14 +18,14 @@ This document tracks all 42 endpoints from the legacy v1.x package and their imp
 
 | Category | Complete | In Progress | Not Started | Blocked | Total |
 |----------|----------|-------------|-------------|---------|-------|
-| Player   | 1        | 0           | 8           | 3       | 12    |
+| Player   | 2        | 0           | 7           | 3       | 12    |
 | Team     | 0        | 0           | 12          | 1       | 13    |
 | Game     | 0        | 0           | 9           | 0       | 9     |
 | League   | 0        | 0           | 6           | 2       | 8     |
 | SportVU  | 0        | 0           | 9           | 0       | 9     |
 | PlayType | 0        | 0           | 11          | 0       | 11    |
 | Draft    | 0        | 0           | 5           | 0       | 5     |
-| **Total**| **1**    | **0**       | **60**      | **6**   | **67**|
+| **Total**| **2**    | **0**       | **59**      | **6**   | **67**|
 
 Note: Total is 67 because some endpoints appear in multiple categories or have variants.
 
@@ -38,7 +38,7 @@ Must-have endpoints for basic functionality. Target for Phase 2.
 | Status | Endpoint | NBA API | Model File | Endpoint File | Test File | Priority | Notes |
 |--------|----------|---------|------------|---------------|-----------|----------|-------|
 | ✅ | PlayerList | commonallplayers | models/player/player_list.py | endpoints/player/player_list.py | test_player_list.py | HIGH | ✅ Complete |
-| ❌ | career_stats | playercareerstats | - | - | - | HIGH | Career stats by season |
+| ✅ | career_stats | playercareerstats | models/player/career_stats.py | endpoints/player/career_stats.py | test_career_stats.py | HIGH | ✅ Complete |
 | ❌ | game_logs | playergamelogs | - | - | - | HIGH | Game-by-game stats |
 | ❌ | shot_dashboard | playerdashboardbyshootingsplits | - | - | - | MEDIUM | Shooting splits/zones |
 
@@ -64,7 +64,7 @@ Must-have endpoints for basic functionality. Target for Phase 2.
 | ❌ | player_stats_classic | leaguedashplayerstats | - | - | - | HIGH | League-wide player stats |
 | ❌ | team_stats_classic | leaguedashteamstats | - | - | - | MEDIUM | League-wide team stats |
 
-**Tier 1 Progress**: 1 of 10 complete (10%)
+**Tier 1 Progress**: 2 of 10 complete (20%)
 
 ---
 
