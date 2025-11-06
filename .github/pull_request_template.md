@@ -44,28 +44,61 @@ Complete modernization of py-Goldsberry to v2.0.0-alpha.1 with:
 
 ## Implementation Status
 
-### ✅ Complete
-- [x] Modern build system (pyproject.toml + uv)
-- [x] Core HTTP client with retry logic
-- [x] Exception hierarchy
-- [x] Pydantic base models
-- [x] Type-safe enums
+### ✅ Complete (Phase 0 & 1)
+- [x] Modern build system (pyproject.toml + uv + hatch)
+- [x] Core HTTP client with retry logic, rate limiting, circuit breaker
+- [x] Exception hierarchy with rich context
+- [x] Pydantic v2 base models and response parser
+- [x] Type-safe enums (21 common enums)
 - [x] PlayerList endpoint (first of 42)
-- [x] Comprehensive tests
-- [x] Usage examples
+- [x] Comprehensive tests (8 tests, 100% endpoint coverage)
+- [x] Usage examples (sync + async patterns)
+- [x] Developer documentation (10 comprehensive docs)
+- [x] Hatch scripts for common tasks
+- [x] Package naming corrected (goldsberry not nba_api)
+- [x] Legacy code preserved (goldsberry_legacy/)
 
-### 🚧 TODO (Future PRs)
-- [ ] Remaining 41 endpoints (player, team, league, game)
-- [ ] Integration tests (optional, NBA API unreliable)
-- [ ] API documentation (Sphinx/MkDocs)
-- [ ] Migration guide from v1.x
-- [ ] Publish to PyPI
+### 🚧 Next Phase (Phase 2 - Core Endpoints)
+- [ ] 10 Tier 1 endpoints (player, team, game, league)
+- [ ] See [ENDPOINT_ROADMAP.md](docs/dev/ENDPOINT_ROADMAP.md) for details
 
-## Commits
+### 📋 Future Work
+- [ ] Remaining 31 endpoints (41 total working, 6 blocked by NBA)
+- [ ] CI/CD pipeline (GitHub Actions)
+- [ ] Integration tests (optional, marked separately)
+- [ ] Migration guide from v1.x (content needed)
+- [ ] Release to PyPI
+
+## Documentation
+
+### Developer Docs (docs/dev/)
+- **PROJECT_PLAN.md** - Master project plan with phases, time estimates, risks
+- **ENDPOINT_ROADMAP.md** - 42-endpoint tracking matrix organized by tier
+- **IMPLEMENTATION_GUIDE.md** - Step-by-step guide for adding endpoints
+- **ARCHITECTURE.md** - System design and component overview
+- **PATTERNS.md** - Coding patterns and conventions
+- **TESTING.md** - Testing strategy and guidelines
+- **DECISIONS.md** - Architecture decision records (8 ADRs)
+- **CONTRIBUTING.md** - Contributor onboarding guide
+- **API_STATUS.md** - NBA API research findings
+- **MIGRATION.md** - v1.x to v2.0 guide (placeholder)
+
+### User Docs
+- **README.md** - Quick start and overview (converted from .rst)
+- **CHANGELOG.md** - Version history (fresh for v2.0)
+
+## Recent Commits (Latest Session)
+
+- `fix`: Rename package from nba_api to goldsberry
+- `refactor`: Rename legacy package to avoid import conflicts
+- `docs`: Reorganize documentation to markdown with comprehensive dev docs
+- `build`: Add hatch scripts and update package metadata
+- `chore`: Remove obsolete build and config files
+
+## Earlier Commits (Foundation)
 
 - `build`: Modernize to pyproject.toml with uv and Python 3.9+
-- `fix`: Resolve merge conflict and upgrade to modern Python
-- `docs`: Document NBA API validation and research findings
+- `fix`: Resolve CI failures for Windows and Python 3.9
 - `feat`: Implement resilient HTTP client with comprehensive error handling
 - `feat`: Add Pydantic models and type-safe enums
 - `feat`: Implement PlayerList endpoint (commonallplayers)
@@ -79,9 +112,10 @@ Investigation of actively-maintained `nba_api` package revealed:
 - Same endpoints still valid (`stats.nba.com/stats/*`)
 - **NBA API is inherently unreliable** (widespread timeout issues)
 - No authentication barriers
+- 6 endpoints permanently blocked by NBA
 - Our resilient design is critical for success
 
-See `API_STATUS.md` for full research documentation.
+See [docs/dev/API_STATUS.md](docs/dev/API_STATUS.md) for full research documentation.
 
 ## Example Usage
 
@@ -100,38 +134,88 @@ for player in players:
 ## Testing
 
 ```bash
-# Run tests
-pytest tests/unit/test_player_list.py -v
+# Run tests (using hatch)
+hatch run test              # Run all tests
+hatch run test-cov          # With coverage report
+hatch run test-fast         # Fast (no coverage)
+
+# Or with pytest directly
+pytest tests/unit/ -v
 
 # All 8 tests pass
-# 61% coverage overall, 100% on PlayerList
+# 100% coverage on implemented endpoints
+```
+
+## Development Workflow
+
+```bash
+# Quality checks
+hatch run lint              # Check code quality
+hatch run lint-fix          # Auto-fix issues
+hatch run format            # Format code
+hatch run type              # Type checking
+hatch run check             # Run all checks
+
+# Build package
+uv build
 ```
 
 ## File Changes
 
-**Created** (~1,800 lines):
-- `pyproject.toml` - Modern build configuration
-- `src/nba_api/client/` - HTTP client + exceptions
-- `src/nba_api/models/` - Pydantic models
-- `src/nba_api/enums/` - Type-safe enums
-- `src/nba_api/endpoints/player/` - PlayerList endpoint
-- `tests/` - Testing infrastructure
-- `examples/` - Usage examples
-- `API_STATUS.md` - Research findings
+**Created** (~10,000+ lines of code and docs):
+- `src/goldsberry/` - Complete modern package (was src/nba_api/)
+  - `client/` - HTTP client + exceptions
+  - `models/` - Pydantic v2 models
+  - `enums/` - Type-safe enums (21 enums)
+  - `endpoints/player/` - PlayerList endpoint
+- `tests/` - Testing infrastructure with fixtures
+- `examples/` - Usage examples (basic_usage.py)
+- `docs/dev/` - 10 comprehensive developer docs
+- `README.md`, `CHANGELOG.md` - User documentation
+- `goldsberry_legacy/` - Preserved v1.x code for reference
+- `.github/pull_request_template.md` - PR template
+- Hatch scripts in `pyproject.toml`
 
-**Modified**:
-- `goldsberry/masterclass.py` - HTTP→HTTPS, remove Python 2
-- `goldsberry/player/player.py` - Resolve merge conflict
+**Removed**:
+- `Makefile`, `setup.py`, `setup.cfg` - Replaced by pyproject.toml
+- `requirements*.txt` - Dependencies in pyproject.toml
+- `.rst` files - Converted to markdown
+- `goldsberry/` - Moved to goldsberry_legacy/
 
 ## Review Notes
 
-This PR establishes the foundation and patterns for v2.0:
+### What This PR Accomplishes
+
+**Phase 0 (Foundation) - COMPLETE**:
+- Modern build system, HTTP client, models, enums, testing infrastructure
+
+**Phase 1 (Proof of Concept) - COMPLETE**:
+- PlayerList endpoint demonstrates the pattern for remaining 41 endpoints
+
+**Documentation** - COMPLETE:
+- 10 comprehensive developer docs enable low-context-switching resumption
+- Architecture, patterns, testing, implementation guide all documented
+- Project plan with phases, time estimates, and risk register
+- 42-endpoint roadmap with tier prioritization
+- 8 architecture decision records explaining "why"
+
+### Repeatable Patterns Established
+
 - One model file per endpoint (~80 lines)
 - One endpoint file per endpoint (~175 lines)
 - One test file per endpoint (~200 lines)
-- Mock fixtures for fast tests
+- Mock fixtures for fast, deterministic tests
+- ~2 hours per endpoint following IMPLEMENTATION_GUIDE.md
 
-With this foundation, the remaining 41 endpoints can be implemented systematically following the same pattern.
+### Next Steps (Phase 2)
+
+Implement 10 Tier 1 core endpoints following the established pattern:
+- Player: career_stats, game_logs, shot_dashboard
+- Team: season_stats, game_logs, roster
+- Game: boxscore_traditional, boxscore_advanced
+- League: player_stats_classic, team_stats_classic
+
+See [docs/dev/PROJECT_PLAN.md](docs/dev/PROJECT_PLAN.md) for complete roadmap.
 
 ---
 
