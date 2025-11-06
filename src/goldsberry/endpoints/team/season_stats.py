@@ -1,6 +1,6 @@
 """TeamSeasonStats endpoint - fetch league-wide team statistics for a season."""
 
-from typing import Optional
+from typing import Optional, Union
 
 from ...client.base import BaseClient
 from ...enums.common import (
@@ -65,19 +65,19 @@ class TeamSeasonStatsEndpoint:
 
     def _build_params(
         self,
-        season: str | Season = Season.CURRENT,
-        season_type: str | SeasonType = SeasonType.REGULAR_SEASON,
-        per_mode: str | PerMode = PerMode.TOTALS,
-        measure_type: str | MeasureType = MeasureType.BASE,
-        league_id: str | LeagueID = LeagueID.NBA,
-        pace_adjust: str | PaceAdjust = PaceAdjust.NO,
-        plus_minus: str | PlusMinus = PlusMinus.NO,
-        rank: str | Rank = Rank.NO,
-        outcome: str | Outcome = Outcome.ALL,
-        location: str | Location = Location.ALL,
-        month: int | Month = Month.ALL,
-        season_segment: str | SeasonSegment = SeasonSegment.ENTIRE_SEASON,
-        period: int | Period = Period.ALL,
+        season: Union[str, Season] = Season.CURRENT,
+        season_type: Union[str, SeasonType] = SeasonType.REGULAR_SEASON,
+        per_mode: Union[str, PerMode] = PerMode.TOTALS,
+        measure_type: Union[str, MeasureType] = MeasureType.BASE,
+        league_id: Union[str, LeagueID] = LeagueID.NBA,
+        pace_adjust: Union[str, PaceAdjust] = PaceAdjust.NO,
+        plus_minus: Union[str, PlusMinus] = PlusMinus.NO,
+        rank: Union[str, Rank] = Rank.NO,
+        outcome: Union[str, Outcome] = Outcome.ALL,
+        location: Union[str, Location] = Location.ALL,
+        month: Union[int, Month] = Month.ALL,
+        season_segment: Union[str, SeasonSegment] = SeasonSegment.ENTIRE_SEASON,
+        period: Union[int, Period] = Period.ALL,
         last_n_games: int = 0,
         team_id: int = 0,
         opponent_team_id: int = 0,
@@ -96,7 +96,7 @@ class TeamSeasonStatsEndpoint:
         two_way: int = 0,
         vs_conference: str = "",
         vs_division: str = "",
-    ) -> dict[str, str | int]:
+    ) -> dict[str, Union[str, int]]:
         """Build query parameters for API request.
 
         Args:
@@ -224,11 +224,11 @@ class TeamSeasonStatsEndpoint:
 
     def fetch(
         self,
-        season: str | Season = Season.CURRENT,
-        season_type: str | SeasonType = SeasonType.REGULAR_SEASON,
-        per_mode: str | PerMode = PerMode.TOTALS,
-        measure_type: str | MeasureType = MeasureType.BASE,
-        **kwargs: str | int,
+        season: Union[str, Season] = Season.CURRENT,
+        season_type: Union[str, SeasonType] = SeasonType.REGULAR_SEASON,
+        per_mode: Union[str, PerMode] = PerMode.TOTALS,
+        measure_type: Union[str, MeasureType] = MeasureType.BASE,
+        **kwargs: Union[str, int],
     ) -> TeamSeasonStats:
         """Fetch team season statistics (synchronous).
 
@@ -263,11 +263,11 @@ class TeamSeasonStatsEndpoint:
 
     async def fetch_async(
         self,
-        season: str | Season = Season.CURRENT,
-        season_type: str | SeasonType = SeasonType.REGULAR_SEASON,
-        per_mode: str | PerMode = PerMode.TOTALS,
-        measure_type: str | MeasureType = MeasureType.BASE,
-        **kwargs: str | int,
+        season: Union[str, Season] = Season.CURRENT,
+        season_type: Union[str, SeasonType] = SeasonType.REGULAR_SEASON,
+        per_mode: Union[str, PerMode] = PerMode.TOTALS,
+        measure_type: Union[str, MeasureType] = MeasureType.BASE,
+        **kwargs: Union[str, int],
     ) -> TeamSeasonStats:
         """Fetch team season statistics (asynchronous).
 
@@ -301,11 +301,11 @@ class TeamSeasonStatsEndpoint:
 
 
 def get_team_season_stats(
-    season: str | Season = Season.CURRENT,
-    season_type: str | SeasonType = SeasonType.REGULAR_SEASON,
-    per_mode: str | PerMode = PerMode.TOTALS,
-    measure_type: str | MeasureType = MeasureType.BASE,
-    **kwargs: str | int,
+    season: Union[str, Season] = Season.CURRENT,
+    season_type: Union[str, SeasonType] = SeasonType.REGULAR_SEASON,
+    per_mode: Union[str, PerMode] = PerMode.TOTALS,
+    measure_type: Union[str, MeasureType] = MeasureType.BASE,
+    **kwargs: Union[str, int],
 ) -> TeamSeasonStats:
     """Convenience function to fetch team season statistics.
 

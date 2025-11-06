@@ -1,6 +1,6 @@
 """BoxscoreAdvanced endpoint - fetch advanced boxscore statistics for a game."""
 
-from typing import Optional
+from typing import Optional, Union
 
 from ...client.base import BaseClient
 from ...models.game import BoxscoreAdvanced, PlayerBoxscoreAdvanced, TeamBoxscoreAdvanced
@@ -56,7 +56,7 @@ class BoxscoreAdvancedEndpoint:
         start_range: int = 0,
         end_range: int = 28800,
         range_type: int = 2,
-    ) -> dict[str, str | int]:
+    ) -> dict[str, Union[str, int]]:
         """Build query parameters for API request.
 
         Args:

@@ -48,7 +48,7 @@ class GameLogsEndpoint:
         player_id: int,
         season: Union[Season, str] = Season.CURRENT,
         season_type: SeasonType = SeasonType.REGULAR_SEASON,
-    ) -> dict[str, str | int]:
+    ) -> dict[str, Union[str, int]]:
         """Build query parameters for API request.
 
         Args:

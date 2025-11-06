@@ -1,6 +1,6 @@
 """TeamGameLogs endpoint - fetch game-by-game team statistics."""
 
-from typing import Optional
+from typing import Optional, Union
 
 from ...client.base import BaseClient
 from ...enums.common import LeagueID, Season, SeasonType
@@ -50,10 +50,10 @@ class TeamGameLogsEndpoint:
     def _build_params(
         self,
         team_id: int,
-        season: str | Season = Season.CURRENT,
-        season_type: str | SeasonType = SeasonType.REGULAR_SEASON,
-        league_id: str | LeagueID = LeagueID.NBA,
-    ) -> dict[str, str | int]:
+        season: Union[str, Season] = Season.CURRENT,
+        season_type: Union[str, SeasonType] = SeasonType.REGULAR_SEASON,
+        league_id: Union[str, LeagueID] = LeagueID.NBA,
+    ) -> dict[str, Union[str, int]]:
         """Build query parameters for API request.
 
         Args:
@@ -108,9 +108,9 @@ class TeamGameLogsEndpoint:
     def fetch(
         self,
         team_id: int,
-        season: str | Season = Season.CURRENT,
-        season_type: str | SeasonType = SeasonType.REGULAR_SEASON,
-        league_id: str | LeagueID = LeagueID.NBA,
+        season: Union[str, Season] = Season.CURRENT,
+        season_type: Union[str, SeasonType] = SeasonType.REGULAR_SEASON,
+        league_id: Union[str, LeagueID] = LeagueID.NBA,
     ) -> TeamGameLogs:
         """Fetch team game logs (synchronous).
 
@@ -144,9 +144,9 @@ class TeamGameLogsEndpoint:
     async def fetch_async(
         self,
         team_id: int,
-        season: str | Season = Season.CURRENT,
-        season_type: str | SeasonType = SeasonType.REGULAR_SEASON,
-        league_id: str | LeagueID = LeagueID.NBA,
+        season: Union[str, Season] = Season.CURRENT,
+        season_type: Union[str, SeasonType] = SeasonType.REGULAR_SEASON,
+        league_id: Union[str, LeagueID] = LeagueID.NBA,
     ) -> TeamGameLogs:
         """Fetch team game logs (asynchronous).
 
@@ -179,9 +179,9 @@ class TeamGameLogsEndpoint:
 
 def get_team_game_logs(
     team_id: int,
-    season: str | Season = Season.CURRENT,
-    season_type: str | SeasonType = SeasonType.REGULAR_SEASON,
-    league_id: str | LeagueID = LeagueID.NBA,
+    season: Union[str, Season] = Season.CURRENT,
+    season_type: Union[str, SeasonType] = SeasonType.REGULAR_SEASON,
+    league_id: Union[str, LeagueID] = LeagueID.NBA,
 ) -> TeamGameLogs:
     """Convenience function to fetch team game logs.
 

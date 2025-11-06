@@ -1,6 +1,6 @@
 """TeamRoster endpoint - fetch team roster including players and coaches."""
 
-from typing import Optional
+from typing import Optional, Union
 
 from ...client.base import BaseClient
 from ...enums.common import LeagueID, Season
@@ -51,9 +51,9 @@ class TeamRosterEndpoint:
     def _build_params(
         self,
         team_id: int,
-        season: str | Season = Season.CURRENT,
-        league_id: str | LeagueID = LeagueID.NBA,
-    ) -> dict[str, str | int]:
+        season: Union[str, Season] = Season.CURRENT,
+        league_id: Union[str, LeagueID] = LeagueID.NBA,
+    ) -> dict[str, Union[str, int]]:
         """Build query parameters for API request.
 
         Args:
@@ -114,8 +114,8 @@ class TeamRosterEndpoint:
     def fetch(
         self,
         team_id: int,
-        season: str | Season = Season.CURRENT,
-        league_id: str | LeagueID = LeagueID.NBA,
+        season: Union[str, Season] = Season.CURRENT,
+        league_id: Union[str, LeagueID] = LeagueID.NBA,
     ) -> TeamRoster:
         """Fetch team roster (synchronous).
 
@@ -147,8 +147,8 @@ class TeamRosterEndpoint:
     async def fetch_async(
         self,
         team_id: int,
-        season: str | Season = Season.CURRENT,
-        league_id: str | LeagueID = LeagueID.NBA,
+        season: Union[str, Season] = Season.CURRENT,
+        league_id: Union[str, LeagueID] = LeagueID.NBA,
     ) -> TeamRoster:
         """Fetch team roster (asynchronous).
 
@@ -179,8 +179,8 @@ class TeamRosterEndpoint:
 
 def get_team_roster(
     team_id: int,
-    season: str | Season = Season.CURRENT,
-    league_id: str | LeagueID = LeagueID.NBA,
+    season: Union[str, Season] = Season.CURRENT,
+    league_id: Union[str, LeagueID] = LeagueID.NBA,
 ) -> TeamRoster:
     """Convenience function to fetch team roster.
 

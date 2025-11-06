@@ -1,6 +1,6 @@
 """CareerStats endpoint - fetch player career statistics."""
 
-from typing import Optional
+from typing import Optional, Union
 
 from ...client.base import BaseClient
 from ...enums.common import PerMode
@@ -47,7 +47,7 @@ class CareerStatsEndpoint:
         self,
         player_id: int,
         per_mode: PerMode = PerMode.TOTALS,
-    ) -> dict[str, str | int]:
+    ) -> dict[str, Union[str, int]]:
         """Build query parameters for API request.
 
         Args:
