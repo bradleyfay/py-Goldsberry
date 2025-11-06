@@ -4,7 +4,7 @@ Endpoint: commonallplayers
 Returns a list of all players in NBA history or current season.
 """
 
-from typing import Optional
+from typing import Dict, List, Optional, Union
 
 from ...client.base import BaseClient
 from ...enums.common import IsOnlyCurrentSeason, LeagueID, Season
@@ -58,10 +58,10 @@ class PlayerListEndpoint:
 
     def _build_params(
         self,
-        season: Season | str = Season.CURRENT,
+        season: Union[Season, str] = Season.CURRENT,
         league_id: LeagueID = LeagueID.NBA,
         only_current_season: IsOnlyCurrentSeason = IsOnlyCurrentSeason.CURRENT_SEASON_ONLY,
-    ) -> dict[str, str | int]:
+    ) -> Dict[str, Union[str, int]]:
         """Build query parameters for API request.
 
         Args:
@@ -89,10 +89,10 @@ class PlayerListEndpoint:
 
     def fetch(
         self,
-        season: Season | str = Season.CURRENT,
+        season: Union[Season, str] = Season.CURRENT,
         league_id: LeagueID = LeagueID.NBA,
         only_current_season: IsOnlyCurrentSeason = IsOnlyCurrentSeason.CURRENT_SEASON_ONLY,
-    ) -> list[PlayerInfo]:
+    ) -> List[PlayerInfo]:
         """Fetch player list (synchronous).
 
         Args:
@@ -120,10 +120,10 @@ class PlayerListEndpoint:
 
     async def fetch_async(
         self,
-        season: Season | str = Season.CURRENT,
+        season: Union[Season, str] = Season.CURRENT,
         league_id: LeagueID = LeagueID.NBA,
         only_current_season: IsOnlyCurrentSeason = IsOnlyCurrentSeason.CURRENT_SEASON_ONLY,
-    ) -> list[PlayerInfo]:
+    ) -> List[PlayerInfo]:
         """Fetch player list (asynchronous).
 
         Args:
@@ -152,11 +152,11 @@ class PlayerListEndpoint:
 
 # Convenience function for quick access
 def get_players(
-    season: Season | str = Season.CURRENT,
+    season: Union[Season, str] = Season.CURRENT,
     league_id: LeagueID = LeagueID.NBA,
     only_current_season: IsOnlyCurrentSeason = IsOnlyCurrentSeason.CURRENT_SEASON_ONLY,
     client: Optional[BaseClient] = None,
-) -> list[PlayerInfo]:
+) -> List[PlayerInfo]:
     """Convenience function to fetch player list.
 
     Args:
@@ -179,11 +179,11 @@ def get_players(
 
 
 async def get_players_async(
-    season: Season | str = Season.CURRENT,
+    season: Union[Season, str] = Season.CURRENT,
     league_id: LeagueID = LeagueID.NBA,
     only_current_season: IsOnlyCurrentSeason = IsOnlyCurrentSeason.CURRENT_SEASON_ONLY,
     client: Optional[BaseClient] = None,
-) -> list[PlayerInfo]:
+) -> List[PlayerInfo]:
     """Convenience async function to fetch player list.
 
     Args:
