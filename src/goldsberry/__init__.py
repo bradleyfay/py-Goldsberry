@@ -17,9 +17,9 @@ Example:
     ...     players = endpoint.fetch()
 """
 
-__version__ = "2.0.0-alpha.1"
-__author__ = "Bradley Fay"
-__email__ = "bradley.fay@gmail.com"
+from importlib.metadata import version
+
+__version__ = version("py-goldsberry")
 
 from .client.base import BaseClient
 from .client.exceptions import NBAAPIError
