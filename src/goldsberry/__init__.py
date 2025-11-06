@@ -4,8 +4,8 @@ Provides both synchronous and asynchronous interfaces to the NBA stats API
 with comprehensive type safety, validation, and error handling.
 
 Example:
-    >>> from nba_api.client import BaseClient
-    >>> from nba_api.endpoints.player import get_players
+    >>> from goldsberry.client import BaseClient
+    >>> from goldsberry.endpoints.player import get_players
     >>>
     >>> # Quick usage
     >>> players = get_players(season="2024-25")

@@ -169,7 +169,7 @@ def get_players(
         List of PlayerInfo objects
 
     Example:
-        >>> from nba_api.endpoints.player import get_players
+        >>> from goldsberry.endpoints.player import get_players
         >>> players = get_players(season="2024-25")
         >>> active = [p for p in players if p.is_active]
         >>> print(f"{len(active)} active players")
@@ -196,7 +196,7 @@ async def get_players_async(
         List of PlayerInfo objects
 
     Example:
-        >>> from nba_api.endpoints.player import get_players_async
+        >>> from goldsberry.endpoints.player import get_players_async
         >>> players = await get_players_async(season="2024-25")
     """
     endpoint = PlayerListEndpoint(client)
