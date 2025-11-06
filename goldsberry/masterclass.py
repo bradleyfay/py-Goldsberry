@@ -1,18 +1,10 @@
-from __future__ import print_function
-
 import time
-
-import requests as _requests
 import copy
 from contextlib import contextmanager
-import retrying
-
-from future.standard_library import install_aliases
-
-install_aliases()
-# This library is different between python 2 and 3. This negates the difference
-# noinspection PyCompatibility
 from urllib.parse import urljoin
+
+import requests as _requests
+import retrying
 
 header_data = {
         'Host': 'stats.nba.com',
@@ -168,13 +160,13 @@ class ObjectManagerForSportVu(ObjectManager):
 
 class NbaDataProvider(object):
     def __init__(self, url_modifier, default_params=None, **kwargs):
-        base_url = 'http://stats.nba.com/stats/'
+        base_url = 'https://stats.nba.com/stats/'
         self.object_manager = ObjectManager(base_url, url_modifier, default_params, **kwargs)
 
 
 class NbaDataProviderPlayType(object):
     def __init__(self, url_modifier, year, team=False, default_params=None, **kwargs):
-        base_url = "http://stats.nba.com/js/data/playtype/"
+        base_url = "https://stats.nba.com/js/data/playtype/"
         self.object_manager = ObjectManagerForPlayType(base_url, url_modifier, year, team, default_params, **kwargs)
 
     def offensive(self):
@@ -190,7 +182,7 @@ class NbaDataProviderPlayType(object):
 
 class NbaDataProviderSportVu(object):
     def __init__(self, url_modifier, year, team=False, default_params=None, **kwargs):
-        base_url = 'http://stats.nba.com/js/data/sportvu/'
+        base_url = 'https://stats.nba.com/js/data/sportvu/'
         self.object_manager = ObjectManagerForSportVu(base_url, url_modifier, year, team, default_params, **kwargs)
 
     def data(self):

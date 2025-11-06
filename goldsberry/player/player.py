@@ -156,10 +156,6 @@ class PlayerList(NbaDataProvider):
 
     def players(self):
         return self._get_table_from_data(self._data_tables, 0)
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
 # BLOCKED BY NBA
 class shot_log(NbaDataProvider):
