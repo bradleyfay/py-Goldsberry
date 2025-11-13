@@ -55,19 +55,21 @@ target/
 
 #Markdown README
 _README.md
-<<<<<<< HEAD
-/.idea
-=======
-#Jupyter Notebook Checkpoints
-*.checkpoint.ipynb
-docs/.ipynb_checkpoints/
 
-
-
+# IDE
 .idea/
 *.sublime-project
 *.sublime-workspace
 
+#Jupyter Notebook Checkpoints
+*.checkpoint.ipynb
+docs/.ipynb_checkpoints/
 
+# Git worktree directories
+feat/
+fix/
+release/
 
->>>>>>> master
+# Claude Code
+.claude/
+.specstory/
